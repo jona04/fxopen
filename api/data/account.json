@@ -1,0 +1,49 @@
+{
+  "local_request_data": "2024-09-09 20:55:42",
+  "response_data": {
+    "Id": 28501564,
+    "AccountingType": "Gross",
+    "Name": "mauqbK8EqB",
+    "FirstName": "",
+    "LastName": "",
+    "Phone": "+5586981550215",
+    "Country": "BRAZIL",
+    "State": "",
+    "City": "",
+    "Address": "",
+    "ZipCode": "",
+    "Email": "jonatas.iw@gmail.com",
+    "Comment": "",
+    "Registered": 1725839019376,
+    "Modified": 1725839412695,
+    "IsArchived": false,
+    "IsBlocked": false,
+    "IsReadonly": false,
+    "IsValid": true,
+    "IsWebApiEnabled": true,
+    "Leverage": 500,
+    "Balance": 10000.0,
+    "BalanceCurrency": "USD",
+    "Profit": 0.0,
+    "Commission": 0.0,
+    "AgentCommission": 0.0,
+    "Swap": 0.0,
+    "Rebate": 0.0,
+    "Equity": 10000.0,
+    "Margin": 0.0,
+    "MarginCallLevel": 100,
+    "StopOutLevel": 50,
+    "ReportCurrency": "USD",
+    "IsTokenCommissionEnabled": false,
+    "Throttling": [
+      {
+        "Protocol": "Rest",
+        "SessionsPerAccount": 2,
+        "RequestsPerSecond": 5,
+        "ThrottlingMethods": [],
+        "ConcurrentRequestCount": 100
+      }
+    ],
+    "IsLongOnly": false
+  }
+}
