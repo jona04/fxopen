@@ -65,8 +65,8 @@ def remove_spread(df):
             c = f"{a}_{b}"
             df[c] = df[f"mid_{b}"]
 
-def apply_signals(df,sig):
-    df["SIGNAL"] = df.apply(sig, axis=1)
+def apply_signals(df,sig,spread_limit):
+    df["SIGNAL"] = df.apply(sig, spread=spread_limit, axis=1)
 
 def apply_short_signals(df,sig):
     df["SIGNAL_SHORT"] = df.apply(sig, axis=1)
@@ -251,7 +251,8 @@ class EmaCrossMultiTemporal3TesterFast:
                     fixed_tp_sl=True,
                     trans_cost=8,
                     neg_multiplier=1,
-                    rev=False
+                    rev=False,
+                    spread_limit=50
                     ):
         self.use_spread = use_spread
         self.apply_signal = apply_signal
@@ -265,6 +266,8 @@ class EmaCrossMultiTemporal3TesterFast:
         self.trans_cost = trans_cost
         self.neg_multiplier = neg_multiplier
         self.rev = rev
+        self.spread_limit = spread_limit
+
         self.prepare_data()
         
     def prepare_data(self):
@@ -274,7 +277,7 @@ class EmaCrossMultiTemporal3TesterFast:
         if self.use_spread == False:
             remove_spread(self.df)
 
-        apply_signals(self.df, self.apply_signal)
+        apply_signals(self.df, self.apply_signal,self.spread_limit)
         apply_short_signals(self.df, self.apply_short_signal)
         self.df.SIGNAL = self.df.SIGNAL.astype(int)
         self.df.SIGNAL_SHORT = self.df.SIGNAL_SHORT.astype(int)
