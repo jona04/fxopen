@@ -1,8 +1,8 @@
-from api.oanda_api import OandaApi
+from api.fxopen_api import FxOpenApi
 import constants.defs as defs
-from infrastructure.instrument_collection import instrumentCollection as ic
+from infrastructure.quotehistory_collection import quotehistoryCollection as qc
 
-def get_trade_units(api: OandaApi, pair, signal, loss, trade_risk, log_message):
+def get_trade_units(api: FxOpenApi, pair, signal, loss, trade_risk, log_message):
 
     prices = api.get_prices([pair])
 
@@ -26,7 +26,7 @@ def get_trade_units(api: OandaApi, pair, signal, loss, trade_risk, log_message):
     if signal == defs.SELL:
         conv = price.sell_conv
 
-    pipLocation = ic.instruments_dict[pair].pipLocation
+    pipLocation = qc.instruments_dict[pair].pipLocation
     num_pips = loss / pipLocation
     per_pip_loss = trade_risk / num_pips
     units = per_pip_loss / (conv * pipLocation)

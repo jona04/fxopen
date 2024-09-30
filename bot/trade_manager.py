@@ -1,9 +1,9 @@
 
-from api.oanda_api import OandaApi
+from api.fxopen_api import FxOpenApi
 from bot.trade_risk_calculator import get_trade_units
 from models.trade_decision import TradeDecision
 
-def trade_is_open(pair, api: OandaApi):
+def trade_is_open(pair, api: FxOpenApi):
 
     open_trades = api.get_open_trades()
 
@@ -14,7 +14,7 @@ def trade_is_open(pair, api: OandaApi):
     return None
 
 
-def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_error, trade_risk):
+def place_trade(trade_decision: TradeDecision, api: FxOpenApi, log_message, log_error, trade_risk):
 
     ot = trade_is_open(trade_decision.pair, api)
 
@@ -22,12 +22,12 @@ def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_e
         log_message(f"Failed to place trade {trade_decision}, already open: {ot}", trade_decision.pair)
         return None
 
-    trade_units = get_trade_units(api, trade_decision.pair, trade_decision.signal, 
-                            trade_decision.loss, trade_risk, log_message)
+    # trade_units = get_trade_units(api, trade_decision.pair, trade_decision.signal, 
+    #                         trade_decision.loss, trade_risk, log_message)
 
     trade_id = api.place_trade(
         trade_decision.pair, 
-        trade_units,
+        0.001,
         trade_decision.signal,
         trade_decision.sl,
         trade_decision.tp
@@ -40,3 +40,5 @@ def place_trade(trade_decision: TradeDecision, api: OandaApi, log_message, log_e
         log_message(f"placed trade_id:{trade_id} for {trade_decision}", trade_decision.pair)
 
 
+def close_trade():
+    pass

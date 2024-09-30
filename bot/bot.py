@@ -2,11 +2,11 @@ import json
 import time
 from bot.candle_manager import CandleManager
 from bot.technicals_manager import get_trade_decision
-from bot.trade_manager import place_trade
+from bot.trade_manager import place_trade, trade_is_open, close_trade
 
 from infrastructure.log_wrapper import LogWrapper
 from models.trade_settings import TradeSettings
-from api.oanda_api import OandaApi
+from api.fxopen_api import FxOpenApi
 import constants.defs as defs
 
 
@@ -22,7 +22,7 @@ class Bot:
         self.load_settings()
         self.setup_logs()
 
-        self.api = OandaApi()
+        self.api = FxOpenApi()
         self.candle_manager = CandleManager(self.api, self.trade_settings, self.log_message, Bot.GRANULARITY)
 
         self.log_to_main("Bot started")
@@ -63,6 +63,59 @@ class Bot:
                     self.log_message(f"Place Trade: {trade_decision}", p)
                     self.log_to_main(f"Place Trade: {trade_decision}")
                     place_trade(trade_decision, self.api, self.log_message, self.log_to_error, self.trade_risk)
+
+
+                ot = trade_is_open(trade_decision.pair)
+                if ot is not None:
+
+                    min_acumulated_loss = acumulated_loss[0] if len(acumulated_loss) > 0 else 0.0
+                    value_loss_trans_cost = self.neg_multiplier*min_acumulated_loss
+                    self.count += 1
+                    if ot.side == 'Buy':
+                        if min_acumulated_loss > 0.0:
+                            result = (trade_decision.bid_c - self.start_price) / self.trade_settings[p].pip_value
+                            if result >= value_loss_trans_cost:
+                                # self.trigger_type = TRIGGER_TYPE_ACUMULATED_LOSS
+                                # acumulated_loss = self.close_trade(list_values, index, value_loss_trans_cost, trade_decision.bid_c, acumulated_loss)
+                                close_trade()
+                            elif ot.side == 'Sell':
+                                # self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
+                                # result = (trade_decision.bid_c - self.start_price) / self.trade_settings[p].pip_value
+                                # acumulated_loss = self.close_trade(list_values, index, result, trade_decision.bid_c, acumulated_loss)
+                                close_trade()
+                        elif ot.side == 'Sell':
+                            # self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
+                            # result = (trade_decision.bid_c - self.start_price) / self.trade_settings[p].pip_value
+                            # acumulated_loss = self.close_trade(list_values, index, result, trade_decision.bid_c, acumulated_loss)
+                            close_trade()
+                        
+
+                    if ot.side == 'Sell':
+                        if min_acumulated_loss > 0.0:
+                            result = (self.start_price - trade_decision.ask_c) / self.trade_settings[p].pip_value
+                            if result >= value_loss_trans_cost:
+                                # self.trigger_type = TRIGGER_TYPE_ACUMULATED_LOSS
+                                # acumulated_loss = self.close_trade(list_values, index, value_loss_trans_cost, trade_decision.ask_c, acumulated_loss)
+                                close_trade()
+                            elif ot.side == 'Buy':
+                                # self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
+                                # result = (trade_decision.ask_c - self.start_price) / self.trade_settings[p].pip_value
+                                # acumulated_loss = self.close_trade(list_values, index, result, trade_decision.ask_c, acumulated_loss)
+                                close_trade()
+                        elif ot.side == 'Buy':
+                            # self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
+                            # result = (self.start_price - trade_decision.ask_c) / self.trade_settings[p].pip_value
+                            # acumulated_loss = self.close_trade(list_values, index, result,trade_decision.ask_c, acumulated_loss)
+                            close_trade()
+                    
+
+
+
+
+
+
+
+
 
 
     def run(self):

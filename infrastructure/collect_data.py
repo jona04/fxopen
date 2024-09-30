@@ -8,6 +8,7 @@ from api.fxopen_api import FxOpenApi
 CANDLE_COUNT = 900
 
 INCREMENTS = {
+    'M1': 1 * CANDLE_COUNT,
     'M15': 15 * CANDLE_COUNT,
     'M5' : 5 * CANDLE_COUNT,
     'H1' : 60 * CANDLE_COUNT,
@@ -97,19 +98,20 @@ def collect_data(pair, granularity, date_f, date_t, file_prefix, api:FxOpenApi):
 
 
 def run_collection(qc: QuotehistoryCollection, api:FxOpenApi):
-    our_curr = ["EUR", "GBP", "JPY", "CAD", "AUD", "USD", "CHF", "NZD", "BTC", "ETH", "XAU"]
+    #  "CAD", "AUD", "CHF", "NZD"
+    our_curr = ["BTC", "ETH","EUR", "XAU","USD","GBP", "JPY"]
     #our_curr = ["XAU","USD"]
     for p1 in our_curr:
         for p2 in our_curr:
             pair = f"{p1}{p2}"
             if pair in qc.quotehistory_dict.keys():
                 print(pair)
-                for g in ["M5","M15","H4","D1"]:
+                for g in ["M1"]:
                     print(pair, g)
                     collect_data(
                         pair,
                         g,
-                        "2018-01-01T00:00:00",
+                        "2023-01-01T00:00:00",
                         "2024-12-31T00:00:00",
                         "./data/",
                         api

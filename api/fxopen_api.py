@@ -7,6 +7,8 @@ from dateutil import parser
 from datetime import datetime as dt
 import datetime
 
+from infrastructure.quotehistory_collection import quotehistoryCollection as qc
+from models.open_trade import OpenTrade
 
 class FxOpenApi:
     def __init__(self):
@@ -175,3 +177,71 @@ class FxOpenApi:
             return None
         return df.iloc[-1].time
     
+
+    def place_trade(self, pair_name: str, amount: int, direction: int,
+                    stop_loss: float=None, take_profit: float=None):
+    
+
+        dir_str = "Buy" if direction == defs.BUY else "Sell"
+
+        url = f"trade"
+
+        instrument = qc.quotehistory_dict[pair_name]
+        data = dict(
+            Type="Market",
+            Symbol=pair_name, 
+            Amount=amount,
+            Side=dir_str
+        )
+
+        if stop_loss is not None:
+            data['StopLoss'] = round(stop_loss, instrument.displayPrecision)
+
+        if take_profit is not None:
+            data['TakeProfit'] = round(take_profit, instrument.displayPrecision)
+            
+        print(f"place trade args: {pair_name} {amount} {direction} {stop_loss} {take_profit}")
+        print("Place Trade:", data)
+
+        ok, response = self.make_request(url, verb="post", data=data, code=200)
+
+        print(ok, response)
+
+        if 'RemainingAmount' in response and response['RemainingAmount'] != 0:
+            return response['Id']
+        else:
+            return None
+
+
+    def get_open_trade(self, trade_id):
+            url = f"trade/{trade_id}"
+            ok, response = self.make_request(url)
+
+            if ok == True and 'Id' in response:
+                return OpenTrade(response)
+
+
+    def get_open_trades(self):
+        url = f"trade"
+        ok, response = self.make_request(url)
+
+        if ok == True:
+            return [OpenTrade(x) for x in response]
+            
+
+    def close_trade(self, trade_id):
+        url = f"trade"
+
+        params ={
+            "trade.type": "Close",
+            "trade.id": trade_id
+        }
+
+        ok, _ = self.make_request(url, verb="delete", params=params, code=200)
+
+        if ok == True:
+            print(f"Closed {trade_id} successfully")
+        else:
+            print(f"Failed to close {trade_id}")
+
+        return ok

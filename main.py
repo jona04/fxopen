@@ -5,6 +5,9 @@ from simulation.ma_cross import run_ma_sim
 from simulation.ma_cross_tp import run_ma_tp_sim
 from simulation.return_ma_cross import run_returned_ma_sim
 from dateutil import parser
+import constants.defs as defs
+import time
+
 import json
 
 if __name__ == "__main__":
@@ -19,18 +22,42 @@ if __name__ == "__main__":
 
     # Run tests
 
-    run_ma_tp_sim()
+    # run_ma_tp_sim()
     #run_ma_sim()
     #run_returned_ma_sim()
 
-    # quotehistoryCollection.LoadQuotehistory("./data")
-    # run_collection(quotehistoryCollection, api)
+    quotehistoryCollection.LoadQuotehistory("./data")
+    run_collection(quotehistoryCollection, api)
 
-    # dfr = parser.parse("2024-08-12T04:00:00")
+    # dfr = parser.parse("2024-08-12T04:00:00Z")
     # dto = parser.parse("2023-04-28T01:00:00Z")
 
-    # print(api.fetch_candles("EURUSD", -10, "H1", dfr, dto))
-    # df_candles = api.get_candles_df(pair="EURUSD", count=-10, granularity="H1", date_f=dfr)
+    # print(api.fetch_candles("BTCEUR", -10, "H1"))
+    # df_candles = api.get_candles_df(pair="BTCEUR", count=-10, granularity="H1", date_f=dfr)
     # print(df_candles)
 
-    # print(api.last_complete_candle("EURUSD", granularity="H1"))
+
+    # print(api.last_complete_candle("BTCEUR", granularity="H1"))
+
+
+    # api.place_trade("BTCEUR", 0.001, defs.BUY)
+
+
+    # print("Getting open")
+    # ot = api.get_open_trades()
+
+    # for t in ot:
+    #     print("Got trade:", t)
+    #     print("Got trade:", t.id)
+    #     time.sleep(2)
+    #     print("Closing...")
+    #     api.close_trade(t.id)
+
+
+    # time.sleep(1)
+    # print("Getting open")
+    # ot = api.get_open_trades()
+    # print(ot)
+    # print("Done")
+
+

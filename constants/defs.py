@@ -1,6 +1,10 @@
 import os
 from dotenv import load_dotenv
-load_dotenv("../.env")
+load_dotenv()
+
+SELL = -1
+BUY = 1
+NONE = 0
 
 API_ID = os.environ.get("API_ID")
 API_KEY = os.environ.get("API_KEY")

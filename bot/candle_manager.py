@@ -1,9 +1,9 @@
-from api.oanda_api import OandaApi
+from api.fxopen_api import FxOpenApi
 from models.candle_timing import CandleTiming
 
 class CandleManager:
 
-    def __init__(self, api: OandaApi, trade_settings, log_message, granularity):
+    def __init__(self, api: FxOpenApi, trade_settings, log_message, granularity):
         self.api = api
         self.trade_settings = trade_settings
         self.log_message = log_message
