@@ -1,0 +1,519 @@
+#######################################
+
+Ema short = 5 | Donchian Window = 1000 | Windows don prev = 10
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: -915.9999999999491
+Len loss:  3
+Len Open: 0
+Len Close: 781
+
+#######################################
+
+Ema short = 5 | Donchian Window = 1000 | Windows don prev = 20
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 3106.00000000004
+Len loss:  3
+Len Open: 0
+Len Close: 780
+
+#######################################
+
+Ema short = 5 | Donchian Window = 1000 | Windows don prev = 50
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 664.9999999999909
+Len loss:  3
+Len Open: 0
+Len Close: 776
+
+#######################################
+
+Ema short = 5 | Donchian Window = 1000 | Windows don prev = 100
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: -2669.000000000022
+Len loss:  3
+Len Open: 0
+Len Close: 764
+
+#######################################
+
+Ema short = 5 | Donchian Window = 1000 | Windows don prev = 250
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: -18017.000000000116
+Len loss:  11
+Len Open: 0
+Len Close: 805
+
+#######################################
+
+Ema short = 5 | Donchian Window = 2500 | Windows don prev = 10
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 17052.999999999975
+Len loss:  3
+Len Open: 0
+Len Close: 428
+
+#######################################
+
+Ema short = 5 | Donchian Window = 2500 | Windows don prev = 20
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 16248.99999999997
+Len loss:  2
+Len Open: 0
+Len Close: 431
+
+#######################################
+
+Ema short = 5 | Donchian Window = 2500 | Windows don prev = 50
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 6705.9999999999945
+Len loss:  3
+Len Open: 0
+Len Close: 432
+
+#######################################
+
+Ema short = 5 | Donchian Window = 2500 | Windows don prev = 100
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 12907.99999999996
+Len loss:  4
+Len Open: 0
+Len Close: 438
+
+#######################################
+
+Ema short = 5 | Donchian Window = 2500 | Windows don prev = 250
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 1561.9999999999309
+Len loss:  6
+Len Open: 1
+Len Close: 483
+
+#######################################
+
+Ema short = 5 | Donchian Window = 5000 | Windows don prev = 10
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 14835.000000000116
+Len loss:  2
+Len Open: 0
+Len Close: 285
+
+#######################################
+
+Ema short = 5 | Donchian Window = 5000 | Windows don prev = 20
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 22723.000000000102
+Len loss:  2
+Len Open: 0
+Len Close: 288
+
+#######################################
+
+Ema short = 5 | Donchian Window = 5000 | Windows don prev = 50
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 19700.00000000011
+Len loss:  2
+Len Open: 0
+Len Close: 288
+
+#######################################
+
+Ema short = 5 | Donchian Window = 5000 | Windows don prev = 100
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 39856.000000000146
+Len loss:  2
+Len Open: 0
+Len Close: 292
+
+#######################################
+
+Ema short = 5 | Donchian Window = 5000 | Windows don prev = 250
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 6902.000000000129
+Len loss:  3
+Len Open: 0
+Len Close: 325
+
+#######################################
+
+Ema short = 5 | Donchian Window = 10000 | Windows don prev = 10
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 39703.99999999993
+Len loss:  1
+Len Open: 4
+Len Close: 202
+
+#######################################
+
+Ema short = 5 | Donchian Window = 10000 | Windows don prev = 20
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 34731.999999999905
+Len loss:  1
+Len Open: 5
+Len Close: 204
+
+#######################################
+
+Ema short = 5 | Donchian Window = 10000 | Windows don prev = 50
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 33203.99999999993
+Len loss:  1
+Len Open: 5
+Len Close: 203
+
+#######################################
+
+Ema short = 5 | Donchian Window = 10000 | Windows don prev = 100
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 34098.99999999991
+Len loss:  1
+Len Open: 4
+Len Close: 206
+
+#######################################
+
+Ema short = 5 | Donchian Window = 10000 | Windows don prev = 250
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 29698.999999999964
+Len loss:  2
+Len Open: 4
+Len Close: 230
+
+#######################################
+
+Ema short = 10 | Donchian Window = 1000 | Windows don prev = 10
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: -2919.000000000042
+Len loss:  9
+Len Open: 0
+Len Close: 695
+
+#######################################
+
+Ema short = 10 | Donchian Window = 1000 | Windows don prev = 20
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 10083.999999999956
+Len loss:  6
+Len Open: 0
+Len Close: 701
+
+#######################################
+
+Ema short = 10 | Donchian Window = 1000 | Windows don prev = 50
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 9462.000000000007
+Len loss:  3
+Len Open: 0
+Len Close: 706
+
+#######################################
+
+Ema short = 10 | Donchian Window = 1000 | Windows don prev = 100
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: -14437.999999999978
+Len loss:  9
+Len Open: 0
+Len Close: 695
+
+#######################################
+
+Ema short = 10 | Donchian Window = 1000 | Windows don prev = 250
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: -20384.000000000022
+Len loss:  13
+Len Open: 0
+Len Close: 705
+
+#######################################
+
+Ema short = 10 | Donchian Window = 2500 | Windows don prev = 10
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 2649.9999999999263
+Len loss:  3
+Len Open: 1
+Len Close: 389
+
+#######################################
+
+Ema short = 10 | Donchian Window = 2500 | Windows don prev = 20
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: -6292.999999999938
+Len loss:  4
+Len Open: 1
+Len Close: 398
+
+#######################################
+
+Ema short = 10 | Donchian Window = 2500 | Windows don prev = 50
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 5773.000000000104
+Len loss:  4
+Len Open: 1
+Len Close: 400
+
+#######################################
+
+Ema short = 10 | Donchian Window = 2500 | Windows don prev = 100
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 4173.000000000126
+Len loss:  4
+Len Open: 1
+Len Close: 404
+
+#######################################
+
+Ema short = 10 | Donchian Window = 2500 | Windows don prev = 250
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: -2340.999999999951
+Len loss:  4
+Len Open: 1
+Len Close: 422
+
+#######################################
+
+Ema short = 10 | Donchian Window = 5000 | Windows don prev = 10
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 63844.99999999994
+Len loss:  4
+Len Open: 0
+Len Close: 259
+
+#######################################
+
+Ema short = 10 | Donchian Window = 5000 | Windows don prev = 20
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 46206.999999999985
+Len loss:  2
+Len Open: 0
+Len Close: 265
+
+#######################################
+
+Ema short = 10 | Donchian Window = 5000 | Windows don prev = 50
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 41729.000000000044
+Len loss:  2
+Len Open: 0
+Len Close: 269
+
+#######################################
+
+Ema short = 10 | Donchian Window = 5000 | Windows don prev = 100
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 39981.000000000015
+Len loss:  2
+Len Open: 0
+Len Close: 269
+
+#######################################
+
+Ema short = 10 | Donchian Window = 5000 | Windows don prev = 250
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 50401.99999999997
+Len loss:  3
+Len Open: 0
+Len Close: 287
+
+#######################################
+
+Ema short = 10 | Donchian Window = 10000 | Windows don prev = 10
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 48281.99999999988
+Len loss:  2
+Len Open: 4
+Len Close: 179
+
+#######################################
+
+Ema short = 10 | Donchian Window = 10000 | Windows don prev = 20
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 37976.0
+Len loss:  1
+Len Open: 6
+Len Close: 185
+
+#######################################
+
+Ema short = 10 | Donchian Window = 10000 | Windows don prev = 50
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 31231.999999999985
+Len loss:  1
+Len Open: 6
+Len Close: 186
+
+#######################################
+
+Ema short = 10 | Donchian Window = 10000 | Windows don prev = 100
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 31667.0
+Len loss:  1
+Len Open: 6
+Len Close: 187
+
+#######################################
+
+Ema short = 10 | Donchian Window = 10000 | Windows don prev = 250
+
+ Pair ---------> XAUUSD
+SL => 500000 | TP => 500000
+prepare_data...
+run_test...
+Result: 38224.00000000001
+Len loss:  2
+Len Open: 4
+Len Close: 204

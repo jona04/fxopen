@@ -8,10 +8,12 @@ BUY_TREND = 2
 SELL_TREND = -2
 NONE = 0
 
-TRIGGER_TYPE_TP = 1
-TRIGGER_TYPE_SL = 2
-TRIGGER_TYPE_ACUMULATED_LOSS = 3
-TRIGGER_TYPE_REVERSED_CROSS = 4
+TRIGGER_TYPE_TREND_BUY = 1
+TRIGGER_TYPE_TREND_SELL = 2
+TRIGGER_TYPE_REVERSED_CROSS_BUY = 3
+TRIGGER_TYPE_REVERSED_CROSS_SELL = 4
+TRIGGER_TYPE_MIN_LOSS_BUY = 5
+TRIGGER_TYPE_MIN_LOSS_SELL = 6
 
 def remove_spread(df):
     for a in ["ask", "bid"]:
@@ -149,74 +151,23 @@ class Trade:
         value_loss_trans_cost = (self.neg_multiplier*min_acumulated_loss) + self.trans_cost
         self.count += 1
         close_op = False
-        if self.FINAL_SIGNAL == BUY_REVERSE:
-            if min_acumulated_loss > 0.0:
-                result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_ACUMULATED_LOSS
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_bid_h][index]
-                    acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_delta_ema_mid][index] < 0 and list_values[INDEX_delta_ema_mid_prev][index] >= 0 :
-                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_FINAL_SIGNAL][index] == BUY_REVERSE:
-                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_FINAL_SIGNAL][index] == SELL_REVERSE:
-                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-            
-        if self.FINAL_SIGNAL == SELL_REVERSE:
-            if min_acumulated_loss > 0.0:
-                result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_ACUMULATED_LOSS
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_ask_l][index]
-                    acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_delta_ema_mid][index] > 0 and list_values[INDEX_delta_ema_mid_prev][index] <= 0 :
-                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result,list_values[INDEX_ask_c][index], acumulated_loss)
-                elif list_values[INDEX_FINAL_SIGNAL][index] == SELL_REVERSE:
-                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result,list_values[INDEX_ask_c][index], acumulated_loss)
-                elif list_values[INDEX_FINAL_SIGNAL][index] == BUY_REVERSE:
-                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result,list_values[INDEX_ask_c][index], acumulated_loss)
-
-
-
+      
         if self.FINAL_SIGNAL == BUY_TREND:
             if min_acumulated_loss > 0.0:
                 result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_ACUMULATED_LOSS
+                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_bid_h][index]
                     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
                     close_op = True
             if close_op == False:
-                if list_values[INDEX_delta_ema_low][index] < 0 and list_values[INDEX_delta_ema_mid_prev][index] >= 0 :
-                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
+                if list_values[INDEX_delta_ema_low][index] < 0 and list_values[INDEX_delta_ema_low_prev][index] >= 0 :
+                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS_BUY
                     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
                     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                # if list_values[INDEX_FINAL_SIGNAL][index] == SELL_REVERSE:
-                #     self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                #     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
                 elif list_values[INDEX_FINAL_SIGNAL][index] == BUY_TREND:
-                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
+                    self.trigger_type = TRIGGER_TYPE_TREND_BUY
                     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
                     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
             
@@ -224,22 +175,18 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_ACUMULATED_LOSS
+                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_SELL
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_ask_l][index]
                     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
                     close_op = True
             if close_op == False:
                 if list_values[INDEX_delta_ema_high][index] > 0 and list_values[INDEX_delta_ema_high_prev][index] <= 0 :
-                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
+                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS_SELL
                     result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
                     acumulated_loss = self.close_trade(list_values, index, result,list_values[INDEX_ask_c][index], acumulated_loss)
-                # if list_values[INDEX_FINAL_SIGNAL][index] == BUY_REVERSE:
-                #     self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                #     result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                #     acumulated_loss = self.close_trade(list_values, index, result,list_values[INDEX_ask_c][index], acumulated_loss)
                 elif list_values[INDEX_FINAL_SIGNAL][index] == SELL_TREND:
-                    self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
+                    self.trigger_type = TRIGGER_TYPE_TREND_SELL
                     result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
                     acumulated_loss = self.close_trade(list_values, index, result,list_values[INDEX_ask_c][index], acumulated_loss)
 
