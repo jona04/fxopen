@@ -133,15 +133,18 @@ class Trade:
 
         if result < 0.0:
             acumulated_loss.append(abs(self.result))
-
+            return acumulated_loss
+        
         acumulated_loss = sorted(acumulated_loss,reverse=self.rev)
 
         if trigger_type == TRIGGER_TYPE_ACUMULATED_LOSS:
             if min_acumulated_loss > 0.0:
                 if result >= self.neg_multiplier*min_acumulated_loss:
-                    if len(acumulated_loss) > 0:
+                    if len(acumulated_loss) > self.neg_multiplier-1:
+                        acumulated_loss = acumulated_loss[self.neg_multiplier:]
+                    elif len(acumulated_loss) == 1:
                         acumulated_loss = acumulated_loss[1:]
-        elif trigger_type == TRIGGER_TYPE_TP:
+        elif trigger_type == TRIGGER_TYPE_REVERSED_CROSS:
             if min_acumulated_loss > 0.0:
 
                 # Ordena a lista em ordem crescente para tentar remover os menores números primeiro
@@ -151,8 +154,8 @@ class Trade:
                 removed_elements = []
                 # Loop para adicionar elementos à soma sem ultrapassar o valor de 'result'
                 for elem in l_sorted:
-                    if current_sum + (elem*self.neg_multiplier) <= result:
-                        current_sum += elem*self.neg_multiplier
+                    if current_sum + (elem) <= result:
+                        current_sum += elem
                         removed_elements.append(elem)
                     else:
                         break

@@ -99,8 +99,8 @@ def collect_data(pair, granularity, date_f, date_t, file_prefix, api:FxOpenApi):
 
 def run_collection(qc: QuotehistoryCollection, api:FxOpenApi):
     #  "CAD", "AUD", "CHF", "NZD"
-    our_curr = ["BTC", "ETH","EUR", "XAU","USD","GBP", "JPY"]
-    #our_curr = ["XAU","USD"]
+    # our_curr = ["BTC", "ETH","EUR", "XAU","USD","GBP", "JPY"]
+    our_curr = ["XAU","USD"]
     for p1 in our_curr:
         for p2 in our_curr:
             pair = f"{p1}{p2}"
@@ -111,8 +111,8 @@ def run_collection(qc: QuotehistoryCollection, api:FxOpenApi):
                     collect_data(
                         pair,
                         g,
-                        "2023-01-01T00:00:00",
-                        "2024-12-31T00:00:00",
+                        "2020-01-01T00:00:00",
+                        "2022-12-31T00:00:00",
                         "./data/",
                         api
                     )
