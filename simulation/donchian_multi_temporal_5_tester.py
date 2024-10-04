@@ -227,7 +227,7 @@ class DonchianMultiTemporal5Tester:
         
     def prepare_data(self):
         
-        print("prepare_data...")
+        # print("prepare_data...")
 
         if self.use_spread == False:
             remove_spread(self.df)
@@ -243,7 +243,7 @@ class DonchianMultiTemporal5Tester:
 
         
     def run_test(self):
-        print("run_test...")
+        # print("run_test...")
         open_trades_m5 = []
         closed_trades_m5 = []
 
@@ -279,7 +279,20 @@ class DonchianMultiTemporal5Tester:
                                             self.LOSS_FACTOR, self.pip_value, self.trans_cost, self.neg_multiplier))  
             
         self.df_results = pd.DataFrame.from_dict([vars(x) for x in closed_trades_m5]) 
+        res_pos = self.df_results[self.df_results['result'] > 0]
+        res_neg = self.df_results[self.df_results['result'] < 0]
+        sum_neg = res_neg.result.sum()
+        sum_pos = res_pos.result.sum()
+        
         print("Result:", self.df_results.result.sum())
         print("Len loss: ", len(self.acumulated_loss))
         print("Len Open:" , len(open_trades_m5))
         print("Len Close:" , len(closed_trades_m5))
+        print("Len Pos", len(res_pos))
+        print("Len Neg", len(res_neg))
+        print("Res pos", sum_pos)
+        print("Res neg", sum_neg)
+        print("Rel len pos neg", len(res_pos)/(len(res_pos)+ len(res_neg)))
+        print("Rel len neg pos", len(res_neg)/(len(res_pos)+ len(res_neg)))
+        print("Rel pos neg", sum_pos/(sum_pos+ sum_neg))
+        print("Rel neg pos", sum_neg/(sum_pos+ sum_neg))
