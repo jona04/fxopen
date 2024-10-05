@@ -1,3 +1,5 @@
+from collections import deque
+
 import pandas as pd
 import datetime as dt
 import numpy as np
@@ -152,7 +154,7 @@ class Trade:
         self.count += 1
         close_op = False
       
-        if self.FINAL_SIGNAL == BUY_TREND:
+        if self.FINAL_SIGNAL == SELL_REVERSE:
             if min_acumulated_loss > 0.0:
                 result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
                 if result >= value_loss_trans_cost:
@@ -163,6 +165,7 @@ class Trade:
                     close_op = True
             if close_op == False:
                 if list_values[INDEX_delta_ema_low][index] < 0 and list_values[INDEX_delta_ema_low_prev][index] >= 0 :
+                # if list_values[INDEX_delta_ema_mid][index] < 0 and list_values[INDEX_delta_ema_mid_prev][index] >= 0 :
                     self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS_BUY
                     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
                     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
@@ -171,7 +174,7 @@ class Trade:
                     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
                     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
             
-        if self.FINAL_SIGNAL == SELL_TREND:
+        if self.FINAL_SIGNAL == BUY_REVERSE:
             if min_acumulated_loss > 0.0:
                 result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
                 if result >= value_loss_trans_cost:
@@ -182,6 +185,7 @@ class Trade:
                     close_op = True
             if close_op == False:
                 if list_values[INDEX_delta_ema_high][index] > 0 and list_values[INDEX_delta_ema_high_prev][index] <= 0 :
+                # if list_values[INDEX_delta_ema_mid][index] > 0 and list_values[INDEX_delta_ema_mid_prev][index] <= 0 :
                     self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS_SELL
                     result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
                     acumulated_loss = self.close_trade(list_values, index, result,list_values[INDEX_ask_c][index], acumulated_loss)
@@ -212,7 +216,7 @@ class DonchianMultiTemporal5Tester:
         self.use_spread = use_spread
         self.apply_signal = apply_signal
         self.apply_short_signal = apply_short_signal
-        self.df = df.copy()
+        self.df = df
         self.LOSS_FACTOR = LOSS_FACTOR
         self.PROFIT_FACTOR = PROFIT_FACTOR
         self.pip_value = pip_value
@@ -222,7 +226,9 @@ class DonchianMultiTemporal5Tester:
         self.neg_multiplier = neg_multiplier
         self.rev = rev
         self.spread_limit = spread_limit
-
+        self.len_close = 0
+        self.len_open = 0
+        
         self.prepare_data()
         
     def prepare_data(self):
@@ -244,26 +250,26 @@ class DonchianMultiTemporal5Tester:
         
     def run_test(self):
         # print("run_test...")
-        open_trades_m5 = []
-        closed_trades_m5 = []
+        open_trades_m5 = deque()
+        closed_trades_m5 = deque()
 
         list_value_refs = [
-            self.df.bid_c.array,
-            self.df.ask_c.array,
-            self.df.FINAL_SIGNAL.array,
-            self.df.time.array,
-            self.df.bid_h.array,
-            self.df.bid_l.array,
-            self.df.ask_h.array,
-            self.df.ask_l.array,
-            self.df.index.array,
-            self.df.SIGNAL.array,
-            self.df.DELTA_EMA_MID.array,
-            self.df.DELTA_EMA_MID_PREV.array,
-            self.df.DELTA_EMA_HIGH.array,
-            self.df.DELTA_EMA_HIGH_PREV.array,
-            self.df.DELTA_EMA_LOW.array,
-            self.df.DELTA_EMA_LOW_PREV.array,
+            self.df.bid_c.values,
+            self.df.ask_c.values,
+            self.df.FINAL_SIGNAL.values,
+            self.df.time.values,
+            self.df.bid_h.values,
+            self.df.bid_l.values,
+            self.df.ask_h.values,
+            self.df.ask_l.values,
+            self.df.index.values,
+            self.df.SIGNAL.values,
+            self.df.DELTA_EMA_MID.values,
+            self.df.DELTA_EMA_MID_PREV.values,
+            self.df.DELTA_EMA_HIGH.values,
+            self.df.DELTA_EMA_HIGH_PREV.values,
+            self.df.DELTA_EMA_LOW.values,
+            self.df.DELTA_EMA_LOW_PREV.values,
         ]
 
         for index in range(self.df.shape[0]):
@@ -274,16 +280,19 @@ class DonchianMultiTemporal5Tester:
                     closed_trades_m5.append(ot)
             open_trades_m5 = [x for x in open_trades_m5 if x.running == True]
 
-            if list_value_refs[INDEX_FINAL_SIGNAL][index] in [-2,2]:
+            if list_value_refs[INDEX_FINAL_SIGNAL][index] in [-1,1]:
                 open_trades_m5.append(Trade(list_value_refs, index, self.PROFIT_FACTOR, 
                                             self.LOSS_FACTOR, self.pip_value, self.trans_cost, self.neg_multiplier))  
-            
+        
+        self.len_close = len(closed_trades_m5)
+        self.len_open = len(open_trades_m5)
         self.df_results = pd.DataFrame.from_dict([vars(x) for x in closed_trades_m5]) 
         res_pos = self.df_results[self.df_results['result'] > 0]
         res_neg = self.df_results[self.df_results['result'] < 0]
-        sum_neg = res_neg.result.sum()
+        sum_neg = res_neg.result.sum() * -1
         sum_pos = res_pos.result.sum()
         
+        print("")
         print("Result:", self.df_results.result.sum())
         print("Len loss: ", len(self.acumulated_loss))
         print("Len Open:" , len(open_trades_m5))
@@ -296,3 +305,4 @@ class DonchianMultiTemporal5Tester:
         print("Rel len neg pos", len(res_neg)/(len(res_pos)+ len(res_neg)))
         print("Rel pos neg", sum_pos/(sum_pos+ sum_neg))
         print("Rel neg pos", sum_neg/(sum_pos+ sum_neg))
+        print("")
