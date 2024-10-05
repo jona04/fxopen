@@ -10,13 +10,6 @@ BUY_TREND = 2
 SELL_TREND = -2
 NONE = 0
 
-TRIGGER_TYPE_TREND_BUY = 1
-TRIGGER_TYPE_TREND_SELL = 2
-TRIGGER_TYPE_REVERSED_CROSS_BUY = 3
-TRIGGER_TYPE_REVERSED_CROSS_SELL = 4
-TRIGGER_TYPE_MIN_LOSS_BUY = 5
-TRIGGER_TYPE_MIN_LOSS_SELL = 6
-
 def remove_spread(df):
     for a in ["ask", "bid"]:
         for b in ["o", "h", "l", "c"]:
@@ -220,7 +213,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY
+                    self.trigger_type = SIGNAL_HIGH
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_bid_h][index]
                     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
@@ -238,7 +231,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY
+                    self.trigger_type = SIGNAL_87
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_bid_h][index]
                     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
@@ -256,7 +249,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY
+                    self.trigger_type = SIGNAL_75
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_bid_h][index]
                     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
@@ -274,7 +267,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY
+                    self.trigger_type = SIGNAL_62
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_bid_h][index]
                     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
@@ -292,7 +285,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY
+                    self.trigger_type = SIGNAL_MID
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_bid_h][index]
                     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
@@ -310,7 +303,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY
+                    self.trigger_type = SIGNAL_37
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_bid_h][index]
                     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
@@ -328,7 +321,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY
+                    self.trigger_type = SIGNAL_25
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_bid_h][index]
                     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
@@ -346,7 +339,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY
+                    self.trigger_type = SIGNAL_12
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_bid_h][index]
                     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
@@ -366,7 +359,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_SELL
+                    self.trigger_type = SIGNAL_87
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_ask_l][index]
                     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
@@ -384,7 +377,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_SELL
+                    self.trigger_type = SIGNAL_75
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_ask_l][index]
                     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
@@ -402,7 +395,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_SELL
+                    self.trigger_type = SIGNAL_62
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_ask_l][index]
                     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
@@ -420,7 +413,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_SELL
+                    self.trigger_type = SIGNAL_MID
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_ask_l][index]
                     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
@@ -438,7 +431,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_SELL
+                    self.trigger_type = SIGNAL_37
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_ask_l][index]
                     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
@@ -456,7 +449,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_SELL
+                    self.trigger_type = SIGNAL_25
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_ask_l][index]
                     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
@@ -474,7 +467,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_SELL
+                    self.trigger_type = SIGNAL_12
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_ask_l][index]
                     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
@@ -492,7 +485,7 @@ class Trade:
             if min_acumulated_loss > 0.0:
                 result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
                 if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_SELL
+                    self.trigger_type = SIGNAL_LOW
                     result = value_loss_trans_cost
                     trigger_price = list_values[INDEX_ask_l][index]
                     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
@@ -509,6 +502,82 @@ class Trade:
 
         return acumulated_loss
     
+
+
+    # def update(self, list_values, index, acumulated_loss):
+    #     min_acumulated_loss = acumulated_loss[0] if len(acumulated_loss) > 0 else 0.0
+    #     value_loss_trans_cost = (self.neg_multiplier * min_acumulated_loss) + self.trans_cost
+    #     self.count += 1
+    #     close_op = False
+
+    #     def close_trade(result, trigger_price):
+    #         """Encapsula o fechamento de trade"""
+    #         return self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
+
+    #     def process_trade(signal_type, result_calc, signal_level_up, signal_level_down):
+    #         nonlocal close_op, acumulated_loss
+    #         if min_acumulated_loss > 0.0:
+    #             result = result_calc(list_values, index) / self.pip_value
+    #             if result >= value_loss_trans_cost:
+    #                 self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY if signal_type == 'buy' else TRIGGER_TYPE_MIN_LOSS_SELL
+    #                 acumulated_loss = close_trade(value_loss_trans_cost, list_values[INDEX_bid_h][index] if signal_type == 'buy' else list_values[INDEX_ask_l][index])
+    #                 close_op = True
+    #         if not close_op:
+    #             if list_values[INDEX_SIGNAL_UP][index] == signal_level_up:
+    #                 self.trigger_type = signal_level_up
+    #                 result = result_calc(list_values, index) / self.pip_value
+    #                 acumulated_loss = close_trade(result, list_values[INDEX_bid_c][index])
+    #             elif list_values[INDEX_SIGNAL_DOWN][index] == signal_level_down:
+    #                 self.trigger_type = signal_level_up
+    #                 result = result_calc(list_values, index) / self.pip_value
+    #                 acumulated_loss = close_trade(result, list_values[INDEX_bid_c][index])
+
+    #     # Cálculos de resultados de compra e venda
+    #     def calc_result_buy(lv, idx):
+    #         return lv[INDEX_bid_h][idx] - self.start_price
+
+    #     def calc_result_sell(lv, idx):
+    #         return self.start_price - lv[INDEX_ask_l][idx]
+
+    #     # Verificação dos sinais de COMPRA
+    #     if self.SIGNAL_UP == SIGNAL_HIGH:
+    #         process_trade('buy', calc_result_buy, SIGNAL_HIGH, SIGNAL_75)
+    #     elif self.SIGNAL_UP == SIGNAL_87:
+    #         process_trade('buy', calc_result_buy, SIGNAL_HIGH, SIGNAL_62)
+    #     elif self.SIGNAL_UP == SIGNAL_75:
+    #         process_trade('buy', calc_result_buy, SIGNAL_87, SIGNAL_MID)
+    #     elif self.SIGNAL_UP == SIGNAL_62:
+    #         process_trade('buy', calc_result_buy, SIGNAL_75, SIGNAL_37)
+    #     elif self.SIGNAL_UP == SIGNAL_MID:
+    #         process_trade('buy', calc_result_buy, SIGNAL_62, SIGNAL_25)
+    #     elif self.SIGNAL_UP == SIGNAL_37:
+    #         process_trade('buy', calc_result_buy, SIGNAL_MID, SIGNAL_12)
+    #     elif self.SIGNAL_UP == SIGNAL_25:
+    #         process_trade('buy', calc_result_buy, SIGNAL_37, SIGNAL_LOW)
+    #     elif self.SIGNAL_UP == SIGNAL_12:
+    #         process_trade('buy', calc_result_buy, SIGNAL_37, SIGNAL_LOW)
+
+    #     # Verificação dos sinais de VENDA
+    #     if self.SIGNAL_DOWN == SIGNAL_87:
+    #         process_trade('sell', calc_result_sell, SIGNAL_75, SIGNAL_HIGH)
+    #     elif self.SIGNAL_DOWN == SIGNAL_75:
+    #         process_trade('sell', calc_result_sell, SIGNAL_62, SIGNAL_HIGH)
+    #     elif self.SIGNAL_DOWN == SIGNAL_62:
+    #         process_trade('sell', calc_result_sell, SIGNAL_MID, SIGNAL_87)
+    #     elif self.SIGNAL_DOWN == SIGNAL_MID:
+    #         process_trade('sell', calc_result_sell, SIGNAL_37, SIGNAL_75)
+    #     elif self.SIGNAL_DOWN == SIGNAL_37:
+    #         process_trade('sell', calc_result_sell, SIGNAL_25, SIGNAL_62)
+    #     elif self.SIGNAL_DOWN == SIGNAL_25:
+    #         process_trade('sell', calc_result_sell, SIGNAL_12, SIGNAL_MID)
+    #     elif self.SIGNAL_DOWN == SIGNAL_12:
+    #         process_trade('sell', calc_result_sell, SIGNAL_LOW, SIGNAL_37)
+    #     elif self.SIGNAL_DOWN == SIGNAL_LOW:
+    #         process_trade('sell', calc_result_sell, SIGNAL_LOW, SIGNAL_25)
+
+    #     return acumulated_loss
+    
+
 
 class DonchianMultiTemporal6Tester:
     def __init__(self, df,
@@ -592,11 +661,11 @@ class DonchianMultiTemporal6Tester:
                     closed_trades_m5.append(ot)
             open_trades_m5 = [x for x in open_trades_m5 if x.running == True]
 
-            if list_value_refs[INDEX_SIGNAL_UP][index] in [1,2,3,4,5,6,7,8,9]:
+            if list_value_refs[INDEX_SIGNAL_UP][index] in [1,2,3,4]:
                 open_trades_m5.append(Trade(list_value_refs, index, self.PROFIT_FACTOR, 
                                             self.LOSS_FACTOR, self.pip_value, self.trans_cost, self.neg_multiplier))  
                 # print(len(open_trades_m5),len(closed_trades_m5))
-            elif list_value_refs[INDEX_SIGNAL_DOWN][index] in [1,2,3,4,5,6,7,8,9]:
+            elif list_value_refs[INDEX_SIGNAL_DOWN][index] in [6,7,8,9]:
                 open_trades_m5.append(Trade(list_value_refs, index, self.PROFIT_FACTOR, 
                                             self.LOSS_FACTOR, self.pip_value, self.trans_cost, self.neg_multiplier))  
                 # print(len(open_trades_m5),len(closed_trades_m5))
