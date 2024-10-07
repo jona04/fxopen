@@ -111,8 +111,8 @@ def run_collection(qc: QuotehistoryCollection, api:FxOpenApi):
                     collect_data(
                         pair,
                         g,
-                        "2020-01-01T00:00:00",
-                        "2022-12-31T00:00:00",
+                        "2018-05-01T00:00:00",
+                        "2019-12-31T00:00:00",
                         "./data/",
                         api
                     )

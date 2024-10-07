@@ -122,10 +122,10 @@ class Trade:
             if row.bid_l <= self.SL:
                 acumulated_loss = self.close_trade(row, -self.loss_factor, row.bid_l, acumulated_loss)
             elif min_acumulated_loss > 0.0:
-                result = (row.bid_h - self.start_price) / self.pip_value
+                result = (row.bid_c - self.start_price) / self.pip_value
                 if result >= min_acumulated_loss:
                     # print("supostamente zerou compra",result, row.bid_h, min_acumulated_loss)
-                    acumulated_loss = self.close_trade(row, result, row.bid_h, acumulated_loss)
+                    acumulated_loss = self.close_trade(row, result, row.bid_c, acumulated_loss)
 
         if self.SIGNAL == SELL:
             # if row.ask_l <= self.TP:
@@ -137,10 +137,10 @@ class Trade:
             if row.ask_h >= self.SL:
                 acumulated_loss = self.close_trade(row, -self.loss_factor, row.ask_h, acumulated_loss)   
             elif min_acumulated_loss > 0.0:
-                result = (self.start_price - row.ask_l) / self.pip_value
+                result = (self.start_price - row.ask_c) / self.pip_value
                 if result >= min_acumulated_loss:
                     # print("supostamente zerou venda", result, row.ask_l, min_acumulated_loss)
-                    acumulated_loss = self.close_trade(row, result, row.ask_l, acumulated_loss)
+                    acumulated_loss = self.close_trade(row, result, row.ask_c, acumulated_loss)
 
         return acumulated_loss
     

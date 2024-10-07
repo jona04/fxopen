@@ -125,15 +125,18 @@ class Trade:
     
     def close_trade(self, list_values, index, result, trigger_price, trigger_type, acumulated_loss):
         self.running = False
-        self.result = result - self.trans_cost
         self.end_time = list_values[INDEX_time][index]
         self.trigger_price = trigger_price
 
         min_acumulated_loss = acumulated_loss[0] if len(acumulated_loss) > 0 else 0.0
 
         if result < 0.0:
+            self.result = (result - self.trans_cost) * 1
             acumulated_loss.append(abs(self.result))
             return acumulated_loss
+        
+        self.result = result - self.trans_cost
+        
         
         acumulated_loss = sorted(acumulated_loss,reverse=self.rev)
 
@@ -195,12 +198,12 @@ class Trade:
                     close_op = True
                 elif list_values[INDEX_SIGNAL_SHORT][index] == SELL:
                     self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                    result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
+                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
                     trigger_price = list_values[INDEX_bid_h][index]
                     close_op = True
             elif list_values[INDEX_SIGNAL_SHORT][index] == SELL:
                 self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
+                result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
                 trigger_price = list_values[INDEX_bid_c][index]
                 close_op = True
 
@@ -228,12 +231,12 @@ class Trade:
                     close_op = True
                 elif list_values[INDEX_SIGNAL_SHORT][index] == BUY:
                     self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                    result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
+                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
                     trigger_price = list_values[INDEX_ask_l][index]
                     close_op = True
             elif list_values[INDEX_SIGNAL_SHORT][index] == BUY:
                 self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS
-                result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
+                result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
                 trigger_price = result,list_values[INDEX_ask_l][index]
                 close_op = True
 

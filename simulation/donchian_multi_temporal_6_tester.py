@@ -4,10 +4,6 @@ import pandas as pd
 import datetime as dt
 import numpy as np
 
-BUY_REVERSE = 1
-SELL_REVERSE = -1
-BUY_TREND = 2
-SELL_TREND = -2
 NONE = 0
 
 def remove_spread(df):
@@ -15,7 +11,6 @@ def remove_spread(df):
         for b in ["o", "h", "l", "c"]:
             c = f"{a}_{b}"
             df[c] = df[f"mid_{b}"]
-
 
 # Inicializando as constantes para os sinais
 SIGNAL_HIGH = 1
@@ -28,14 +23,42 @@ SIGNAL_25 = 7
 SIGNAL_12 = 8
 SIGNAL_LOW = 9
 
-# Função para detectar os sinais de cruzamentos
-def detect_signals(df):
+# Função para processar os cruzamentos
+def process_cross_up(df, i, band, signal, last_band_cross_up, band_name, next_band_value,
+                     PROFIT_FACTOR, LOSS_FACTOR, pip_value, current_price, fixed_tp_sl, sl_type):
+    if last_band_cross_up != band_name:
+        df.at[i, 'SIGNAL_UP'] = signal
+        if fixed_tp_sl:
+            df.at[i, 'TP'] = current_price + (pip_value*PROFIT_FACTOR)
+            df.at[i, 'SL'] = current_price - (pip_value*LOSS_FACTOR)
+        else:
+            df.at[i, 'TP'] = next_band_value
+            sl_value = df.at[i, 'donchian_mid'] if sl_type == 'mid' else df.at[i, 'donchian_low']
+            df.at[i, 'SL'] = current_price - (pip_value*LOSS_FACTOR)
+        return band_name
+    return last_band_cross_up
 
-    # Inicializando vetores para manter o controle dos últimos cruzamentos
+def process_cross_down(df, i, band, signal, last_band_cross_down, band_name, next_band_value, 
+                       PROFIT_FACTOR, LOSS_FACTOR, pip_value, current_price, fixed_tp_sl, sl_type):
+    if last_band_cross_down != band_name:
+        df.at[i, 'SIGNAL_DOWN'] = signal
+        if fixed_tp_sl:
+            df.at[i, 'TP'] = current_price - (pip_value*PROFIT_FACTOR)
+            df.at[i, 'SL'] = current_price + (pip_value*LOSS_FACTOR)
+        else:
+            df.at[i, 'TP'] = next_band_value
+            sl_value = df.at[i, 'donchian_mid'] if sl_type == 'mid' else df.at[i, 'donchian_high']
+            df.at[i, 'SL'] = current_price + (pip_value*LOSS_FACTOR)
+        return band_name
+    return last_band_cross_down
+
+
+# Função para detectar os sinais de cruzamentos
+def detect_signals(df, PROFIT_FACTOR, LOSS_FACTOR, pip_value, fixed_tp_sl, sl_type='not_mid'):
+
     last_band_cross_up = 0
     last_band_cross_down = 0
-    
-    # Vetores de preços e bandas para simplificar o código
+
     ema_short = df['EMA_short'].values
     donchian_87 = df['donchian_87'].values
     donchian_75 = df['donchian_75'].values
@@ -46,95 +69,99 @@ def detect_signals(df):
     donchian_12 = df['donchian_12'].values
     donchian_high = df['donchian_high'].values
     donchian_low = df['donchian_low'].values
-    
     spread = df['SPREAD'].values
+    ask_c = df['ask_c'].values
+    bid_c = df['bid_c'].values
+    mid_c = df['mid_c'].values
 
-    # Loop sobre o DataFrame para calcular os sinais
     for i in range(1, len(df)):
         if spread[i] < 50:
-            # Verifica cruzamentos de alta
+            # Cruzamentos de alta
             if ema_short[i-1] <= donchian_87[i-1] and ema_short[i] > donchian_87[i]:
-                if last_band_cross_up != '87':
-                    df.at[i, 'SIGNAL_UP'] = SIGNAL_87
-                    last_band_cross_up = '87'
-                    
+                last_band_cross_up = process_cross_up(df, i, donchian_87[i], SIGNAL_87, 
+                                                      last_band_cross_up, '87',donchian_high[i],PROFIT_FACTOR, 
+                                                      LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] <= donchian_75[i-1] and ema_short[i] > donchian_75[i]:
-                if last_band_cross_up != '75':
-                    df.at[i, 'SIGNAL_UP'] = SIGNAL_75
-                    last_band_cross_up = '75'
-
+                last_band_cross_up = process_cross_up(df, i, donchian_75[i], SIGNAL_75, 
+                                                      last_band_cross_up, '75',donchian_87[i], PROFIT_FACTOR, 
+                                                      LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] <= donchian_62[i-1] and ema_short[i] > donchian_62[i]:
-                if last_band_cross_up != '62':
-                    df.at[i, 'SIGNAL_UP'] = SIGNAL_62
-                    last_band_cross_up = '62'
-            
+                last_band_cross_up = process_cross_up(df, i, donchian_62[i], SIGNAL_62, 
+                                                      last_band_cross_up, '62',donchian_75[i], PROFIT_FACTOR, 
+                                                      LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] <= donchian_mid[i-1] and ema_short[i] > donchian_mid[i]:
-                if last_band_cross_up != 'mid':
-                    df.at[i, 'SIGNAL_UP'] = SIGNAL_MID
-                    last_band_cross_up = 'mid'
-            
+                last_band_cross_up = process_cross_up(df, i, donchian_mid[i], SIGNAL_MID, 
+                                                      last_band_cross_up, 'mid',donchian_62[i], PROFIT_FACTOR, 
+                                                      LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] <= donchian_37[i-1] and ema_short[i] > donchian_37[i]:
-                if last_band_cross_up != '37':
-                    df.at[i, 'SIGNAL_UP'] = SIGNAL_37
-                    last_band_cross_up = '37'
-            
+                last_band_cross_up = process_cross_up(df, i, donchian_37[i], SIGNAL_37, 
+                                                      last_band_cross_up, '37',donchian_mid[i], PROFIT_FACTOR, 
+                                                      LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] <= donchian_25[i-1] and ema_short[i] > donchian_25[i]:
-                if last_band_cross_up != '25':
-                    df.at[i, 'SIGNAL_UP'] = SIGNAL_25
-                    last_band_cross_up = '25'
-            
+                last_band_cross_up = process_cross_up(df, i, donchian_25[i], SIGNAL_25, 
+                                                      last_band_cross_up, '25',donchian_37[i], PROFIT_FACTOR, 
+                                                      LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] <= donchian_12[i-1] and ema_short[i] > donchian_12[i]:
-                if last_band_cross_up != '12':
-                    df.at[i, 'SIGNAL_UP'] = SIGNAL_12
-                    last_band_cross_up = '12'
-            
+                last_band_cross_up = process_cross_up(df, i, donchian_12[i], SIGNAL_12, 
+                                                      last_band_cross_up, '12',donchian_25[i], PROFIT_FACTOR, 
+                                                      LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
+
             # Caso especial para donchian_high
             if ema_short[i-1] <= donchian_high[i-100] and ema_short[i] > donchian_high[i-100]:
                 df.at[i, 'SIGNAL_UP'] = SIGNAL_HIGH
                 last_band_cross_up = 'high'
-            
-            # Verifica cruzamentos de baixa        
+                if fixed_tp_sl:
+                    df.at[i, 'TP'] = mid_c[i] + (pip_value*PROFIT_FACTOR)
+                    df.at[i, 'SL'] = mid_c[i] - (pip_value*LOSS_FACTOR)
+                else:
+                    df.at[i, 'TP'] = mid_c[i] + (pip_value*PROFIT_FACTOR)
+                    sl_value = df.at[i, 'donchian_mid'] if sl_type == 'mid' else df.at[i, 'donchian_low']
+                    df.at[i, 'SL'] = mid_c[i] - (pip_value*LOSS_FACTOR)
+
+            # Cruzamentos de baixa
             if ema_short[i-1] >= donchian_87[i-1] and ema_short[i] < donchian_87[i]:
-                if last_band_cross_down != '87':
-                    df.at[i, 'SIGNAL_DOWN'] = SIGNAL_87
-                    last_band_cross_down = '87'
-
+                last_band_cross_down = process_cross_down(df, i, donchian_87[i], SIGNAL_87, 
+                                                          last_band_cross_down, '87',donchian_75[i], PROFIT_FACTOR, 
+                                                          LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] >= donchian_75[i-1] and ema_short[i] < donchian_75[i]:
-                if last_band_cross_down != '75':
-                    df.at[i, 'SIGNAL_DOWN'] = SIGNAL_75
-                    last_band_cross_down = '75'
-            
+                last_band_cross_down = process_cross_down(df, i, donchian_75[i], SIGNAL_75, 
+                                                          last_band_cross_down, '75',donchian_62[i], PROFIT_FACTOR, 
+                                                          LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] >= donchian_62[i-1] and ema_short[i] < donchian_62[i]:
-                if last_band_cross_down != '62':
-                    df.at[i, 'SIGNAL_DOWN'] = SIGNAL_62
-                    last_band_cross_down = '62'
-
+                last_band_cross_down = process_cross_down(df, i, donchian_62[i], SIGNAL_62, 
+                                                          last_band_cross_down, '62',donchian_mid[i], PROFIT_FACTOR, 
+                                                          LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] >= donchian_mid[i-1] and ema_short[i] < donchian_mid[i]:
-                if last_band_cross_down != 'mid':
-                    df.at[i, 'SIGNAL_DOWN'] = SIGNAL_MID
-                    last_band_cross_down = 'mid'
-
+                last_band_cross_down = process_cross_down(df, i, donchian_mid[i], SIGNAL_MID, 
+                                                          last_band_cross_down, 'mid',donchian_37[i], PROFIT_FACTOR, 
+                                                          LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] >= donchian_37[i-1] and ema_short[i] < donchian_37[i]:
-                if last_band_cross_down != '37':
-                    df.at[i, 'SIGNAL_DOWN'] = SIGNAL_37
-                    last_band_cross_down = '37'
-            
+                last_band_cross_down = process_cross_down(df, i, donchian_37[i], SIGNAL_37, 
+                                                          last_band_cross_down, '37',donchian_25[i], PROFIT_FACTOR, 
+                                                          LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] >= donchian_25[i-1] and ema_short[i] < donchian_25[i]:
-                if last_band_cross_down != '25':
-                    df.at[i, 'SIGNAL_DOWN'] = SIGNAL_25
-                    last_band_cross_down = '25'
-            
+                last_band_cross_down = process_cross_down(df, i, donchian_25[i], SIGNAL_25, 
+                                                          last_band_cross_down, '25',donchian_12[i], PROFIT_FACTOR, 
+                                                          LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
             if ema_short[i-1] >= donchian_12[i-1] and ema_short[i] < donchian_12[i]:
-                if last_band_cross_down != '12':
-                    df.at[i, 'SIGNAL_DOWN'] = SIGNAL_12
-                    last_band_cross_down = '12'
-            
+                last_band_cross_down = process_cross_down(df, i, donchian_12[i], SIGNAL_12, 
+                                                          last_band_cross_down, '12',donchian_low[i], PROFIT_FACTOR, 
+                                                          LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
+
             # Caso especial para donchian_low
             if ema_short[i-1] >= donchian_low[i-100] and ema_short[i] < donchian_low[i-100]:
                 df.at[i, 'SIGNAL_DOWN'] = SIGNAL_LOW
                 last_band_cross_down = 'low'
+                if fixed_tp_sl:
+                    df.at[i, 'TP'] = mid_c[i] - (pip_value*PROFIT_FACTOR)
+                    df.at[i, 'SL'] = bid_c[i] + (pip_value*LOSS_FACTOR)
+                else:
+                    df.at[i, 'TP'] = mid_c[i] - (pip_value*PROFIT_FACTOR)
+                    sl_value = df.at[i, 'donchian_mid'] if sl_type == 'mid' else df.at[i, 'donchian_high']
+                    df.at[i, 'SL'] = bid_c[i] + (pip_value*LOSS_FACTOR)
 
     return df
+
 
 INDEX_bid_c = 0
 INDEX_ask_c = 1
@@ -156,6 +183,8 @@ INDEX_donchian_25 = 16
 INDEX_donchian_12 = 17
 INDEX_donchian_high = 18
 INDEX_donchian_low = 19
+INDEX_TP = 20
+INDEX_SL = 21
 
 class Trade:
     def __init__(self, list_values, index, profit_factor, loss_factor, pip_value,trans_cost,neg_multiplier):
@@ -168,7 +197,9 @@ class Trade:
         self.neg_multiplier = neg_multiplier
         self.trans_cost = trans_cost
         self.trigger_type = NONE
-
+        self.TP = list_values[INDEX_TP][index]
+        self.SL = list_values[INDEX_SL][index]
+        
         if list_values[INDEX_SIGNAL_UP][index] in [1,2,3,4,5,6,7,8,9]:
             self.start_price = list_values[INDEX_bid_c][index]
             self.trigger_price = list_values[INDEX_bid_c][index]
@@ -202,381 +233,119 @@ class Trade:
         return acumulated_loss
 
     def update(self, list_values, index, acumulated_loss):
-
         min_acumulated_loss = acumulated_loss[0] if len(acumulated_loss) > 0 else 0.0
-        value_loss_trans_cost = (self.neg_multiplier*min_acumulated_loss) + self.trans_cost
+        value_loss_trans_cost = (self.neg_multiplier * min_acumulated_loss) + self.trans_cost
         self.count += 1
         close_op = False
-      
-        # AQUI APENAS COMPRAS
+        
+        # Processamento de trades diretamente sem funções auxiliares
+        def process_trade(signal_type, signal_level_up, signal_level_down,close_op, acumulated_loss):
+            if signal_type == 'buy':
+                if min_acumulated_loss > 0.0:
+                    result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
+                    # if result >= value_loss_trans_cost:
+                    #     self.trigger_type = self.SIGNAL_UP
+                    #     result = value_loss_trans_cost
+                    #     trigger_price = list_values[INDEX_bid_h][index]
+                    #     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
+                    #     close_op = True
+                if close_op == False:
+                    # if list_values[INDEX_SIGNAL_UP][index] == signal_level_up:
+                    #     self.trigger_type = self.SIGNAL_UP
+                    #     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
+                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
+                    # elif list_values[INDEX_SIGNAL_DOWN][index] == signal_level_down:
+                    #     self.trigger_type = self.SIGNAL_UP
+                    #     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
+                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss) 
+                    
+                    if list_values[INDEX_bid_h][index] >= self.TP:
+                        self.trigger_type = self.SIGNAL_UP
+                        result = (self.TP - self.start_price) / self.pip_value
+                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_h][index], acumulated_loss) 
+                    elif list_values[INDEX_bid_l][index] <= self.SL:
+                        self.trigger_type = self.SIGNAL_UP
+                        result = (self.SL - self.start_price) / self.pip_value
+                        # print(result,self.SIGNAL_DOWN)
+                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_l][index], acumulated_loss) 
+                    # elif self.SIGNAL_UP == SIGNAL_HIGH and list_values[INDEX_SIGNAL_UP][index] == SIGNAL_HIGH:
+                    #     self.trigger_type = self.SIGNAL_UP
+                    #     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
+                    #     if result > 0:
+                    #         acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
+            else:
+                if min_acumulated_loss > 0.0:
+                    result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
+                    # if result >= value_loss_trans_cost:
+                    #     self.trigger_type = self.SIGNAL_DOWN
+                    #     result = value_loss_trans_cost
+                    #     trigger_price = list_values[INDEX_ask_l][index]
+                    #     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
+                    #     close_op = True
+                if close_op == False:
+                    # if list_values[INDEX_SIGNAL_DOWN][index] == signal_level_up:
+                    #     self.trigger_type = self.SIGNAL_DOWN
+                    #     result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
+                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_c][index], acumulated_loss)
+                    # elif list_values[INDEX_SIGNAL_UP][index] == signal_level_down:
+                    #     self.trigger_type = self.SIGNAL_DOWN
+                    #     result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
+                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_c][index], acumulated_loss) 
+                    if list_values[INDEX_ask_l][index] <= self.TP:
+                        self.trigger_type = self.SIGNAL_DOWN
+                        result = (self.start_price - self.TP) / self.pip_value
+                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_l][index], acumulated_loss) 
+                    elif list_values[INDEX_ask_h][index] >= self.SL:
+                        self.trigger_type = self.SIGNAL_DOWN
+                        result = (self.start_price - self.SL) / self.pip_value
+                        # print(result,self.SIGNAL_DOWN)
+                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_h][index], acumulated_loss) 
+                    # elif self.SIGNAL_DOWN == SIGNAL_LOW and list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_LOW:
+                    #     self.trigger_type = self.SIGNAL_DOWN
+                    #     result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
+                    #     if result > 0:
+                    #         acumulated_loss = self.close_trade(list_values, index, result,list_values[INDEX_ask_c][index], acumulated_loss)
+            return acumulated_loss
+        
+        # Verificação dos sinais de COMPRA
         if self.SIGNAL_UP == SIGNAL_HIGH:
-            if min_acumulated_loss > 0.0:
-                result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_HIGH
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_bid_h][index]
-                    acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_UP][index] == SIGNAL_HIGH:
-                    self.trigger_type = SIGNAL_HIGH
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
-                elif list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_75:
-                    self.trigger_type = SIGNAL_HIGH
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('buy', SIGNAL_HIGH, SIGNAL_MID,close_op, acumulated_loss)
         elif self.SIGNAL_UP == SIGNAL_87:
-            if min_acumulated_loss > 0.0:
-                result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_87
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_bid_h][index]
-                    acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_UP][index] == SIGNAL_HIGH:
-                    self.trigger_type = SIGNAL_87
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
-                elif list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_62:
-                    self.trigger_type = SIGNAL_87
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('buy', SIGNAL_HIGH, SIGNAL_MID,close_op, acumulated_loss)
         elif self.SIGNAL_UP == SIGNAL_75:
-            if min_acumulated_loss > 0.0:
-                result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_75
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_bid_h][index]
-                    acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_UP][index] == SIGNAL_87:
-                    self.trigger_type = SIGNAL_75
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_MID:
-                    self.trigger_type = SIGNAL_75
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('buy', SIGNAL_87, SIGNAL_MID,close_op, acumulated_loss)
         elif self.SIGNAL_UP == SIGNAL_62:
-            if min_acumulated_loss > 0.0:
-                result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_62
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_bid_h][index]
-                    acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_UP][index] == SIGNAL_75:
-                    self.trigger_type = SIGNAL_62
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_37:
-                    self.trigger_type = SIGNAL_62
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('buy', SIGNAL_75, SIGNAL_MID,close_op, acumulated_loss)
         elif self.SIGNAL_UP == SIGNAL_MID:
-            if min_acumulated_loss > 0.0:
-                result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_MID
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_bid_h][index]
-                    acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_UP][index] == SIGNAL_62:
-                    self.trigger_type = SIGNAL_MID
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_25:
-                    self.trigger_type = SIGNAL_MID
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('buy', SIGNAL_62, SIGNAL_LOW,close_op, acumulated_loss)
         elif self.SIGNAL_UP == SIGNAL_37:
-            if min_acumulated_loss > 0.0:
-                result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_37
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_bid_h][index]
-                    acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_UP][index] == SIGNAL_MID:
-                    self.trigger_type = SIGNAL_37
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_12:
-                    self.trigger_type = SIGNAL_37
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('buy', SIGNAL_MID, SIGNAL_LOW,close_op, acumulated_loss)
         elif self.SIGNAL_UP == SIGNAL_25:
-            if min_acumulated_loss > 0.0:
-                result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_25
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_bid_h][index]
-                    acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_UP][index] == SIGNAL_37:
-                    self.trigger_type = SIGNAL_25
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_LOW:
-                    self.trigger_type = SIGNAL_25
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('buy', SIGNAL_37, SIGNAL_LOW,close_op, acumulated_loss)
         elif self.SIGNAL_UP == SIGNAL_12:
-            if min_acumulated_loss > 0.0:
-                result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_12
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_bid_h][index]
-                    acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_UP][index] == SIGNAL_37:
-                    self.trigger_type = SIGNAL_12
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_LOW:
-                    self.trigger_type = SIGNAL_12
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('buy', SIGNAL_25, SIGNAL_LOW,close_op, acumulated_loss)
 
-        # AQUI APENAS VENDAS
+        # Verificação dos sinais de VENDA
         if self.SIGNAL_DOWN == SIGNAL_87:
-            if min_acumulated_loss > 0.0:
-                result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_87
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_ask_l][index]
-                    acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_75:
-                    self.trigger_type = SIGNAL_87
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
-                elif list_values[INDEX_SIGNAL_UP][index] == SIGNAL_HIGH:
-                    self.trigger_type = SIGNAL_87
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('sell', SIGNAL_75, SIGNAL_HIGH,close_op, acumulated_loss)
         elif self.SIGNAL_DOWN == SIGNAL_75:
-            if min_acumulated_loss > 0.0:
-                result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_75
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_ask_l][index]
-                    acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_62:
-                    self.trigger_type = SIGNAL_75
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_UP][index] == SIGNAL_HIGH:
-                    self.trigger_type = SIGNAL_75
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('sell', SIGNAL_62, SIGNAL_HIGH,close_op, acumulated_loss)
         elif self.SIGNAL_DOWN == SIGNAL_62:
-            if min_acumulated_loss > 0.0:
-                result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_62
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_ask_l][index]
-                    acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_MID:
-                    self.trigger_type = SIGNAL_62
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_UP][index] == SIGNAL_87:
-                    self.trigger_type = SIGNAL_62
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('sell', SIGNAL_MID, SIGNAL_HIGH,close_op, acumulated_loss)
         elif self.SIGNAL_DOWN == SIGNAL_MID:
-            if min_acumulated_loss > 0.0:
-                result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_MID
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_ask_l][index]
-                    acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_37:
-                    self.trigger_type = SIGNAL_MID
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_UP][index] == SIGNAL_75:
-                    self.trigger_type = SIGNAL_MID
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('sell', SIGNAL_37, SIGNAL_HIGH,close_op, acumulated_loss)
         elif self.SIGNAL_DOWN == SIGNAL_37:
-            if min_acumulated_loss > 0.0:
-                result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_37
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_ask_l][index]
-                    acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_25:
-                    self.trigger_type = SIGNAL_37
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_UP][index] == SIGNAL_62:
-                    self.trigger_type = SIGNAL_37
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('sell', SIGNAL_25, SIGNAL_MID,close_op, acumulated_loss)
         elif self.SIGNAL_DOWN == SIGNAL_25:
-            if min_acumulated_loss > 0.0:
-                result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_25
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_ask_l][index]
-                    acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_12:
-                    self.trigger_type = SIGNAL_25
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_UP][index] == SIGNAL_MID:
-                    self.trigger_type = SIGNAL_25
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('sell', SIGNAL_12, SIGNAL_MID,close_op, acumulated_loss)
         elif self.SIGNAL_DOWN == SIGNAL_12:
-            if min_acumulated_loss > 0.0:
-                result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_12
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_ask_l][index]
-                    acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_LOW:
-                    self.trigger_type = SIGNAL_12
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_UP][index] == SIGNAL_37:
-                    self.trigger_type = SIGNAL_12
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('sell', SIGNAL_LOW, SIGNAL_MID,close_op, acumulated_loss)
         elif self.SIGNAL_DOWN == SIGNAL_LOW:
-            if min_acumulated_loss > 0.0:
-                result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = SIGNAL_LOW
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_ask_l][index]
-                    acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
-                    close_op = True
-            if close_op == False:
-                if list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_LOW:
-                    self.trigger_type = SIGNAL_LOW
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_SIGNAL_UP][index] == SIGNAL_25:
-                    self.trigger_type = SIGNAL_LOW
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)  
+            acumulated_loss = process_trade('sell', SIGNAL_LOW, SIGNAL_MID,close_op, acumulated_loss)
 
         return acumulated_loss
-    
 
 
-    # def update(self, list_values, index, acumulated_loss):
-    #     min_acumulated_loss = acumulated_loss[0] if len(acumulated_loss) > 0 else 0.0
-    #     value_loss_trans_cost = (self.neg_multiplier * min_acumulated_loss) + self.trans_cost
-    #     self.count += 1
-    #     close_op = False
-
-    #     def close_trade(result, trigger_price):
-    #         """Encapsula o fechamento de trade"""
-    #         return self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
-
-    #     def process_trade(signal_type, result_calc, signal_level_up, signal_level_down):
-    #         nonlocal close_op, acumulated_loss
-    #         if min_acumulated_loss > 0.0:
-    #             result = result_calc(list_values, index) / self.pip_value
-    #             if result >= value_loss_trans_cost:
-    #                 self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY if signal_type == 'buy' else TRIGGER_TYPE_MIN_LOSS_SELL
-    #                 acumulated_loss = close_trade(value_loss_trans_cost, list_values[INDEX_bid_h][index] if signal_type == 'buy' else list_values[INDEX_ask_l][index])
-    #                 close_op = True
-    #         if not close_op:
-    #             if list_values[INDEX_SIGNAL_UP][index] == signal_level_up:
-    #                 self.trigger_type = signal_level_up
-    #                 result = result_calc(list_values, index) / self.pip_value
-    #                 acumulated_loss = close_trade(result, list_values[INDEX_bid_c][index])
-    #             elif list_values[INDEX_SIGNAL_DOWN][index] == signal_level_down:
-    #                 self.trigger_type = signal_level_up
-    #                 result = result_calc(list_values, index) / self.pip_value
-    #                 acumulated_loss = close_trade(result, list_values[INDEX_bid_c][index])
-
-    #     # Cálculos de resultados de compra e venda
-    #     def calc_result_buy(lv, idx):
-    #         return lv[INDEX_bid_h][idx] - self.start_price
-
-    #     def calc_result_sell(lv, idx):
-    #         return self.start_price - lv[INDEX_ask_l][idx]
-
-    #     # Verificação dos sinais de COMPRA
-    #     if self.SIGNAL_UP == SIGNAL_HIGH:
-    #         process_trade('buy', calc_result_buy, SIGNAL_HIGH, SIGNAL_75)
-    #     elif self.SIGNAL_UP == SIGNAL_87:
-    #         process_trade('buy', calc_result_buy, SIGNAL_HIGH, SIGNAL_62)
-    #     elif self.SIGNAL_UP == SIGNAL_75:
-    #         process_trade('buy', calc_result_buy, SIGNAL_87, SIGNAL_MID)
-    #     elif self.SIGNAL_UP == SIGNAL_62:
-    #         process_trade('buy', calc_result_buy, SIGNAL_75, SIGNAL_37)
-    #     elif self.SIGNAL_UP == SIGNAL_MID:
-    #         process_trade('buy', calc_result_buy, SIGNAL_62, SIGNAL_25)
-    #     elif self.SIGNAL_UP == SIGNAL_37:
-    #         process_trade('buy', calc_result_buy, SIGNAL_MID, SIGNAL_12)
-    #     elif self.SIGNAL_UP == SIGNAL_25:
-    #         process_trade('buy', calc_result_buy, SIGNAL_37, SIGNAL_LOW)
-    #     elif self.SIGNAL_UP == SIGNAL_12:
-    #         process_trade('buy', calc_result_buy, SIGNAL_37, SIGNAL_LOW)
-
-    #     # Verificação dos sinais de VENDA
-    #     if self.SIGNAL_DOWN == SIGNAL_87:
-    #         process_trade('sell', calc_result_sell, SIGNAL_75, SIGNAL_HIGH)
-    #     elif self.SIGNAL_DOWN == SIGNAL_75:
-    #         process_trade('sell', calc_result_sell, SIGNAL_62, SIGNAL_HIGH)
-    #     elif self.SIGNAL_DOWN == SIGNAL_62:
-    #         process_trade('sell', calc_result_sell, SIGNAL_MID, SIGNAL_87)
-    #     elif self.SIGNAL_DOWN == SIGNAL_MID:
-    #         process_trade('sell', calc_result_sell, SIGNAL_37, SIGNAL_75)
-    #     elif self.SIGNAL_DOWN == SIGNAL_37:
-    #         process_trade('sell', calc_result_sell, SIGNAL_25, SIGNAL_62)
-    #     elif self.SIGNAL_DOWN == SIGNAL_25:
-    #         process_trade('sell', calc_result_sell, SIGNAL_12, SIGNAL_MID)
-    #     elif self.SIGNAL_DOWN == SIGNAL_12:
-    #         process_trade('sell', calc_result_sell, SIGNAL_LOW, SIGNAL_37)
-    #     elif self.SIGNAL_DOWN == SIGNAL_LOW:
-    #         process_trade('sell', calc_result_sell, SIGNAL_LOW, SIGNAL_25)
-
-    #     return acumulated_loss
-    
 
 
 class DonchianMultiTemporal6Tester:
@@ -623,8 +392,8 @@ class DonchianMultiTemporal6Tester:
         self.df['SIGNAL_DOWN'] = 0
 
         # Aplicar a função para detectar sinais
-        detect_signals(self.df)
- 
+        detect_signals(self.df,self.PROFIT_FACTOR,self.LOSS_FACTOR,self.pip_value, self.fixed_tp_sl, sl_type='not_mid')
+        
     def run_test(self):
         # print("run_test...")
         open_trades_m5 = deque()
@@ -651,6 +420,8 @@ class DonchianMultiTemporal6Tester:
             self.df.donchian_12.values,
             self.df.donchian_high.values,
             self.df.donchian_low.values,
+            self.df.TP.values,
+            self.df.SL.values,
         ]
 
         for index in range(self.df.shape[0]):
@@ -661,11 +432,11 @@ class DonchianMultiTemporal6Tester:
                     closed_trades_m5.append(ot)
             open_trades_m5 = [x for x in open_trades_m5 if x.running == True]
 
-            if list_value_refs[INDEX_SIGNAL_UP][index] in [1,2,3,4]:
+            if list_value_refs[INDEX_SIGNAL_UP][index] in [1,2,3,4,5,6,7,8]:
                 open_trades_m5.append(Trade(list_value_refs, index, self.PROFIT_FACTOR, 
                                             self.LOSS_FACTOR, self.pip_value, self.trans_cost, self.neg_multiplier))  
                 # print(len(open_trades_m5),len(closed_trades_m5))
-            elif list_value_refs[INDEX_SIGNAL_DOWN][index] in [6,7,8,9]:
+            elif list_value_refs[INDEX_SIGNAL_DOWN][index] in [2,3,4,5,6,7,8,9]:
                 open_trades_m5.append(Trade(list_value_refs, index, self.PROFIT_FACTOR, 
                                             self.LOSS_FACTOR, self.pip_value, self.trans_cost, self.neg_multiplier))  
                 # print(len(open_trades_m5),len(closed_trades_m5))
