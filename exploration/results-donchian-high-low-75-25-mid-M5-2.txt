@@ -1,0 +1,3626 @@
+#######################################
+
+Ema short = 5 | Donchian Window = 500 | donchian_window_prev = 10
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: -330.09999999996285
+Len loss:  278
+Len Open: 0
+Len Close: 1377
+Len Pos 599
+Len Neg 778
+Res pos 19495.900000000016
+Res neg 19825.99999999998
+Rel len pos neg 0.43500363108206247
+Rel len neg pos 0.5649963689179376
+Rel pos neg 0.49580259346572825
+Rel neg pos 0.5041974065342718
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 1661.799999999969
+Len loss:  234
+Len Open: 1
+Len Close: 1199
+Len Pos 516
+Len Neg 683
+Res pos 35537.19999999999
+Res neg 33875.400000000016
+Rel len pos neg 0.4303586321934946
+Rel len neg pos 0.5696413678065054
+Rel pos neg 0.5119704491691708
+Rel neg pos 0.48802955083082916
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 708.5999999999387
+Len loss:  246
+Len Open: 1
+Len Close: 1179
+Len Pos 515
+Len Neg 664
+Res pos 46016.59999999999
+Res neg 45308.00000000006
+Rel len pos neg 0.4368108566581849
+Rel len neg pos 0.5631891433418151
+Rel pos neg 0.5038795680462873
+Rel neg pos 0.49612043195371275
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -1189.6999999999784
+Len loss:  282
+Len Open: 0
+Len Close: 1354
+Len Pos 590
+Len Neg 764
+Res pos 38025.90000000002
+Res neg 39215.60000000002
+Rel len pos neg 0.4357459379615953
+Rel len neg pos 0.5642540620384048
+Rel pos neg 0.49229882899736543
+Rel neg pos 0.5077011710026346
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -1741.8999999999824
+Len loss:  291
+Len Open: 1
+Len Close: 1271
+Len Pos 535
+Len Neg 736
+Res pos 30469.100000000006
+Res neg 32210.999999999993
+Rel len pos neg 0.4209284028324154
+Rel len neg pos 0.5790715971675846
+Rel pos neg 0.48610484029221407
+Rel neg pos 0.513895159707786
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -2621.6000000000126
+Len loss:  323
+Len Open: 0
+Len Close: 1369
+Len Pos 563
+Len Neg 806
+Res pos 25983.099999999995
+Res neg 28604.700000000008
+Rel len pos neg 0.4112490869247626
+Rel len neg pos 0.5887509130752374
+Rel pos neg 0.4759873085194859
+Rel neg pos 0.5240126914805141
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -7725.000000000104
+Len loss:  201
+Len Open: 1
+Len Close: 1018
+Len Pos 450
+Len Neg 568
+Res pos 651049.9999999999
+Res neg 658775.0
+Rel len pos neg 0.44204322200392926
+Rel len neg pos 0.5579567779960707
+Rel pos neg 0.4970511327849139
+Rel neg pos 0.502948867215086
+
+
+#######################################
+
+Ema short = 5 | Donchian Window = 500 | donchian_window_prev = 100
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: -340.4999999999915
+Len loss:  444
+Len Open: 0
+Len Close: 1443
+Len Pos 520
+Len Neg 923
+Res pos 18357.199999999997
+Res neg 18697.69999999999
+Rel len pos neg 0.36036036036036034
+Rel len neg pos 0.6396396396396397
+Rel pos neg 0.49540546594377544
+Rel neg pos 0.5045945340562246
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 1173.699999999967
+Len loss:  375
+Len Open: 1
+Len Close: 1259
+Len Pos 451
+Len Neg 808
+Res pos 33118.59999999998
+Res neg 31944.90000000001
+Rel len pos neg 0.358220810166799
+Rel len neg pos 0.6417791898332009
+Rel pos neg 0.5090196500341971
+Rel neg pos 0.49098034996580286
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: -2296.000000000042
+Len loss:  405
+Len Open: 1
+Len Close: 1217
+Len Pos 420
+Len Neg 797
+Res pos 41508.200000000026
+Res neg 43804.20000000007
+Rel len pos neg 0.3451109285127362
+Rel len neg pos 0.6548890714872637
+Rel pos neg 0.4865435739704894
+Rel neg pos 0.5134564260295106
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 1230.700000000038
+Len loss:  388
+Len Open: 0
+Len Close: 1388
+Len Pos 522
+Len Neg 866
+Res pos 37247.90000000004
+Res neg 36017.2
+Rel len pos neg 0.3760806916426513
+Rel len neg pos 0.6239193083573487
+Rel pos neg 0.5083989512059632
+Rel neg pos 0.4916010487940367
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: 886.8000000000109
+Len loss:  390
+Len Open: 1
+Len Close: 1317
+Len Pos 474
+Len Neg 843
+Res pos 31002.800000000025
+Res neg 30116.00000000001
+Rel len pos neg 0.35990888382687924
+Rel len neg pos 0.6400911161731208
+Rel pos neg 0.5072547235875051
+Rel neg pos 0.49274527641249494
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -2492.3999999999814
+Len loss:  471
+Len Open: 0
+Len Close: 1410
+Len Pos 482
+Len Neg 928
+Res pos 25050.300000000003
+Res neg 27542.699999999986
+Rel len pos neg 0.34184397163120567
+Rel len neg pos 0.6581560283687943
+Rel pos neg 0.47630483144144675
+Rel neg pos 0.5236951685585532
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 20119.000000000153
+Len loss:  263
+Len Open: 1
+Len Close: 1018
+Len Pos 393
+Len Neg 625
+Res pos 631188.0
+Res neg 611068.9999999999
+Rel len pos neg 0.38605108055009824
+Rel len neg pos 0.6139489194499018
+Rel pos neg 0.5080977607693095
+Rel neg pos 0.4919022392306905
+
+
+#######################################
+
+Ema short = 5 | Donchian Window = 500 | donchian_window_prev = 250
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: -718.3999999999872
+Len loss:  579
+Len Open: 0
+Len Close: 1494
+Len Pos 479
+Len Neg 1015
+Res pos 15741.900000000009
+Res neg 16460.299999999996
+Rel len pos neg 0.32061579651941097
+Rel len neg pos 0.679384203480589
+Rel pos neg 0.4888454826067786
+Rel neg pos 0.5111545173932214
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 686.8000000000054
+Len loss:  443
+Len Open: 1
+Len Close: 1197
+Len Pos 398
+Len Neg 799
+Res pos 27520.00000000001
+Res neg 26833.200000000004
+Rel len pos neg 0.33249791144527985
+Rel len neg pos 0.6675020885547202
+Rel pos neg 0.5063179352825593
+Rel neg pos 0.4936820647174407
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: -845.1000000000208
+Len loss:  439
+Len Open: 1
+Len Close: 1200
+Len Pos 412
+Len Neg 788
+Res pos 37055.000000000015
+Res neg 37900.100000000035
+Rel len pos neg 0.3433333333333333
+Rel len neg pos 0.6566666666666666
+Rel pos neg 0.49436262509155465
+Rel neg pos 0.5056373749084453
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 142.80000000001115
+Len loss:  512
+Len Open: 0
+Len Close: 1419
+Len Pos 480
+Len Neg 939
+Res pos 31831.900000000012
+Res neg 31689.100000000002
+Rel len pos neg 0.3382663847780127
+Rel len neg pos 0.6617336152219874
+Rel pos neg 0.5011240377198093
+Rel neg pos 0.4988759622801907
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -587.1000000000031
+Len loss:  476
+Len Open: 1
+Len Close: 1321
+Len Pos 440
+Len Neg 881
+Res pos 26236.1
+Res neg 26823.199999999997
+Rel len pos neg 0.3330809992429977
+Rel len neg pos 0.6669190007570023
+Rel pos neg 0.4944675108793369
+Rel neg pos 0.5055324891206631
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -1810.999999999998
+Len loss:  536
+Len Open: 0
+Len Close: 1408
+Len Pos 453
+Len Neg 955
+Res pos 21682.6
+Res neg 23493.6
+Rel len pos neg 0.32173295454545453
+Rel len neg pos 0.6782670454545454
+Rel pos neg 0.47995626015468323
+Rel neg pos 0.5200437398453168
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 10735.000000000407
+Len loss:  350
+Len Open: 1
+Len Close: 1069
+Len Pos 388
+Len Neg 681
+Res pos 566028.0000000003
+Res neg 555292.9999999999
+Rel len pos neg 0.362956033676333
+Rel len neg pos 0.637043966323667
+Rel pos neg 0.5047867648960469
+Rel neg pos 0.4952132351039531
+
+
+#######################################
+
+Ema short = 5 | Donchian Window = 2500 | donchian_window_prev = 10
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1939.3000000000238
+Len loss:  61
+Len Open: 1
+Len Close: 330
+Len Pos 141
+Len Neg 189
+Res pos 10986.200000000004
+Res neg 9046.89999999998
+Rel len pos neg 0.42727272727272725
+Rel len neg pos 0.5727272727272728
+Rel pos neg 0.548402394037868
+Rel neg pos 0.451597605962132
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 7478.300000000034
+Len loss:  36
+Len Open: 0
+Len Close: 268
+Len Pos 120
+Len Neg 148
+Res pos 20806.00000000003
+Res neg 13327.699999999993
+Rel len pos neg 0.44776119402985076
+Rel len neg pos 0.5522388059701493
+Rel pos neg 0.6095442334115555
+Rel neg pos 0.3904557665884444
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 870.5999999999901
+Len loss:  71
+Len Open: 1
+Len Close: 280
+Len Pos 109
+Len Neg 171
+Res pos 23737.799999999996
+Res neg 22867.200000000004
+Rel len pos neg 0.3892857142857143
+Rel len neg pos 0.6107142857142858
+Rel pos neg 0.5093401995494045
+Rel neg pos 0.49065980045059554
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -302.6000000000058
+Len loss:  92
+Len Open: 1
+Len Close: 319
+Len Pos 120
+Len Neg 199
+Res pos 18833.90000000001
+Res neg 19136.500000000015
+Rel len pos neg 0.3761755485893417
+Rel len neg pos 0.6238244514106583
+Rel pos neg 0.49601531719444614
+Rel neg pos 0.5039846828055539
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -1.800000000021555
+Len loss:  72
+Len Open: 0
+Len Close: 291
+Len Pos 115
+Len Neg 176
+Res pos 16097.399999999987
+Res neg 16099.20000000001
+Rel len pos neg 0.3951890034364261
+Rel len neg pos 0.6048109965635738
+Rel pos neg 0.49997204673785395
+Rel neg pos 0.500027953262146
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 555.9999999999634
+Len loss:  84
+Len Open: 1
+Len Close: 319
+Len Pos 123
+Len Neg 196
+Res pos 13757.799999999992
+Res neg 13201.800000000028
+Rel len pos neg 0.38557993730407525
+Rel len neg pos 0.6144200626959248
+Rel pos neg 0.5103117256932589
+Rel neg pos 0.4896882743067411
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -16160.999999999927
+Len loss:  61
+Len Open: 0
+Len Close: 228
+Len Pos 89
+Len Neg 139
+Res pos 325568.9999999999
+Res neg 341729.9999999999
+Rel len pos neg 0.39035087719298245
+Rel len neg pos 0.6096491228070176
+Rel pos neg 0.48789073563724805
+Rel neg pos 0.512109264362752
+
+
+#######################################
+
+Ema short = 5 | Donchian Window = 2500 | donchian_window_prev = 100
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1923.9000000000176
+Len loss:  72
+Len Open: 1
+Len Close: 340
+Len Pos 139
+Len Neg 201
+Res pos 11066.6
+Res neg 9142.699999999983
+Rel len pos neg 0.4088235294117647
+Rel len neg pos 0.5911764705882353
+Rel pos neg 0.5475993725660964
+Rel neg pos 0.45240062743390375
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 7175.600000000024
+Len loss:  42
+Len Open: 0
+Len Close: 271
+Len Pos 119
+Len Neg 152
+Res pos 20403.40000000002
+Res neg 13227.799999999992
+Rel len pos neg 0.43911439114391143
+Rel len neg pos 0.5608856088560885
+Rel pos neg 0.6066807012535982
+Rel neg pos 0.39331929874640176
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 845.7999999999834
+Len loss:  77
+Len Open: 1
+Len Close: 273
+Len Pos 100
+Len Neg 173
+Res pos 22903.900000000005
+Res neg 22058.100000000017
+Rel len pos neg 0.3663003663003663
+Rel len neg pos 0.6336996336996337
+Rel pos neg 0.5094057203861037
+Rel neg pos 0.4905942796138963
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -657.8000000000188
+Len loss:  94
+Len Open: 1
+Len Close: 314
+Len Pos 114
+Len Neg 200
+Res pos 18222.299999999996
+Res neg 18880.100000000013
+Rel len pos neg 0.3630573248407643
+Rel len neg pos 0.6369426751592356
+Rel pos neg 0.49113534434430095
+Rel neg pos 0.508864655655699
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -1056.9000000000183
+Len loss:  80
+Len Open: 0
+Len Close: 286
+Len Pos 108
+Len Neg 178
+Res pos 14808.89999999999
+Res neg 15865.800000000008
+Rel len pos neg 0.3776223776223776
+Rel len neg pos 0.6223776223776224
+Rel pos neg 0.48277244765229954
+Rel neg pos 0.5172275523477006
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 838.79999999998
+Len loss:  85
+Len Open: 1
+Len Close: 315
+Len Pos 121
+Len Neg 194
+Res pos 13650.099999999999
+Res neg 12811.300000000021
+Rel len pos neg 0.38412698412698415
+Rel len neg pos 0.6158730158730159
+Rel pos neg 0.515849501538089
+Rel neg pos 0.484150498461911
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 5487.000000000044
+Len loss:  61
+Len Open: 0
+Len Close: 229
+Len Pos 87
+Len Neg 142
+Res pos 339120.9999999999
+Res neg 333633.9999999999
+Rel len pos neg 0.3799126637554585
+Rel len neg pos 0.6200873362445415
+Rel pos neg 0.5040780075956329
+Rel neg pos 0.49592199240436713
+
+
+#######################################
+
+Ema short = 5 | Donchian Window = 2500 | donchian_window_prev = 250
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1271.9000000000212
+Len loss:  87
+Len Open: 1
+Len Close: 352
+Len Pos 134
+Len Neg 218
+Res pos 10519.400000000001
+Res neg 9247.499999999982
+Rel len pos neg 0.3806818181818182
+Rel len neg pos 0.6193181818181818
+Rel pos neg 0.5321724701394761
+Rel neg pos 0.4678275298605239
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 7074.199999999998
+Len loss:  61
+Len Open: 0
+Len Close: 292
+Len Pos 118
+Len Neg 174
+Res pos 20143.100000000017
+Res neg 13068.900000000014
+Rel len pos neg 0.4041095890410959
+Rel len neg pos 0.5958904109589042
+Rel pos neg 0.6065006624111766
+Rel neg pos 0.3934993375888234
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 1819.8999999999903
+Len loss:  80
+Len Open: 1
+Len Close: 279
+Len Pos 104
+Len Neg 175
+Res pos 22951.199999999997
+Res neg 21131.300000000007
+Rel len pos neg 0.3727598566308244
+Rel len neg pos 0.6272401433691757
+Rel pos neg 0.520641978109227
+Rel neg pos 0.47935802189077314
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 319.0999999999858
+Len loss:  100
+Len Open: 1
+Len Close: 323
+Len Pos 118
+Len Neg 205
+Res pos 18332.300000000007
+Res neg 18013.20000000002
+Rel len pos neg 0.3653250773993808
+Rel len neg pos 0.6346749226006192
+Rel pos neg 0.5043898144199417
+Rel neg pos 0.4956101855800582
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -872.7000000000196
+Len loss:  98
+Len Open: 0
+Len Close: 293
+Len Pos 100
+Len Neg 193
+Res pos 14487.099999999991
+Res neg 15359.800000000012
+Rel len pos neg 0.3412969283276451
+Rel len neg pos 0.658703071672355
+Rel pos neg 0.485380391263414
+Rel neg pos 0.5146196087365861
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -305.30000000001996
+Len loss:  104
+Len Open: 1
+Len Close: 321
+Len Pos 114
+Len Neg 207
+Res pos 12553.499999999998
+Res neg 12858.800000000017
+Rel len pos neg 0.35514018691588783
+Rel len neg pos 0.6448598130841121
+Rel pos neg 0.49399306634975937
+Rel neg pos 0.5060069336502406
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 17363.00000000011
+Len loss:  67
+Len Open: 0
+Len Close: 234
+Len Pos 85
+Len Neg 149
+Res pos 330581.0
+Res neg 313217.9999999999
+Rel len pos neg 0.36324786324786323
+Rel len neg pos 0.6367521367521367
+Rel pos neg 0.5134847988269632
+Rel neg pos 0.4865152011730368
+
+
+#######################################
+
+Ema short = 5 | Donchian Window = 5000 | donchian_window_prev = 10
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 2564.000000000013
+Len loss:  23
+Len Open: 1
+Len Close: 167
+Len Pos 73
+Len Neg 94
+Res pos 8552.700000000012
+Res neg 5988.699999999998
+Rel len pos neg 0.437125748502994
+Rel len neg pos 0.562874251497006
+Rel pos neg 0.5881620751784564
+Rel neg pos 0.41183792482154363
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 5261.800000000001
+Len loss:  17
+Len Open: 0
+Len Close: 136
+Len Pos 61
+Len Neg 75
+Res pos 14559.300000000008
+Res neg 9297.500000000005
+Rel len pos neg 0.4485294117647059
+Rel len neg pos 0.5514705882352942
+Rel pos neg 0.6102788303544482
+Rel neg pos 0.3897211696455518
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 5398.9000000000115
+Len loss:  25
+Len Open: 1
+Len Close: 141
+Len Pos 61
+Len Neg 80
+Res pos 18854.100000000013
+Res neg 13455.2
+Rel len pos neg 0.4326241134751773
+Rel len neg pos 0.5673758865248227
+Rel pos neg 0.5835502471424637
+Rel neg pos 0.4164497528575362
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 1006.9999999999822
+Len loss:  41
+Len Open: 1
+Len Close: 163
+Len Pos 62
+Len Neg 101
+Res pos 13857.6
+Res neg 12850.60000000002
+Rel len pos neg 0.3803680981595092
+Rel len neg pos 0.6196319018404908
+Rel pos neg 0.5188518881841528
+Rel neg pos 0.48114811181584727
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -2414.400000000009
+Len loss:  53
+Len Open: 0
+Len Close: 158
+Len Pos 54
+Len Neg 104
+Res pos 10693.399999999994
+Res neg 13107.800000000007
+Rel len pos neg 0.34177215189873417
+Rel len neg pos 0.6582278481012658
+Rel pos neg 0.4492798682419371
+Rel neg pos 0.5507201317580629
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -66.20000000000539
+Len loss:  47
+Len Open: 1
+Len Close: 170
+Len Pos 63
+Len Neg 107
+Res pos 9826.100000000004
+Res neg 9892.300000000007
+Rel len pos neg 0.37058823529411766
+Rel len neg pos 0.6294117647058823
+Rel pos neg 0.498321364816618
+Rel neg pos 0.5016786351833822
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -12592.999999999853
+Len loss:  30
+Len Open: 0
+Len Close: 118
+Len Pos 45
+Len Neg 73
+Res pos 231246.99999999997
+Res neg 243839.9999999998
+Rel len pos neg 0.3813559322033898
+Rel len neg pos 0.6186440677966102
+Rel pos neg 0.486746637984201
+Rel neg pos 0.5132533620157991
+
+
+#######################################
+
+Ema short = 5 | Donchian Window = 5000 | donchian_window_prev = 100
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 2693.200000000009
+Len loss:  22
+Len Open: 1
+Len Close: 167
+Len Pos 73
+Len Neg 94
+Res pos 8555.600000000008
+Res neg 5862.399999999999
+Rel len pos neg 0.437125748502994
+Rel len neg pos 0.562874251497006
+Rel pos neg 0.5933971424608131
+Rel neg pos 0.40660285753918685
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 4211.100000000001
+Len loss:  19
+Len Open: 0
+Len Close: 134
+Len Pos 59
+Len Neg 75
+Res pos 13570.600000000008
+Res neg 9359.500000000007
+Rel len pos neg 0.44029850746268656
+Rel len neg pos 0.5597014925373134
+Rel pos neg 0.5918247194735304
+Rel neg pos 0.4081752805264697
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 5799.700000000001
+Len loss:  24
+Len Open: 1
+Len Close: 141
+Len Pos 62
+Len Neg 79
+Res pos 19080.800000000007
+Res neg 13281.100000000002
+Rel len pos neg 0.4397163120567376
+Rel len neg pos 0.5602836879432624
+Rel pos neg 0.5896069143035484
+Rel neg pos 0.41039308569645166
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 965.8999999999947
+Len loss:  41
+Len Open: 1
+Len Close: 164
+Len Pos 62
+Len Neg 102
+Res pos 13812.2
+Res neg 12846.300000000008
+Rel len pos neg 0.3780487804878049
+Rel len neg pos 0.6219512195121951
+Rel pos neg 0.5181161730780051
+Rel neg pos 0.48188382692199505
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -1872.1000000000033
+Len loss:  49
+Len Open: 0
+Len Close: 158
+Len Pos 56
+Len Neg 102
+Res pos 11100.799999999996
+Res neg 12972.899999999998
+Rel len pos neg 0.35443037974683544
+Rel len neg pos 0.6455696202531646
+Rel pos neg 0.4611173188998782
+Rel neg pos 0.5388826811001217
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 245.80000000000376
+Len loss:  48
+Len Open: 1
+Len Close: 169
+Len Pos 63
+Len Neg 106
+Res pos 9850.600000000006
+Res neg 9604.800000000001
+Rel len pos neg 0.3727810650887574
+Rel len neg pos 0.6272189349112426
+Rel pos neg 0.5063170122433875
+Rel neg pos 0.4936829877566124
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -9090.999999999885
+Len loss:  31
+Len Open: 0
+Len Close: 119
+Len Pos 45
+Len Neg 74
+Res pos 233035.0
+Res neg 242125.99999999988
+Rel len pos neg 0.37815126050420167
+Rel len neg pos 0.6218487394957983
+Rel pos neg 0.4904337687646925
+Rel neg pos 0.5095662312353075
+
+
+#######################################
+
+Ema short = 5 | Donchian Window = 5000 | donchian_window_prev = 250
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 2084.80000000001
+Len loss:  27
+Len Open: 1
+Len Close: 165
+Len Pos 69
+Len Neg 96
+Res pos 8021.300000000009
+Res neg 5936.499999999998
+Rel len pos neg 0.41818181818181815
+Rel len neg pos 0.5818181818181818
+Rel pos neg 0.5746822565160703
+Rel neg pos 0.4253177434839298
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 4198.5999999999985
+Len loss:  23
+Len Open: 0
+Len Close: 135
+Len Pos 58
+Len Neg 77
+Res pos 13368.900000000009
+Res neg 9170.30000000001
+Rel len pos neg 0.42962962962962964
+Rel len neg pos 0.5703703703703704
+Rel pos neg 0.593139951728544
+Rel neg pos 0.40686004827145605
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 5625.100000000006
+Len loss:  27
+Len Open: 1
+Len Close: 144
+Len Pos 62
+Len Neg 82
+Res pos 18530.800000000014
+Res neg 12905.700000000004
+Rel len pos neg 0.4305555555555556
+Rel len neg pos 0.5694444444444444
+Rel pos neg 0.5894676570228875
+Rel neg pos 0.4105323429771125
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 1394.8999999999853
+Len loss:  41
+Len Open: 1
+Len Close: 163
+Len Pos 63
+Len Neg 100
+Res pos 13919.499999999998
+Res neg 12524.600000000017
+Rel len pos neg 0.38650306748466257
+Rel len neg pos 0.6134969325153374
+Rel pos neg 0.5263745031973103
+Rel neg pos 0.47362549680268984
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -1340.7000000000069
+Len loss:  52
+Len Open: 0
+Len Close: 158
+Len Pos 55
+Len Neg 103
+Res pos 11202.599999999997
+Res neg 12543.300000000003
+Rel len pos neg 0.34810126582278483
+Rel len neg pos 0.6518987341772152
+Rel pos neg 0.47176986342905497
+Rel neg pos 0.528230136570945
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 275.50000000000284
+Len loss:  49
+Len Open: 1
+Len Close: 171
+Len Pos 63
+Len Neg 108
+Res pos 9868.300000000003
+Res neg 9592.799999999996
+Rel len pos neg 0.3684210526315789
+Rel len neg pos 0.631578947368421
+Rel pos neg 0.5070782227109466
+Rel neg pos 0.49292177728905334
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -4964.999999999965
+Len loss:  34
+Len Open: 0
+Len Close: 118
+Len Pos 43
+Len Neg 75
+Res pos 226670.99999999994
+Res neg 231635.99999999988
+Rel len pos neg 0.3644067796610169
+Rel len neg pos 0.635593220338983
+Rel pos neg 0.4945833251510451
+Rel neg pos 0.5054166748489549
+
+
+#######################################
+
+Ema short = 5 | Donchian Window = 10000 | donchian_window_prev = 10
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1975.8999999999976
+Len loss:  15
+Len Open: 1
+Len Close: 85
+Len Pos 37
+Len Neg 48
+Res pos 6119.9000000000015
+Res neg 4144.000000000004
+Rel len pos neg 0.43529411764705883
+Rel len neg pos 0.5647058823529412
+Rel pos neg 0.5962548349068092
+Rel neg pos 0.40374516509319086
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 1800.7000000000114
+Len loss:  22
+Len Open: 1
+Len Close: 74
+Len Pos 26
+Len Neg 48
+Res pos 9324.900000000003
+Res neg 7524.199999999992
+Rel len pos neg 0.35135135135135137
+Rel len neg pos 0.6486486486486487
+Rel pos neg 0.5534360885744642
+Rel neg pos 0.4465639114255357
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 3862.8000000000043
+Len loss:  13
+Len Open: 1
+Len Close: 69
+Len Pos 30
+Len Neg 39
+Res pos 13158.0
+Res neg 9295.199999999995
+Rel len pos neg 0.43478260869565216
+Rel len neg pos 0.5652173913043478
+Rel pos neg 0.5860189193522528
+Rel neg pos 0.41398108064774713
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -2066.999999999994
+Len loss:  31
+Len Open: 1
+Len Close: 80
+Len Pos 25
+Len Neg 55
+Res pos 7256.400000000001
+Res neg 9323.399999999994
+Rel len pos neg 0.3125
+Rel len neg pos 0.6875
+Rel pos neg 0.43766511055621915
+Rel neg pos 0.5623348894437807
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: 108.29999999998836
+Len loss:  20
+Len Open: 0
+Len Close: 80
+Len Pos 31
+Len Neg 49
+Res pos 9081.699999999992
+Res neg 8973.400000000005
+Rel len pos neg 0.3875
+Rel len neg pos 0.6125
+Rel pos neg 0.5029991525940035
+Rel neg pos 0.4970008474059964
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 856.699999999997
+Len loss:  17
+Len Open: 1
+Len Close: 81
+Len Pos 33
+Len Neg 48
+Res pos 7073.800000000001
+Res neg 6217.100000000004
+Rel len pos neg 0.4074074074074074
+Rel len neg pos 0.5925925925925926
+Rel pos neg 0.5322288182139658
+Rel neg pos 0.46777118178603416
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -2895.999999999887
+Len loss:  18
+Len Open: 0
+Len Close: 62
+Len Pos 23
+Len Neg 39
+Res pos 174721.0
+Res neg 177616.99999999988
+Rel len pos neg 0.3709677419354839
+Rel len neg pos 0.6290322580645161
+Rel pos neg 0.4958903098729063
+Rel neg pos 0.5041096901270937
+
+
+#######################################
+
+Ema short = 5 | Donchian Window = 10000 | donchian_window_prev = 100
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1736.5999999999967
+Len loss:  16
+Len Open: 1
+Len Close: 84
+Len Pos 36
+Len Neg 48
+Res pos 5864.0
+Res neg 4127.400000000003
+Rel len pos neg 0.42857142857142855
+Rel len neg pos 0.5714285714285714
+Rel pos neg 0.5869047380747441
+Rel neg pos 0.4130952619252559
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 1829.1000000000079
+Len loss:  22
+Len Open: 1
+Len Close: 74
+Len Pos 26
+Len Neg 48
+Res pos 9336.600000000002
+Res neg 7507.499999999996
+Rel len pos neg 0.35135135135135137
+Rel len neg pos 0.6486486486486487
+Rel pos neg 0.554294975688817
+Rel neg pos 0.445705024311183
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 3801.7000000000057
+Len loss:  13
+Len Open: 1
+Len Close: 68
+Len Pos 29
+Len Neg 39
+Res pos 13086.0
+Res neg 9284.299999999994
+Rel len pos neg 0.4264705882352941
+Rel len neg pos 0.5735294117647058
+Rel pos neg 0.5849720388193276
+Rel neg pos 0.41502796118067237
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -2016.2999999999888
+Len loss:  31
+Len Open: 1
+Len Close: 80
+Len Pos 25
+Len Neg 55
+Res pos 7274.700000000006
+Res neg 9290.999999999995
+Rel len pos neg 0.3125
+Rel len neg pos 0.6875
+Rel pos neg 0.439142324200004
+Rel neg pos 0.560857675799996
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -994.7000000000082
+Len loss:  23
+Len Open: 0
+Len Close: 79
+Len Pos 29
+Len Neg 50
+Res pos 8108.099999999992
+Res neg 9102.800000000001
+Rel len pos neg 0.3670886075949367
+Rel len neg pos 0.6329113924050633
+Rel pos neg 0.47110261520315583
+Rel neg pos 0.5288973847968441
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 918.5999999999923
+Len loss:  17
+Len Open: 1
+Len Close: 81
+Len Pos 33
+Len Neg 48
+Res pos 7094.599999999999
+Res neg 6176.000000000007
+Rel len pos neg 0.4074074074074074
+Rel len neg pos 0.5925925925925926
+Rel pos neg 0.5346103416574982
+Rel neg pos 0.4653896583425018
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 3311.0000000001382
+Len loss:  19
+Len Open: 0
+Len Close: 63
+Len Pos 23
+Len Neg 40
+Res pos 178561.0
+Res neg 175249.99999999988
+Rel len pos neg 0.36507936507936506
+Rel len neg pos 0.6349206349206349
+Rel pos neg 0.5046790518101474
+Rel neg pos 0.4953209481898526
+
+
+#######################################
+
+Ema short = 5 | Donchian Window = 10000 | donchian_window_prev = 250
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1798.0999999999963
+Len loss:  16
+Len Open: 1
+Len Close: 85
+Len Pos 37
+Len Neg 48
+Res pos 5922.2
+Res neg 4124.100000000004
+Rel len pos neg 0.43529411764705883
+Rel len neg pos 0.5647058823529412
+Rel pos neg 0.5894906582522917
+Rel neg pos 0.41050934174770837
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 1912.1000000000038
+Len loss:  22
+Len Open: 1
+Len Close: 75
+Len Pos 27
+Len Neg 48
+Res pos 9411.5
+Res neg 7499.399999999997
+Rel len pos neg 0.36
+Rel len neg pos 0.64
+Rel pos neg 0.5565345428096672
+Rel neg pos 0.44346545719033276
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 2308.100000000007
+Len loss:  18
+Len Open: 1
+Len Close: 69
+Len Pos 27
+Len Neg 42
+Res pos 11840.7
+Res neg 9532.599999999995
+Rel len pos neg 0.391304347826087
+Rel len neg pos 0.6086956521739131
+Rel pos neg 0.5539949376090731
+Rel neg pos 0.44600506239092685
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -2141.399999999993
+Len loss:  33
+Len Open: 1
+Len Close: 77
+Len Pos 22
+Len Neg 55
+Res pos 7149.800000000003
+Res neg 9291.199999999995
+Rel len pos neg 0.2857142857142857
+Rel len neg pos 0.7142857142857143
+Rel pos neg 0.4348762240739616
+Rel neg pos 0.5651237759260382
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -717.6000000000051
+Len loss:  23
+Len Open: 0
+Len Close: 79
+Len Pos 29
+Len Neg 50
+Res pos 8330.699999999995
+Res neg 9048.3
+Rel len pos neg 0.3670886075949367
+Rel len neg pos 0.6329113924050633
+Rel pos neg 0.47935439323321244
+Rel neg pos 0.5206456067667877
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 1058.1999999999923
+Len loss:  16
+Len Open: 1
+Len Close: 80
+Len Pos 33
+Len Neg 47
+Res pos 7097.199999999999
+Res neg 6039.000000000007
+Rel len pos neg 0.4125
+Rel len neg pos 0.5875
+Rel pos neg 0.54027801038352
+Rel neg pos 0.45972198961648
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 7455.00000000012
+Len loss:  19
+Len Open: 0
+Len Close: 63
+Len Pos 23
+Len Neg 40
+Res pos 179700.00000000006
+Res neg 172244.99999999988
+Rel len pos neg 0.36507936507936506
+Rel len neg pos 0.6349206349206349
+Rel pos neg 0.5105911435025362
+Rel neg pos 0.48940885649746385
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 500 | donchian_window_prev = 10
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 92.70000000000564
+Len loss:  182
+Len Open: 1
+Len Close: 937
+Len Pos 450
+Len Neg 487
+Res pos 17001.100000000002
+Res neg 16908.399999999998
+Rel len pos neg 0.48025613660619
+Rel len neg pos 0.5197438633938101
+Rel pos neg 0.501366873589997
+Rel neg pos 0.498633126410003
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 2479.899999999987
+Len loss:  163
+Len Open: 1
+Len Close: 852
+Len Pos 401
+Len Neg 451
+Res pos 31329.299999999996
+Res neg 28849.40000000001
+Rel len pos neg 0.4706572769953052
+Rel len neg pos 0.5293427230046949
+Rel pos neg 0.5206044663643448
+Rel neg pos 0.47939553363565524
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 5380.5
+Len loss:  133
+Len Open: 1
+Len Close: 848
+Len Pos 427
+Len Neg 421
+Res pos 42826.40000000001
+Res neg 37445.90000000001
+Rel len pos neg 0.5035377358490566
+Rel len neg pos 0.4964622641509434
+Rel pos neg 0.5335140515470468
+Rel neg pos 0.46648594845295327
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -1121.999999999996
+Len loss:  195
+Len Open: 0
+Len Close: 964
+Len Pos 466
+Len Neg 498
+Res pos 32295.5
+Res neg 33417.49999999999
+Rel len pos neg 0.483402489626556
+Rel len neg pos 0.516597510373444
+Rel pos neg 0.4914628764475827
+Rel neg pos 0.5085371235524172
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -1206.300000000033
+Len loss:  204
+Len Open: 1
+Len Close: 941
+Len Pos 423
+Len Neg 518
+Res pos 27134.499999999993
+Res neg 28340.800000000025
+Rel len pos neg 0.4495217853347503
+Rel len neg pos 0.5504782146652497
+Rel pos neg 0.48912759372189035
+Rel neg pos 0.5108724062781096
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 457.0999999999949
+Len loss:  171
+Len Open: 0
+Len Close: 965
+Len Pos 466
+Len Neg 499
+Res pos 23619.900000000016
+Res neg 23162.800000000017
+Rel len pos neg 0.48290155440414506
+Rel len neg pos 0.5170984455958549
+Rel pos neg 0.5048853529189209
+Rel neg pos 0.49511464708107916
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -36225.99999999958
+Len loss:  165
+Len Open: 1
+Len Close: 774
+Len Pos 358
+Len Neg 416
+Res pos 556166.0
+Res neg 592391.9999999997
+Rel len pos neg 0.4625322997416021
+Rel len neg pos 0.537467700258398
+Rel pos neg 0.4842297907463099
+Rel neg pos 0.5157702092536902
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 500 | donchian_window_prev = 100
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1076.599999999983
+Len loss:  214
+Len Open: 1
+Len Close: 1029
+Len Pos 444
+Len Neg 585
+Res pos 17581.69999999999
+Res neg 16505.100000000006
+Rel len pos neg 0.4314868804664723
+Rel len neg pos 0.5685131195335277
+Rel pos neg 0.5157920368001687
+Rel neg pos 0.4842079631998312
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 263.2999999999614
+Len loss:  215
+Len Open: 1
+Len Close: 914
+Len Pos 381
+Len Neg 533
+Res pos 30114.500000000007
+Res neg 29851.20000000004
+Rel len pos neg 0.41684901531728663
+Rel len neg pos 0.5831509846827133
+Rel pos neg 0.5021954217160808
+Rel neg pos 0.4978045782839193
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: -3062.099999999973
+Len loss:  225
+Len Open: 1
+Len Close: 865
+Len Pos 347
+Len Neg 518
+Res pos 36654.9
+Res neg 39716.99999999997
+Rel len pos neg 0.40115606936416187
+Rel len neg pos 0.5988439306358382
+Rel pos neg 0.4799527051179821
+Rel neg pos 0.520047294882018
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 871.7999999999706
+Len loss:  209
+Len Open: 0
+Len Close: 1014
+Len Pos 438
+Len Neg 576
+Res pos 33740.99999999998
+Res neg 32869.200000000004
+Rel len pos neg 0.4319526627218935
+Rel len neg pos 0.5680473372781065
+Rel pos neg 0.506544042804255
+Rel neg pos 0.493455957195745
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -1448.200000000039
+Len loss:  220
+Len Open: 1
+Len Close: 971
+Len Pos 412
+Len Neg 559
+Res pos 27409.899999999972
+Res neg 28858.100000000013
+Rel len pos neg 0.4243048403707518
+Rel len neg pos 0.5756951596292482
+Rel pos neg 0.48713122911779305
+Rel neg pos 0.512868770882207
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -920.9000000000005
+Len loss:  230
+Len Open: 0
+Len Close: 1000
+Len Pos 420
+Len Neg 580
+Res pos 23145.79999999999
+Res neg 24066.69999999999
+Rel len pos neg 0.42
+Rel len neg pos 0.58
+Rel pos neg 0.49024728620598357
+Rel neg pos 0.5097527137940164
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -22797.999999999545
+Len loss:  171
+Len Open: 1
+Len Close: 753
+Len Pos 325
+Len Neg 428
+Res pos 559713.9999999999
+Res neg 582511.9999999993
+Rel len pos neg 0.4316069057104914
+Rel len neg pos 0.5683930942895087
+Rel pos neg 0.490020363745879
+Rel neg pos 0.5099796362541211
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 500 | donchian_window_prev = 250
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: -669.100000000004
+Len loss:  294
+Len Open: 1
+Len Close: 998
+Len Pos 371
+Len Neg 627
+Res pos 14529.600000000006
+Res neg 15198.700000000008
+Rel len pos neg 0.3717434869739479
+Rel len neg pos 0.6282565130260521
+Rel pos neg 0.488746413350242
+Rel neg pos 0.511253586649758
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 1943.2999999999938
+Len loss:  260
+Len Open: 1
+Len Close: 861
+Len Pos 319
+Len Neg 542
+Res pos 27241.999999999993
+Res neg 25298.700000000004
+Rel len pos neg 0.3704994192799071
+Rel len neg pos 0.629500580720093
+Rel pos neg 0.5184932823506347
+Rel neg pos 0.48150671764936526
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 51.20000000000607
+Len loss:  235
+Len Open: 1
+Len Close: 804
+Len Pos 304
+Len Neg 500
+Res pos 33959.39999999998
+Res neg 33908.199999999975
+Rel len pos neg 0.3781094527363184
+Rel len neg pos 0.6218905472636815
+Rel pos neg 0.5003772050286146
+Rel neg pos 0.4996227949713855
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 2329.4
+Len loss:  268
+Len Open: 0
+Len Close: 982
+Len Pos 378
+Len Neg 604
+Res pos 30866.29999999999
+Res neg 28536.89999999999
+Rel len pos neg 0.384928716904277
+Rel len neg pos 0.615071283095723
+Rel pos neg 0.5196066878551997
+Rel neg pos 0.48039331214480024
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -420.60000000001037
+Len loss:  275
+Len Open: 1
+Len Close: 936
+Len Pos 342
+Len Neg 594
+Res pos 25723.699999999997
+Res neg 26144.30000000001
+Rel len pos neg 0.36538461538461536
+Rel len neg pos 0.6346153846153846
+Rel pos neg 0.4959454769800261
+Rel neg pos 0.5040545230199739
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 826.4999999999866
+Len loss:  254
+Len Open: 0
+Len Close: 936
+Len Pos 361
+Len Neg 575
+Res pos 21781.399999999994
+Res neg 20954.90000000001
+Rel len pos neg 0.3856837606837607
+Rel len neg pos 0.6143162393162394
+Rel pos neg 0.5096697655154984
+Rel neg pos 0.49033023448450164
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 15691.000000000296
+Len loss:  181
+Len Open: 1
+Len Close: 721
+Len Pos 290
+Len Neg 431
+Res pos 531264.0000000001
+Res neg 515572.9999999999
+Rel len pos neg 0.40221914008321774
+Rel len neg pos 0.5977808599167822
+Rel pos neg 0.5074944809936983
+Rel neg pos 0.49250551900630174
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 2500 | donchian_window_prev = 10
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 2053.6999999999994
+Len loss:  35
+Len Open: 1
+Len Close: 241
+Len Pos 114
+Len Neg 127
+Res pos 10008.099999999997
+Res neg 7954.399999999999
+Rel len pos neg 0.4730290456431535
+Rel len neg pos 0.5269709543568465
+Rel pos neg 0.5571663187195546
+Rel neg pos 0.44283368128044537
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 5053.100000000013
+Len loss:  35
+Len Open: 0
+Len Close: 212
+Len Pos 95
+Len Neg 117
+Res pos 17664.099999999995
+Res neg 12610.999999999985
+Rel len pos neg 0.4481132075471698
+Rel len neg pos 0.5518867924528302
+Rel pos neg 0.583453068693415
+Rel neg pos 0.41654693130658504
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 3129.600000000004
+Len loss:  37
+Len Open: 1
+Len Close: 208
+Len Pos 94
+Len Neg 114
+Res pos 23009.200000000008
+Res neg 19879.600000000006
+Rel len pos neg 0.4519230769230769
+Rel len neg pos 0.5480769230769231
+Rel pos neg 0.5364850497099476
+Rel neg pos 0.46351495029005235
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 1355.899999999986
+Len loss:  57
+Len Open: 1
+Len Close: 251
+Len Pos 109
+Len Neg 142
+Res pos 18826.79999999999
+Res neg 17470.9
+Rel len pos neg 0.4342629482071713
+Rel len neg pos 0.5657370517928287
+Rel pos neg 0.5186774919623005
+Rel neg pos 0.48132250803769955
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -1638.8000000000116
+Len loss:  49
+Len Open: 0
+Len Close: 226
+Len Pos 94
+Len Neg 132
+Res pos 13920.400000000001
+Res neg 15559.200000000012
+Rel len pos neg 0.415929203539823
+Rel len neg pos 0.584070796460177
+Rel pos neg 0.47220450752384685
+Rel neg pos 0.5277954924761532
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 104.90000000002169
+Len loss:  64
+Len Open: 1
+Len Close: 245
+Len Pos 104
+Len Neg 141
+Res pos 12222.600000000006
+Res neg 12117.699999999983
+Rel len pos neg 0.42448979591836733
+Rel len neg pos 0.5755102040816327
+Rel pos neg 0.5021548625119663
+Rel neg pos 0.4978451374880338
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 14705.000000000022
+Len loss:  34
+Len Open: 0
+Len Close: 180
+Len Pos 81
+Len Neg 99
+Res pos 304244.0
+Res neg 289538.9999999999
+Rel len pos neg 0.45
+Rel len neg pos 0.55
+Rel pos neg 0.5123824696901057
+Rel neg pos 0.48761753030989424
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 2500 | donchian_window_prev = 100
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1360.3999999999976
+Len loss:  51
+Len Open: 1
+Len Close: 269
+Len Pos 117
+Len Neg 152
+Res pos 9749.699999999995
+Res neg 8389.299999999996
+Rel len pos neg 0.4349442379182156
+Rel len neg pos 0.5650557620817844
+Rel pos neg 0.5374993108771156
+Rel neg pos 0.46250068912288433
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 6516.300000000013
+Len loss:  22
+Len Open: 0
+Len Close: 230
+Len Pos 109
+Len Neg 121
+Res pos 19243.40000000001
+Res neg 12727.099999999997
+Rel len pos neg 0.47391304347826085
+Rel len neg pos 0.5260869565217391
+Rel pos neg 0.6019111368292646
+Rel neg pos 0.39808886317073533
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 1860.300000000002
+Len loss:  49
+Len Open: 1
+Len Close: 226
+Len Pos 95
+Len Neg 131
+Res pos 21594.50000000001
+Res neg 19734.200000000008
+Rel len pos neg 0.42035398230088494
+Rel len neg pos 0.5796460176991151
+Rel pos neg 0.5225061518992855
+Rel neg pos 0.4774938481007145
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 67.30000000000041
+Len loss:  67
+Len Open: 1
+Len Close: 271
+Len Pos 108
+Len Neg 163
+Res pos 17903.5
+Res neg 17836.200000000004
+Rel len pos neg 0.3985239852398524
+Rel len neg pos 0.6014760147601476
+Rel pos neg 0.5009415300072467
+Rel neg pos 0.4990584699927532
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -263.70000000001164
+Len loss:  55
+Len Open: 0
+Len Close: 245
+Len Pos 102
+Len Neg 143
+Res pos 14810.599999999999
+Res neg 15074.30000000001
+Rel len pos neg 0.4163265306122449
+Rel len neg pos 0.5836734693877551
+Rel pos neg 0.49558807290638396
+Rel neg pos 0.504411927093616
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 1273.0000000000095
+Len loss:  65
+Len Open: 1
+Len Close: 270
+Len Pos 113
+Len Neg 157
+Res pos 13380.099999999997
+Res neg 12107.099999999988
+Rel len pos neg 0.4185185185185185
+Rel len neg pos 0.5814814814814815
+Rel pos neg 0.5249733199409902
+Rel neg pos 0.47502668005900983
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 26611.999999999927
+Len loss:  42
+Len Open: 0
+Len Close: 202
+Len Pos 88
+Len Neg 114
+Res pos 332252.9999999999
+Res neg 305641.0
+Rel len pos neg 0.43564356435643564
+Rel len neg pos 0.5643564356435643
+Rel pos neg 0.5208592650189529
+Rel neg pos 0.4791407349810471
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 2500 | donchian_window_prev = 250
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1100.5999999999976
+Len loss:  56
+Len Open: 1
+Len Close: 278
+Len Pos 118
+Len Neg 160
+Res pos 9531.599999999999
+Res neg 8431.0
+Rel len pos neg 0.4244604316546763
+Rel len neg pos 0.5755395683453237
+Rel pos neg 0.5306358767661696
+Rel neg pos 0.4693641232338303
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 5479.400000000027
+Len loss:  35
+Len Open: 0
+Len Close: 238
+Len Pos 106
+Len Neg 132
+Res pos 18358.200000000004
+Res neg 12878.799999999977
+Rel len pos neg 0.44537815126050423
+Rel len neg pos 0.5546218487394958
+Rel pos neg 0.5877068860646033
+Rel neg pos 0.41229311393539664
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 1978.6999999999982
+Len loss:  48
+Len Open: 1
+Len Close: 223
+Len Pos 92
+Len Neg 131
+Res pos 20753.200000000015
+Res neg 18774.50000000002
+Rel len pos neg 0.4125560538116592
+Rel len neg pos 0.5874439461883408
+Rel pos neg 0.5250292832621174
+Rel neg pos 0.4749707167378826
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 344.20000000000664
+Len loss:  67
+Len Open: 1
+Len Close: 275
+Len Pos 109
+Len Neg 166
+Res pos 17952.600000000002
+Res neg 17608.399999999994
+Rel len pos neg 0.39636363636363636
+Rel len neg pos 0.6036363636363636
+Rel pos neg 0.5048395714406232
+Rel neg pos 0.4951604285593767
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -2657.1000000000067
+Len loss:  73
+Len Open: 0
+Len Close: 242
+Len Pos 89
+Len Neg 153
+Res pos 13005.100000000004
+Res neg 15662.200000000012
+Rel len pos neg 0.3677685950413223
+Rel len neg pos 0.6322314049586777
+Rel pos neg 0.45365625643154384
+Rel neg pos 0.5463437435684562
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -316.1999999999855
+Len loss:  73
+Len Open: 1
+Len Close: 263
+Len Pos 104
+Len Neg 159
+Res pos 11584.0
+Res neg 11900.199999999983
+Rel len pos neg 0.39543726235741444
+Rel len neg pos 0.6045627376425855
+Rel pos neg 0.49326781410480275
+Rel neg pos 0.5067321858951973
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 15261.000000000022
+Len loss:  44
+Len Open: 0
+Len Close: 199
+Len Pos 84
+Len Neg 115
+Res pos 317244.9999999999
+Res neg 301983.99999999994
+Rel len pos neg 0.4221105527638191
+Rel len neg pos 0.5778894472361809
+Rel pos neg 0.5123225817912275
+Rel neg pos 0.4876774182087726
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 5000 | donchian_window_prev = 10
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 2698.5999999999985
+Len loss:  16
+Len Open: 1
+Len Close: 134
+Len Pos 63
+Len Neg 71
+Res pos 8153.300000000004
+Res neg 5454.700000000004
+Rel len pos neg 0.4701492537313433
+Rel len neg pos 0.5298507462686567
+Rel pos neg 0.5991549088771311
+Rel neg pos 0.400845091122869
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 2790.8000000000006
+Len loss:  18
+Len Open: 0
+Len Close: 110
+Len Pos 49
+Len Neg 61
+Res pos 11746.900000000003
+Res neg 8956.1
+Rel len pos neg 0.44545454545454544
+Rel len neg pos 0.5545454545454546
+Rel pos neg 0.5674008597787761
+Rel neg pos 0.4325991402212239
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 5874.899999999977
+Len loss:  17
+Len Open: 1
+Len Close: 113
+Len Pos 52
+Len Neg 61
+Res pos 18577.99999999999
+Res neg 12703.100000000011
+Rel len pos neg 0.46017699115044247
+Rel len neg pos 0.5398230088495575
+Rel pos neg 0.5939049457979416
+Rel neg pos 0.4060950542020585
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 1074.1999999999925
+Len loss:  26
+Len Open: 1
+Len Close: 132
+Len Pos 57
+Len Neg 75
+Res pos 13057.999999999989
+Res neg 11983.8
+Rel len pos neg 0.4318181818181818
+Rel len neg pos 0.5681818181818182
+Rel pos neg 0.5214481387120732
+Rel neg pos 0.47855186128792676
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -2321.199999999989
+Len loss:  39
+Len Open: 0
+Len Close: 142
+Len Pos 54
+Len Neg 88
+Res pos 11179.700000000004
+Res neg 13500.899999999994
+Rel len pos neg 0.38028169014084506
+Rel len neg pos 0.6197183098591549
+Rel pos neg 0.4529752112995634
+Rel neg pos 0.5470247887004366
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -894.1999999999834
+Len loss:  39
+Len Open: 1
+Len Close: 136
+Len Pos 52
+Len Neg 84
+Res pos 8541.700000000003
+Res neg 9435.899999999985
+Rel len pos neg 0.38235294117647056
+Rel len neg pos 0.6176470588235294
+Rel pos neg 0.47513016197935254
+Rel neg pos 0.5248698380206475
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -25242.000000000087
+Len loss:  25
+Len Open: 0
+Len Close: 95
+Len Pos 37
+Len Neg 58
+Res pos 194792.99999999997
+Res neg 220035.00000000012
+Rel len pos neg 0.3894736842105263
+Rel len neg pos 0.6105263157894737
+Rel pos neg 0.46957534206948404
+Rel neg pos 0.530424657930516
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 5000 | donchian_window_prev = 100
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 2610.399999999992
+Len loss:  17
+Len Open: 1
+Len Close: 148
+Len Pos 69
+Len Neg 79
+Res pos 8290.099999999995
+Res neg 5679.700000000002
+Rel len pos neg 0.46621621621621623
+Rel len neg pos 0.5337837837837838
+Rel pos neg 0.5934301135306158
+Rel neg pos 0.4065698864693842
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 3497.599999999997
+Len loss:  17
+Len Open: 0
+Len Close: 119
+Len Pos 53
+Len Neg 66
+Res pos 12447.399999999994
+Res neg 8949.799999999997
+Rel len pos neg 0.44537815126050423
+Rel len neg pos 0.5546218487394958
+Rel pos neg 0.5817303198549343
+Rel neg pos 0.41826968014506577
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 6267.7999999999865
+Len loss:  18
+Len Open: 1
+Len Close: 125
+Len Pos 58
+Len Neg 67
+Res pos 18601.6
+Res neg 12333.800000000016
+Rel len pos neg 0.464
+Rel len neg pos 0.536
+Rel pos neg 0.601304654214912
+Rel neg pos 0.3986953457850879
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 1223.9999999999934
+Len loss:  31
+Len Open: 1
+Len Close: 143
+Len Pos 59
+Len Neg 84
+Res pos 13060.599999999986
+Res neg 11836.599999999993
+Rel len pos neg 0.4125874125874126
+Rel len neg pos 0.5874125874125874
+Rel pos neg 0.5245810773902285
+Rel neg pos 0.47541892260977153
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -1845.6999999999894
+Len loss:  39
+Len Open: 0
+Len Close: 146
+Len Pos 56
+Len Neg 90
+Res pos 11227.500000000004
+Res neg 13073.199999999992
+Rel len pos neg 0.3835616438356164
+Rel len neg pos 0.6164383561643836
+Rel pos neg 0.4620237277115476
+Rel neg pos 0.5379762722884524
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 225.20000000001352
+Len loss:  35
+Len Open: 1
+Len Close: 148
+Len Pos 61
+Len Neg 87
+Res pos 9433.900000000003
+Res neg 9208.699999999988
+Rel len pos neg 0.41216216216216217
+Rel len neg pos 0.5878378378378378
+Rel pos neg 0.5060399300526754
+Rel neg pos 0.49396006994732455
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -44120.000000000175
+Len loss:  32
+Len Open: 0
+Len Close: 105
+Len Pos 38
+Len Neg 67
+Res pos 198733.00000000003
+Res neg 242853.00000000017
+Rel len pos neg 0.3619047619047619
+Rel len neg pos 0.638095238095238
+Rel pos neg 0.45004370609575467
+Rel neg pos 0.5499562939042453
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 5000 | donchian_window_prev = 250
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 2208.9999999999936
+Len loss:  20
+Len Open: 1
+Len Close: 144
+Len Pos 66
+Len Neg 78
+Res pos 7791.899999999996
+Res neg 5582.9000000000015
+Rel len pos neg 0.4583333333333333
+Rel len neg pos 0.5416666666666666
+Rel pos neg 0.5825806741035378
+Rel neg pos 0.4174193258964622
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 4090.7999999999993
+Len loss:  15
+Len Open: 0
+Len Close: 117
+Len Pos 53
+Len Neg 64
+Res pos 12628.399999999998
+Res neg 8537.599999999997
+Rel len pos neg 0.452991452991453
+Rel len neg pos 0.5470085470085471
+Rel pos neg 0.5966361145232921
+Rel neg pos 0.40336388547670793
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 5949.399999999994
+Len loss:  18
+Len Open: 1
+Len Close: 121
+Len Pos 55
+Len Neg 66
+Res pos 17515.400000000005
+Res neg 11566.00000000001
+Rel len pos neg 0.45454545454545453
+Rel len neg pos 0.5454545454545454
+Rel pos neg 0.6022887481345464
+Rel neg pos 0.39771125186545364
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 1211.1999999999898
+Len loss:  32
+Len Open: 1
+Len Close: 143
+Len Pos 58
+Len Neg 85
+Res pos 13020.599999999982
+Res neg 11809.399999999994
+Rel len pos neg 0.40559440559440557
+Rel len neg pos 0.5944055944055944
+Rel pos neg 0.5243898509867093
+Rel neg pos 0.4756101490132906
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -2271.899999999985
+Len loss:  43
+Len Open: 0
+Len Close: 144
+Len Pos 52
+Len Neg 92
+Res pos 10699.300000000007
+Res neg 12971.19999999999
+Rel len pos neg 0.3611111111111111
+Rel len neg pos 0.6388888888888888
+Rel pos neg 0.45200988572273537
+Rel neg pos 0.5479901142772646
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -231.99999999998192
+Len loss:  38
+Len Open: 1
+Len Close: 148
+Len Pos 59
+Len Neg 89
+Res pos 9017.800000000003
+Res neg 9249.799999999987
+Rel len pos neg 0.39864864864864863
+Rel len neg pos 0.6013513513513513
+Rel pos neg 0.4936499594911213
+Rel neg pos 0.5063500405088787
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -30150.00000000005
+Len loss:  29
+Len Open: 0
+Len Close: 105
+Len Pos 40
+Len Neg 65
+Res pos 206979.0000000001
+Res neg 237129.00000000012
+Rel len pos neg 0.38095238095238093
+Rel len neg pos 0.6190476190476191
+Rel pos neg 0.4660555540544192
+Rel neg pos 0.5339444459455808
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 10000 | donchian_window_prev = 10
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 989.1000000000071
+Len loss:  13
+Len Open: 1
+Len Close: 68
+Len Pos 30
+Len Neg 38
+Res pos 4683.500000000005
+Res neg 3694.399999999997
+Rel len pos neg 0.4411764705882353
+Rel len neg pos 0.5588235294117647
+Rel pos neg 0.5590303059239193
+Rel neg pos 0.44096969407608066
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 1412.2999999999902
+Len loss:  15
+Len Open: 1
+Len Close: 61
+Len Pos 24
+Len Neg 37
+Res pos 8711.499999999995
+Res neg 7299.2000000000035
+Rel len pos neg 0.39344262295081966
+Rel len neg pos 0.6065573770491803
+Rel pos neg 0.5441048798615923
+Rel neg pos 0.4558951201384077
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 6240.000000000009
+Len loss:  8
+Len Open: 1
+Len Close: 63
+Len Pos 30
+Len Neg 33
+Res pos 15481.200000000004
+Res neg 9241.199999999997
+Rel len pos neg 0.47619047619047616
+Rel len neg pos 0.5238095238095238
+Rel pos neg 0.6262013396757597
+Rel neg pos 0.37379866032424025
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -2003.5000000000057
+Len loss:  25
+Len Open: 1
+Len Close: 73
+Len Pos 25
+Len Neg 48
+Res pos 7586.799999999995
+Res neg 9590.300000000001
+Rel len pos neg 0.3424657534246575
+Rel len neg pos 0.6575342465753424
+Rel pos neg 0.44168107538525114
+Rel neg pos 0.558318924614749
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -402.4000000000017
+Len loss:  19
+Len Open: 0
+Len Close: 78
+Len Pos 32
+Len Neg 46
+Res pos 9558.499999999996
+Res neg 9960.899999999998
+Rel len pos neg 0.41025641025641024
+Rel len neg pos 0.5897435897435898
+Rel pos neg 0.48969230611596665
+Rel neg pos 0.5103076938840334
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 511.60000000000866
+Len loss:  14
+Len Open: 1
+Len Close: 69
+Len Pos 29
+Len Neg 40
+Res pos 6603.600000000005
+Res neg 6091.9999999999945
+Rel len pos neg 0.42028985507246375
+Rel len neg pos 0.5797101449275363
+Rel pos neg 0.5201487129399166
+Rel neg pos 0.47985128706008345
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -21644.000000000004
+Len loss:  16
+Len Open: 0
+Len Close: 57
+Len Pos 21
+Len Neg 36
+Res pos 168710.0
+Res neg 190354.00000000003
+Rel len pos neg 0.3684210526315789
+Rel len neg pos 0.631578947368421
+Rel pos neg 0.4698605262571575
+Rel neg pos 0.5301394737428425
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 10000 | donchian_window_prev = 100
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1188.1000000000045
+Len loss:  18
+Len Open: 1
+Len Close: 75
+Len Pos 31
+Len Neg 44
+Res pos 5232.800000000002
+Res neg 4044.6999999999985
+Rel len pos neg 0.41333333333333333
+Rel len neg pos 0.5866666666666667
+Rel pos neg 0.5640312584209111
+Rel neg pos 0.43596874157908905
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 544.399999999994
+Len loss:  22
+Len Open: 1
+Len Close: 68
+Len Pos 24
+Len Neg 44
+Res pos 8421.799999999997
+Res neg 7877.4000000000015
+Rel len pos neg 0.35294117647058826
+Rel len neg pos 0.6470588235294118
+Rel pos neg 0.5167002061450867
+Rel neg pos 0.48329979385491323
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 4419.600000000004
+Len loss:  10
+Len Open: 1
+Len Close: 64
+Len Pos 28
+Len Neg 36
+Res pos 13560.200000000008
+Res neg 9140.600000000002
+Rel len pos neg 0.4375
+Rel len neg pos 0.5625
+Rel pos neg 0.5973445869749084
+Rel neg pos 0.40265541302509156
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -2090.500000000003
+Len loss:  26
+Len Open: 1
+Len Close: 75
+Len Pos 25
+Len Neg 50
+Res pos 7250.899999999997
+Res neg 9341.4
+Rel len pos neg 0.3333333333333333
+Rel len neg pos 0.6666666666666666
+Rel pos neg 0.4370039114529028
+Rel neg pos 0.5629960885470973
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -1275.6000000000076
+Len loss:  20
+Len Open: 0
+Len Close: 77
+Len Pos 30
+Len Neg 47
+Res pos 8461.099999999991
+Res neg 9736.700000000003
+Rel len pos neg 0.38961038961038963
+Rel len neg pos 0.6103896103896104
+Rel pos neg 0.464951807361329
+Rel neg pos 0.5350481926386709
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 85.600000000014
+Len loss:  16
+Len Open: 1
+Len Close: 73
+Len Pos 29
+Len Neg 44
+Res pos 6259.300000000004
+Res neg 6173.69999999999
+Rel len pos neg 0.3972602739726027
+Rel len neg pos 0.6027397260273972
+Rel pos neg 0.5034424515402564
+Rel neg pos 0.4965575484597437
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -13225.999999999996
+Len loss:  16
+Len Open: 0
+Len Close: 60
+Len Pos 23
+Len Neg 37
+Res pos 172474.99999999997
+Res neg 185701.0
+Rel len pos neg 0.38333333333333336
+Rel len neg pos 0.6166666666666667
+Rel pos neg 0.48153700973822916
+Rel neg pos 0.5184629902617708
+
+
+#######################################
+
+Ema short = 20 | Donchian Window = 10000 | donchian_window_prev = 250
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1267.5000000000064
+Len loss:  18
+Len Open: 1
+Len Close: 76
+Len Pos 32
+Len Neg 44
+Res pos 5309.2000000000035
+Res neg 4041.6999999999975
+Rel len pos neg 0.42105263157894735
+Rel len neg pos 0.5789473684210527
+Rel pos neg 0.567774224940915
+Rel neg pos 0.4322257750590849
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 574.8999999999917
+Len loss:  22
+Len Open: 1
+Len Close: 68
+Len Pos 24
+Len Neg 44
+Res pos 8415.999999999995
+Res neg 7841.100000000003
+Rel len pos neg 0.35294117647058826
+Rel len neg pos 0.6470588235294118
+Rel pos neg 0.5176815053115251
+Rel neg pos 0.4823184946884748
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 3100.2000000000126
+Len loss:  13
+Len Open: 1
+Len Close: 65
+Len Pos 27
+Len Neg 38
+Res pos 12224.30000000001
+Res neg 9124.099999999995
+Rel len pos neg 0.4153846153846154
+Rel len neg pos 0.5846153846153846
+Rel pos neg 0.5726096569297937
+Rel neg pos 0.42739034307020635
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -1974.5000000000032
+Len loss:  26
+Len Open: 1
+Len Close: 75
+Len Pos 25
+Len Neg 50
+Res pos 7306.599999999998
+Res neg 9281.1
+Rel len pos neg 0.3333333333333333
+Rel len neg pos 0.6666666666666666
+Rel pos neg 0.44048300849424565
+Rel neg pos 0.5595169915057544
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -925.8000000000062
+Len loss:  21
+Len Open: 0
+Len Close: 76
+Len Pos 29
+Len Neg 47
+Res pos 8574.099999999995
+Res neg 9499.900000000003
+Rel len pos neg 0.3815789473684211
+Rel len neg pos 0.618421052631579
+Rel pos neg 0.4743886245435429
+Rel neg pos 0.525611375456457
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 139.70000000001096
+Len loss:  16
+Len Open: 1
+Len Close: 73
+Len Pos 29
+Len Neg 44
+Res pos 6285.2000000000035
+Res neg 6145.499999999991
+Rel len pos neg 0.3972602739726027
+Rel len neg pos 0.6027397260273972
+Rel pos neg 0.5056191525819147
+Rel neg pos 0.4943808474180854
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -7591.000000000016
+Len loss:  16
+Len Open: 0
+Len Close: 60
+Len Pos 23
+Len Neg 37
+Res pos 175982.99999999997
+Res neg 183573.99999999997
+Rel len pos neg 0.38333333333333336
+Rel len neg pos 0.6166666666666667
+Rel pos neg 0.48944395464418716
+Rel neg pos 0.5105560453558129
+
+
+#######################################
+
+Ema short = 50 | Donchian Window = 500 | donchian_window_prev = 10
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1273.300000000001
+Len loss:  12
+Len Open: 1
+Len Close: 74
+Len Pos 41
+Len Neg 33
+Res pos 5943.8
+Res neg 4670.499999999999
+Rel len pos neg 0.5540540540540541
+Rel len neg pos 0.44594594594594594
+Rel pos neg 0.5599804037948806
+Rel neg pos 0.44001959620511943
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: -1983.100000000004
+Len loss:  16
+Len Open: 2
+Len Close: 72
+Len Pos 33
+Len Neg 39
+Res pos 7607.799999999997
+Res neg 9590.900000000003
+Rel len pos neg 0.4583333333333333
+Rel len neg pos 0.5416666666666666
+Rel pos neg 0.4423473867210892
+Rel neg pos 0.5576526132789108
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: -2039.799999999992
+Len loss:  23
+Len Open: 2
+Len Close: 95
+Len Pos 46
+Len Neg 49
+Res pos 15096.80000000001
+Res neg 17136.600000000002
+Rel len pos neg 0.4842105263157895
+Rel len neg pos 0.5157894736842106
+Rel pos neg 0.4683589072204609
+Rel neg pos 0.5316410927795391
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -359.2999999999988
+Len loss:  16
+Len Open: 1
+Len Close: 72
+Len Pos 34
+Len Neg 38
+Res pos 11140.5
+Res neg 11499.8
+Rel len pos neg 0.4722222222222222
+Rel len neg pos 0.5277777777777778
+Rel pos neg 0.49206503447392486
+Rel neg pos 0.5079349655260752
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -837.6000000000072
+Len loss:  21
+Len Open: 1
+Len Close: 113
+Len Pos 55
+Len Neg 58
+Res pos 11578.0
+Res neg 12415.600000000008
+Rel len pos neg 0.48672566371681414
+Rel len neg pos 0.5132743362831859
+Rel pos neg 0.4825453454254467
+Rel neg pos 0.5174546545745534
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 7437.900000000008
+Len loss:  2
+Len Open: 1
+Len Close: 85
+Len Pos 54
+Len Neg 31
+Res pos 10936.40000000001
+Res neg 3498.5000000000014
+Rel len pos neg 0.6352941176470588
+Rel len neg pos 0.36470588235294116
+Rel pos neg 0.7576360071770502
+Rel neg pos 0.24236399282294982
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -38306.999999999716
+Len loss:  26
+Len Open: 1
+Len Close: 97
+Len Pos 45
+Len Neg 52
+Res pos 206490.00000000003
+Res neg 244796.9999999997
+Rel len pos neg 0.4639175257731959
+Rel len neg pos 0.5360824742268041
+Rel pos neg 0.4575580506418313
+Rel neg pos 0.5424419493581686
+
+
+#######################################
+
+Ema short = 50 | Donchian Window = 500 | donchian_window_prev = 100
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1024.3999999999844
+Len loss:  159
+Len Open: 0
+Len Close: 852
+Len Pos 401
+Len Neg 451
+Res pos 15975.199999999997
+Res neg 14950.800000000012
+Rel len pos neg 0.4706572769953052
+Rel len neg pos 0.5293427230046949
+Rel pos neg 0.5165621160188836
+Rel neg pos 0.4834378839811165
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 3736.699999999998
+Len loss:  155
+Len Open: 1
+Len Close: 796
+Len Pos 367
+Len Neg 429
+Res pos 30446.79999999998
+Res neg 26710.099999999984
+Rel len pos neg 0.4610552763819096
+Rel len neg pos 0.5389447236180904
+Rel pos neg 0.5326880919014152
+Rel neg pos 0.4673119080985848
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 3575.8000000000075
+Len loss:  173
+Len Open: 1
+Len Close: 763
+Len Pos 342
+Len Neg 421
+Res pos 38919.000000000015
+Res neg 35343.20000000001
+Rel len pos neg 0.44823066841415465
+Rel len neg pos 0.5517693315858454
+Rel pos neg 0.524075505438837
+Rel neg pos 0.475924494561163
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 442.3000000000204
+Len loss:  179
+Len Open: 0
+Len Close: 841
+Len Pos 369
+Len Neg 472
+Res pos 30898.000000000004
+Res neg 30455.699999999983
+Rel len pos neg 0.43876337693222356
+Rel len neg pos 0.5612366230677764
+Rel pos neg 0.5036045095894789
+Rel neg pos 0.49639549041052117
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: 531.4999999999991
+Len loss:  164
+Len Open: 1
+Len Close: 830
+Len Pos 379
+Len Neg 451
+Res pos 26028.49999999999
+Res neg 25496.99999999999
+Rel len pos neg 0.4566265060240964
+Rel len neg pos 0.5433734939759036
+Rel pos neg 0.5051576403916508
+Rel neg pos 0.49484235960834927
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -376.69999999996685
+Len loss:  176
+Len Open: 0
+Len Close: 870
+Len Pos 385
+Len Neg 485
+Res pos 22004.700000000033
+Res neg 22381.4
+Rel len pos neg 0.4425287356321839
+Rel len neg pos 0.5574712643678161
+Rel pos neg 0.49575655441681105
+Rel neg pos 0.504243445583189
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -57766.9999999997
+Len loss:  145
+Len Open: 1
+Len Close: 639
+Len Pos 277
+Len Neg 362
+Res pos 516972.0
+Res neg 574738.9999999998
+Rel len pos neg 0.433489827856025
+Rel len neg pos 0.5665101721439749
+Rel pos neg 0.4735429065018124
+Rel neg pos 0.5264570934981876
+
+
+#######################################
+
+Ema short = 50 | Donchian Window = 500 | donchian_window_prev = 250
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1491.3999999999942
+Len loss:  149
+Len Open: 0
+Len Close: 749
+Len Pos 336
+Len Neg 413
+Res pos 14795.299999999996
+Res neg 13303.900000000001
+Rel len pos neg 0.4485981308411215
+Rel len neg pos 0.5514018691588785
+Rel pos neg 0.5265381220817673
+Rel neg pos 0.47346187791823263
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 2942.1999999999853
+Len loss:  145
+Len Open: 1
+Len Close: 690
+Len Pos 300
+Len Neg 390
+Res pos 26561.099999999984
+Res neg 23618.9
+Rel len pos neg 0.43478260869565216
+Rel len neg pos 0.5652173913043478
+Rel pos neg 0.5293164607413311
+Rel neg pos 0.47068353925866896
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: -415.1999999999798
+Len loss:  156
+Len Open: 1
+Len Close: 646
+Len Pos 272
+Len Neg 374
+Res pos 33318.499999999985
+Res neg 33733.69999999995
+Rel len pos neg 0.42105263157894735
+Rel len neg pos 0.5789473684210527
+Rel pos neg 0.4969039047190102
+Rel neg pos 0.5030960952809898
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 1559.7000000000317
+Len loss:  177
+Len Open: 0
+Len Close: 768
+Len Pos 326
+Len Neg 442
+Res pos 28431.70000000001
+Res neg 26871.99999999998
+Rel len pos neg 0.4244791666666667
+Rel len neg pos 0.5755208333333334
+Rel pos neg 0.5141012265002163
+Rel neg pos 0.4858987734997836
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -1614.6999999999882
+Len loss:  178
+Len Open: 1
+Len Close: 729
+Len Pos 296
+Len Neg 433
+Res pos 22427.899999999994
+Res neg 24042.599999999984
+Rel len pos neg 0.4060356652949246
+Rel len neg pos 0.5939643347050755
+Rel pos neg 0.4826266125821759
+Rel neg pos 0.5173733874178241
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 2099.000000000028
+Len loss:  148
+Len Open: 0
+Len Close: 756
+Len Pos 328
+Len Neg 428
+Res pos 21908.700000000004
+Res neg 19809.699999999975
+Rel len pos neg 0.43386243386243384
+Rel len neg pos 0.5661375661375662
+Rel pos neg 0.5251567653601292
+Rel neg pos 0.47484323463987077
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -27191.999999999804
+Len loss:  115
+Len Open: 1
+Len Close: 564
+Len Pos 246
+Len Neg 318
+Res pos 469001.9999999999
+Res neg 496193.99999999965
+Rel len pos neg 0.43617021276595747
+Rel len neg pos 0.5638297872340425
+Rel pos neg 0.4859137418721173
+Rel neg pos 0.5140862581278827
+
+
+#######################################
+
+Ema short = 50 | Donchian Window = 2500 | donchian_window_prev = 10
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1283.9000000000005
+Len loss:  4
+Len Open: 1
+Len Close: 23
+Len Pos 13
+Len Neg 10
+Res pos 3113.600000000001
+Res neg 1829.6999999999994
+Rel len pos neg 0.5652173913043478
+Rel len neg pos 0.43478260869565216
+Rel pos neg 0.6298626423644126
+Rel neg pos 0.3701373576355874
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 1217.8
+Len loss:  8
+Len Open: 2
+Len Close: 29
+Len Pos 13
+Len Neg 16
+Res pos 5345.299999999997
+Res neg 4127.499999999998
+Rel len pos neg 0.4482758620689655
+Rel len neg pos 0.5517241379310345
+Rel pos neg 0.5642787771303099
+Rel neg pos 0.43572122286969006
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 3347.300000000003
+Len loss:  9
+Len Open: 2
+Len Close: 41
+Len Pos 20
+Len Neg 21
+Res pos 11900.499999999998
+Res neg 8553.199999999997
+Rel len pos neg 0.4878048780487805
+Rel len neg pos 0.5121951219512195
+Rel pos neg 0.5818262710414253
+Rel neg pos 0.41817372895857463
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 754.6999999999987
+Len loss:  6
+Len Open: 1
+Len Close: 29
+Len Pos 13
+Len Neg 16
+Res pos 8367.0
+Res neg 7612.300000000002
+Rel len pos neg 0.4482758620689655
+Rel len neg pos 0.5517241379310345
+Rel pos neg 0.5236149268115624
+Rel neg pos 0.4763850731884376
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: 595.100000000005
+Len loss:  8
+Len Open: 1
+Len Close: 38
+Len Pos 20
+Len Neg 18
+Res pos 6712.600000000005
+Res neg 6117.500000000002
+Rel len pos neg 0.5263157894736842
+Rel len neg pos 0.47368421052631576
+Rel pos neg 0.5231915573534113
+Rel neg pos 0.4768084426465888
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -1831.5000000000066
+Len loss:  7
+Len Open: 1
+Len Close: 27
+Len Pos 13
+Len Neg 14
+Res pos 3345.000000000001
+Res neg 5176.500000000008
+Rel len pos neg 0.48148148148148145
+Rel len neg pos 0.5185185185185185
+Rel pos neg 0.39253652525963706
+Rel neg pos 0.6074634747403629
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -1331.9999999999673
+Len loss:  8
+Len Open: 1
+Len Close: 30
+Len Pos 15
+Len Neg 15
+Res pos 119686.00000000003
+Res neg 121018.00000000003
+Rel len pos neg 0.5
+Rel len neg pos 0.5
+Rel pos neg 0.497233116192502
+Rel neg pos 0.502766883807498
+
+
+#######################################
+
+Ema short = 50 | Donchian Window = 2500 | donchian_window_prev = 100
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 130.29999999999973
+Len loss:  51
+Len Open: 1
+Len Close: 235
+Len Pos 102
+Len Neg 133
+Res pos 8259.4
+Res neg 8129.099999999997
+Rel len pos neg 0.4340425531914894
+Rel len neg pos 0.5659574468085107
+Rel pos neg 0.5039753485675932
+Rel neg pos 0.49602465143240676
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 3815.400000000013
+Len loss:  28
+Len Open: 0
+Len Close: 200
+Len Pos 93
+Len Neg 107
+Res pos 16192.200000000012
+Res neg 12376.800000000003
+Rel len pos neg 0.465
+Rel len neg pos 0.535
+Rel pos neg 0.5667751758899507
+Rel neg pos 0.43322482411004926
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 3408.100000000018
+Len loss:  37
+Len Open: 1
+Len Close: 199
+Len Pos 88
+Len Neg 111
+Res pos 21176.600000000017
+Res neg 17768.499999999993
+Rel len pos neg 0.44221105527638194
+Rel len neg pos 0.5577889447236181
+Rel pos neg 0.5437551835789358
+Rel neg pos 0.4562448164210643
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 650.8999999999996
+Len loss:  57
+Len Open: 1
+Len Close: 244
+Len Pos 107
+Len Neg 137
+Res pos 17851.300000000014
+Res neg 17200.40000000001
+Rel len pos neg 0.4385245901639344
+Rel len neg pos 0.5614754098360656
+Rel pos neg 0.5092848563693059
+Rel neg pos 0.49071514363069396
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -2183.19999999999
+Len loss:  43
+Len Open: 0
+Len Close: 216
+Len Pos 96
+Len Neg 120
+Res pos 12944.700000000004
+Res neg 15127.899999999992
+Rel len pos neg 0.4444444444444444
+Rel len neg pos 0.5555555555555556
+Rel pos neg 0.46111510868248773
+Rel neg pos 0.5388848913175122
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 648.7000000000221
+Len loss:  58
+Len Open: 1
+Len Close: 232
+Len Pos 104
+Len Neg 128
+Res pos 11962.300000000014
+Res neg 11313.599999999991
+Rel len pos neg 0.4482758620689655
+Rel len neg pos 0.5517241379310345
+Rel pos neg 0.5139350143281253
+Rel neg pos 0.4860649856718747
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 22235.00000000024
+Len loss:  35
+Len Open: 0
+Len Close: 179
+Len Pos 79
+Len Neg 100
+Res pos 298975.00000000006
+Res neg 276739.99999999977
+Rel len pos neg 0.441340782122905
+Rel len neg pos 0.5586592178770949
+Rel pos neg 0.5193107700858935
+Rel neg pos 0.4806892299141066
+
+
+#######################################
+
+Ema short = 50 | Donchian Window = 2500 | donchian_window_prev = 250
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 613.8000000000012
+Len loss:  46
+Len Open: 1
+Len Close: 240
+Len Pos 106
+Len Neg 134
+Res pos 8675.099999999995
+Res neg 8061.299999999994
+Rel len pos neg 0.44166666666666665
+Rel len neg pos 0.5583333333333333
+Rel pos neg 0.5183372768337278
+Rel neg pos 0.48166272316627234
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 3093.8000000000193
+Len loss:  30
+Len Open: 0
+Len Close: 195
+Len Pos 88
+Len Neg 107
+Res pos 15433.000000000011
+Res neg 12339.199999999992
+Rel len pos neg 0.4512820512820513
+Rel len neg pos 0.5487179487179488
+Rel pos neg 0.5556995844765632
+Rel neg pos 0.44430041552343674
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 3494.8999999999946
+Len loss:  33
+Len Open: 1
+Len Close: 200
+Len Pos 93
+Len Neg 107
+Res pos 21113.09999999999
+Res neg 17618.199999999993
+Rel len pos neg 0.465
+Rel len neg pos 0.535
+Rel pos neg 0.5451172565857587
+Rel neg pos 0.4548827434142412
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: -855.2000000000071
+Len loss:  58
+Len Open: 1
+Len Close: 242
+Len Pos 99
+Len Neg 143
+Res pos 16690.900000000012
+Res neg 17546.100000000017
+Rel len pos neg 0.4090909090909091
+Rel len neg pos 0.5909090909090909
+Rel pos neg 0.48751058796039365
+Rel neg pos 0.5124894120396063
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: -3566.1999999999935
+Len loss:  50
+Len Open: 0
+Len Close: 210
+Len Pos 86
+Len Neg 124
+Res pos 11895.9
+Res neg 15462.099999999997
+Rel len pos neg 0.4095238095238095
+Rel len neg pos 0.5904761904761905
+Rel pos neg 0.4348234520067257
+Rel neg pos 0.5651765479932743
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: 490.9000000000301
+Len loss:  59
+Len Open: 1
+Len Close: 232
+Len Pos 99
+Len Neg 133
+Res pos 11755.600000000017
+Res neg 11264.699999999986
+Rel len pos neg 0.4267241379310345
+Rel len neg pos 0.5732758620689655
+Rel pos neg 0.5106623284666149
+Rel neg pos 0.4893376715333851
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: 11574.000000000095
+Len loss:  33
+Len Open: 0
+Len Close: 175
+Len Pos 78
+Len Neg 97
+Res pos 288351.99999999994
+Res neg 276777.9999999998
+Rel len pos neg 0.44571428571428573
+Rel len neg pos 0.5542857142857143
+Rel pos neg 0.5102401217419003
+Rel neg pos 0.4897598782580998
+
+
+#######################################
+
+Ema short = 50 | Donchian Window = 5000 | donchian_window_prev = 10
+
+ Pair ---------> EURGBP
+SL => 50000 | TP => 50000
+
+Result: 1004.9000000000029
+Len loss:  3
+Len Open: 1
+Len Close: 19
+Len Pos 10
+Len Neg 9
+Res pos 2616.0000000000005
+Res neg 1611.0999999999974
+Rel len pos neg 0.5263157894736842
+Rel len neg pos 0.47368421052631576
+Rel pos neg 0.6188639965934096
+Rel neg pos 0.38113600340659043
+
+ Pair ---------> EURJPY
+SL => 50000 | TP => 50000
+
+Result: 1317.6999999999966
+Len loss:  6
+Len Open: 1
+Len Close: 20
+Len Pos 8
+Len Neg 12
+Res pos 5328.099999999996
+Res neg 4010.399999999999
+Rel len pos neg 0.4
+Rel len neg pos 0.6
+Rel pos neg 0.5705520158483696
+Rel neg pos 0.4294479841516305
+
+ Pair ---------> GBPJPY
+SL => 50000 | TP => 50000
+
+Result: 2841.8000000000075
+Len loss:  7
+Len Open: 1
+Len Close: 28
+Len Pos 13
+Len Neg 15
+Res pos 10714.400000000001
+Res neg 7872.599999999995
+Rel len pos neg 0.4642857142857143
+Rel len neg pos 0.5357142857142857
+Rel pos neg 0.5764459030505193
+Rel neg pos 0.42355409694948065
+
+ Pair ---------> GBPUSD
+SL => 50000 | TP => 50000
+
+Result: 739.7000000000023
+Len loss:  6
+Len Open: 1
+Len Close: 15
+Len Pos 8
+Len Neg 7
+Res pos 7202.700000000001
+Res neg 6462.999999999998
+Rel len pos neg 0.5333333333333333
+Rel len neg pos 0.4666666666666667
+Rel pos neg 0.527064109412617
+Rel neg pos 0.4729358905873829
+
+ Pair ---------> USDJPY
+SL => 50000 | TP => 50000
+
+Result: 222.49999999999613
+Len loss:  6
+Len Open: 1
+Len Close: 27
+Len Pos 14
+Len Neg 13
+Res pos 6500.6
+Res neg 6278.100000000006
+Rel len pos neg 0.5185185185185185
+Rel len neg pos 0.48148148148148145
+Rel pos neg 0.5087058934007369
+Rel neg pos 0.49129410659926304
+
+ Pair ---------> EURUSD
+SL => 50000 | TP => 50000
+
+Result: -1307.6000000000067
+Len loss:  6
+Len Open: 1
+Len Close: 18
+Len Pos 7
+Len Neg 11
+Res pos 2563.3000000000006
+Res neg 3870.9000000000065
+Rel len pos neg 0.3888888888888889
+Rel len neg pos 0.6111111111111112
+Rel pos neg 0.3983867458269867
+Rel neg pos 0.6016132541730133
+
+ Pair ---------> XAUUSD
+SL => 50000 | TP => 50000
+
+Result: -16186.999999999944
+Len loss:  5
+Len Open: 1
+Len Close: 22
+Len Pos 11
+Len Neg 11
+Res pos 98950.00000000003
+Res neg 115137.0
+Rel len pos neg 0.5
+Rel len neg pos 0.5
+Rel pos neg 0.4621952757523811
+Rel neg pos 0.5378047242476189
+

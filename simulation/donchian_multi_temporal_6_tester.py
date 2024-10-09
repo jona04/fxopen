@@ -54,7 +54,7 @@ def process_cross_down(df, i, band, signal, last_band_cross_down, band_name, nex
 
 
 # Função para detectar os sinais de cruzamentos
-def detect_signals(df, PROFIT_FACTOR, LOSS_FACTOR, pip_value, fixed_tp_sl, sl_type='not_mid'):
+def detect_signals(df, PROFIT_FACTOR, LOSS_FACTOR, pip_value, fixed_tp_sl, sl_type='not_mid',donchian_prev_window=100):
 
     last_band_cross_up = 0
     last_band_cross_down = 0
@@ -107,7 +107,7 @@ def detect_signals(df, PROFIT_FACTOR, LOSS_FACTOR, pip_value, fixed_tp_sl, sl_ty
                                                       LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
 
             # Caso especial para donchian_high
-            if ema_short[i-1] <= donchian_high[i-100] and ema_short[i] > donchian_high[i-100]:
+            if ema_short[i-1] <= donchian_high[i-donchian_prev_window] and ema_short[i] > donchian_high[i-donchian_prev_window]:
                 df.at[i, 'SIGNAL_UP'] = SIGNAL_HIGH
                 last_band_cross_up = 'high'
                 if fixed_tp_sl:
@@ -149,7 +149,7 @@ def detect_signals(df, PROFIT_FACTOR, LOSS_FACTOR, pip_value, fixed_tp_sl, sl_ty
                                                           LOSS_FACTOR, pip_value, mid_c[i], fixed_tp_sl, sl_type)
 
             # Caso especial para donchian_low
-            if ema_short[i-1] >= donchian_low[i-100] and ema_short[i] < donchian_low[i-100]:
+            if ema_short[i-1] >= donchian_low[i-donchian_prev_window] and ema_short[i] < donchian_low[i-donchian_prev_window]:
                 df.at[i, 'SIGNAL_DOWN'] = SIGNAL_LOW
                 last_band_cross_down = 'low'
                 if fixed_tp_sl:
@@ -250,24 +250,24 @@ class Trade:
                     #     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
                     #     close_op = True
                 if close_op == False:
-                    # if list_values[INDEX_SIGNAL_UP][index] == signal_level_up:
-                    #     self.trigger_type = self.SIGNAL_UP
-                    #     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                    # elif list_values[INDEX_SIGNAL_DOWN][index] == signal_level_down:
-                    #     self.trigger_type = self.SIGNAL_UP
-                    #     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss) 
+                    if list_values[INDEX_SIGNAL_UP][index] == signal_level_up:
+                        self.trigger_type = self.SIGNAL_UP
+                        result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
+                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
+                    elif list_values[INDEX_SIGNAL_DOWN][index] == signal_level_down:
+                        self.trigger_type = self.SIGNAL_UP
+                        result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
+                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss) 
                     
-                    if list_values[INDEX_bid_h][index] >= self.TP:
-                        self.trigger_type = self.SIGNAL_UP
-                        result = (self.TP - self.start_price) / self.pip_value
-                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_h][index], acumulated_loss) 
-                    elif list_values[INDEX_bid_l][index] <= self.SL:
-                        self.trigger_type = self.SIGNAL_UP
-                        result = (self.SL - self.start_price) / self.pip_value
-                        # print(result,self.SIGNAL_DOWN)
-                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_l][index], acumulated_loss) 
+                    # if list_values[INDEX_bid_h][index] >= self.TP:
+                    #     self.trigger_type = self.SIGNAL_UP
+                    #     result = (self.TP - self.start_price) / self.pip_value
+                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_h][index], acumulated_loss) 
+                    # elif list_values[INDEX_bid_l][index] <= self.SL:
+                    #     self.trigger_type = self.SIGNAL_UP
+                    #     result = (self.SL - self.start_price) / self.pip_value
+                    #     # print(result,self.SIGNAL_DOWN)
+                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_l][index], acumulated_loss) 
                     # elif self.SIGNAL_UP == SIGNAL_HIGH and list_values[INDEX_SIGNAL_UP][index] == SIGNAL_HIGH:
                     #     self.trigger_type = self.SIGNAL_UP
                     #     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
@@ -283,23 +283,23 @@ class Trade:
                     #     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
                     #     close_op = True
                 if close_op == False:
-                    # if list_values[INDEX_SIGNAL_DOWN][index] == signal_level_up:
-                    #     self.trigger_type = self.SIGNAL_DOWN
-                    #     result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_c][index], acumulated_loss)
-                    # elif list_values[INDEX_SIGNAL_UP][index] == signal_level_down:
-                    #     self.trigger_type = self.SIGNAL_DOWN
-                    #     result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_c][index], acumulated_loss) 
-                    if list_values[INDEX_ask_l][index] <= self.TP:
+                    if list_values[INDEX_SIGNAL_DOWN][index] == signal_level_up:
                         self.trigger_type = self.SIGNAL_DOWN
-                        result = (self.start_price - self.TP) / self.pip_value
-                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_l][index], acumulated_loss) 
-                    elif list_values[INDEX_ask_h][index] >= self.SL:
+                        result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
+                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_c][index], acumulated_loss)
+                    elif list_values[INDEX_SIGNAL_UP][index] == signal_level_down:
                         self.trigger_type = self.SIGNAL_DOWN
-                        result = (self.start_price - self.SL) / self.pip_value
-                        # print(result,self.SIGNAL_DOWN)
-                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_h][index], acumulated_loss) 
+                        result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
+                        acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_c][index], acumulated_loss) 
+                    # if list_values[INDEX_ask_l][index] <= self.TP:
+                    #     self.trigger_type = self.SIGNAL_DOWN
+                    #     result = (self.start_price - self.TP) / self.pip_value
+                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_l][index], acumulated_loss) 
+                    # elif list_values[INDEX_ask_h][index] >= self.SL:
+                    #     self.trigger_type = self.SIGNAL_DOWN
+                    #     result = (self.start_price - self.SL) / self.pip_value
+                    #     # print(result,self.SIGNAL_DOWN)
+                    #     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_ask_h][index], acumulated_loss) 
                     # elif self.SIGNAL_DOWN == SIGNAL_LOW and list_values[INDEX_SIGNAL_DOWN][index] == SIGNAL_LOW:
                     #     self.trigger_type = self.SIGNAL_DOWN
                     #     result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
@@ -309,7 +309,7 @@ class Trade:
         
         # Verificação dos sinais de COMPRA
         if self.SIGNAL_UP == SIGNAL_HIGH:
-            acumulated_loss = process_trade('buy', SIGNAL_HIGH, SIGNAL_MID,close_op, acumulated_loss)
+            acumulated_loss = process_trade('buy', SIGNAL_HIGH, SIGNAL_LOW,close_op, acumulated_loss)
         elif self.SIGNAL_UP == SIGNAL_87:
             acumulated_loss = process_trade('buy', SIGNAL_HIGH, SIGNAL_MID,close_op, acumulated_loss)
         elif self.SIGNAL_UP == SIGNAL_75:
@@ -341,7 +341,7 @@ class Trade:
         elif self.SIGNAL_DOWN == SIGNAL_12:
             acumulated_loss = process_trade('sell', SIGNAL_LOW, SIGNAL_MID,close_op, acumulated_loss)
         elif self.SIGNAL_DOWN == SIGNAL_LOW:
-            acumulated_loss = process_trade('sell', SIGNAL_LOW, SIGNAL_MID,close_op, acumulated_loss)
+            acumulated_loss = process_trade('sell', SIGNAL_LOW, SIGNAL_HIGH,close_op, acumulated_loss)
 
         return acumulated_loss
 
@@ -350,8 +350,6 @@ class Trade:
 
 class DonchianMultiTemporal6Tester:
     def __init__(self, df,
-                    apply_signal,
-                    apply_short_signal,
                     pip_value,
                     use_spread=True,
                     LOSS_FACTOR = 1000,
@@ -360,11 +358,10 @@ class DonchianMultiTemporal6Tester:
                     trans_cost=8,
                     neg_multiplier=1,
                     rev=False,
-                    spread_limit=50
+                    spread_limit=50,
+                    donchian_prev_window=100
                     ):
         self.use_spread = use_spread
-        self.apply_signal = apply_signal
-        self.apply_short_signal = apply_short_signal
         self.df = df
         self.LOSS_FACTOR = LOSS_FACTOR
         self.PROFIT_FACTOR = PROFIT_FACTOR
@@ -377,6 +374,7 @@ class DonchianMultiTemporal6Tester:
         self.spread_limit = spread_limit
         self.len_close = 0
         self.len_open = 0
+        self.donchian_prev_window=donchian_prev_window
         
         self.prepare_data()
         
@@ -392,7 +390,8 @@ class DonchianMultiTemporal6Tester:
         self.df['SIGNAL_DOWN'] = 0
 
         # Aplicar a função para detectar sinais
-        detect_signals(self.df,self.PROFIT_FACTOR,self.LOSS_FACTOR,self.pip_value, self.fixed_tp_sl, sl_type='not_mid')
+        detect_signals(self.df,self.PROFIT_FACTOR,self.LOSS_FACTOR,self.pip_value, 
+                       self.fixed_tp_sl, sl_type='not_mid',donchian_prev_window=self.donchian_prev_window)
         
     def run_test(self):
         # print("run_test...")
@@ -432,11 +431,11 @@ class DonchianMultiTemporal6Tester:
                     closed_trades_m5.append(ot)
             open_trades_m5 = [x for x in open_trades_m5 if x.running == True]
 
-            if list_value_refs[INDEX_SIGNAL_UP][index] in [1,2,3,4,5,6,7,8]:
+            if list_value_refs[INDEX_SIGNAL_UP][index] in [1]:
                 open_trades_m5.append(Trade(list_value_refs, index, self.PROFIT_FACTOR, 
                                             self.LOSS_FACTOR, self.pip_value, self.trans_cost, self.neg_multiplier))  
                 # print(len(open_trades_m5),len(closed_trades_m5))
-            elif list_value_refs[INDEX_SIGNAL_DOWN][index] in [2,3,4,5,6,7,8,9]:
+            elif list_value_refs[INDEX_SIGNAL_DOWN][index] in [9]:
                 open_trades_m5.append(Trade(list_value_refs, index, self.PROFIT_FACTOR, 
                                             self.LOSS_FACTOR, self.pip_value, self.trans_cost, self.neg_multiplier))  
                 # print(len(open_trades_m5),len(closed_trades_m5))

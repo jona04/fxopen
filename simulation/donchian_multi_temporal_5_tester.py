@@ -76,7 +76,7 @@ def apply_final_signals(df):
             
     df["FINAL_SIGNAL"] = final_signal
 
-def apply_short_signals(df,sig):
+def apply_trend_signals(df,sig):
     df["SIGNAL_TREND"] = df.apply(sig, axis=1)
 
 INDEX_bid_c = 0
@@ -154,46 +154,46 @@ class Trade:
         self.count += 1
         close_op = False
       
-        if self.FINAL_SIGNAL == SELL_REVERSE:
-            if min_acumulated_loss > 0.0:
-                result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_bid_h][index]
-                    acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
-                    close_op = True
+        if self.FINAL_SIGNAL == BUY_TREND:
+            # if min_acumulated_loss > 0.0:
+            #     result = (list_values[INDEX_bid_h][index] - self.start_price) / self.pip_value
+                # if result >= value_loss_trans_cost:
+                #     self.trigger_type = TRIGGER_TYPE_MIN_LOSS_BUY
+                #     result = value_loss_trans_cost
+                #     trigger_price = list_values[INDEX_bid_h][index]
+                #     acumulated_loss = self.close_trade(list_values, index, result, trigger_price, acumulated_loss)
+                #     close_op = True
             if close_op == False:
-                if list_values[INDEX_delta_ema_low][index] < 0 and list_values[INDEX_delta_ema_low_prev][index] >= 0 :
+                if list_values[INDEX_FINAL_SIGNAL][index] == BUY_TREND:
+                    self.trigger_type = TRIGGER_TYPE_TREND_BUY
+                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
+                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
+                elif list_values[INDEX_delta_ema_low][index] < 0 and list_values[INDEX_delta_ema_low_prev][index] >= 0 :
                 # if list_values[INDEX_delta_ema_mid][index] < 0 and list_values[INDEX_delta_ema_mid_prev][index] >= 0 :
                     self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS_BUY
                     result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
                     acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-                elif list_values[INDEX_FINAL_SIGNAL][index] == BUY_TREND:
-                    self.trigger_type = TRIGGER_TYPE_TREND_BUY
-                    result = (list_values[INDEX_bid_c][index] - self.start_price) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result, list_values[INDEX_bid_c][index], acumulated_loss)
-            
-        if self.FINAL_SIGNAL == BUY_REVERSE:
-            if min_acumulated_loss > 0.0:
-                result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
-                if result >= value_loss_trans_cost:
-                    self.trigger_type = TRIGGER_TYPE_MIN_LOSS_SELL
-                    result = value_loss_trans_cost
-                    trigger_price = list_values[INDEX_ask_l][index]
-                    acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
-                    close_op = True
+                
+        if self.FINAL_SIGNAL == SELL_TREND:
+            # if min_acumulated_loss > 0.0:
+            #     result = (self.start_price - list_values[INDEX_ask_l][index]) / self.pip_value
+                # if result >= value_loss_trans_cost:
+                #     self.trigger_type = TRIGGER_TYPE_MIN_LOSS_SELL
+                #     result = value_loss_trans_cost
+                #     trigger_price = list_values[INDEX_ask_l][index]
+                #     acumulated_loss = self.close_trade(list_values, index, result,trigger_price, acumulated_loss)
+                #     close_op = True
             if close_op == False:
-                if list_values[INDEX_delta_ema_high][index] > 0 and list_values[INDEX_delta_ema_high_prev][index] <= 0 :
+                if list_values[INDEX_FINAL_SIGNAL][index] == SELL_TREND:
+                    self.trigger_type = TRIGGER_TYPE_TREND_SELL
+                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
+                    acumulated_loss = self.close_trade(list_values, index, result,list_values[INDEX_ask_c][index], acumulated_loss)
+                elif list_values[INDEX_delta_ema_high][index] > 0 and list_values[INDEX_delta_ema_high_prev][index] <= 0 :
                 # if list_values[INDEX_delta_ema_mid][index] > 0 and list_values[INDEX_delta_ema_mid_prev][index] <= 0 :
                     self.trigger_type = TRIGGER_TYPE_REVERSED_CROSS_SELL
                     result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
                     acumulated_loss = self.close_trade(list_values, index, result,list_values[INDEX_ask_c][index], acumulated_loss)
-                elif list_values[INDEX_FINAL_SIGNAL][index] == SELL_TREND:
-                    self.trigger_type = TRIGGER_TYPE_TREND_SELL
-                    result = (self.start_price - list_values[INDEX_ask_c][index]) / self.pip_value
-                    acumulated_loss = self.close_trade(list_values, index, result,list_values[INDEX_ask_c][index], acumulated_loss)
-
+                
             
 
         return acumulated_loss
@@ -201,8 +201,8 @@ class Trade:
 
 class DonchianMultiTemporal5Tester:
     def __init__(self, df,
+                    apply_trend_signal,
                     apply_signal,
-                    apply_short_signal,
                     pip_value,
                     use_spread=True,
                     LOSS_FACTOR = 1000,
@@ -215,7 +215,7 @@ class DonchianMultiTemporal5Tester:
                     ):
         self.use_spread = use_spread
         self.apply_signal = apply_signal
-        self.apply_short_signal = apply_short_signal
+        self.apply_trend_signal = apply_trend_signal
         self.df = df
         self.LOSS_FACTOR = LOSS_FACTOR
         self.PROFIT_FACTOR = PROFIT_FACTOR
@@ -241,9 +241,8 @@ class DonchianMultiTemporal5Tester:
         apply_signals(self.df, self.apply_signal, self.spread_limit)
         self.df.SIGNAL = self.df.SIGNAL.astype(int)
 
-        if self.apply_short_signal != None:
-            apply_short_signals(self.df, self.apply_short_signal)
-            self.df.SIGNAL_TREND = self.df.SIGNAL_TREND.astype(int)
+        apply_trend_signals(self.df, self.apply_trend_signal)
+        self.df.SIGNAL_TREND = self.df.SIGNAL_TREND.astype(int)
 
         apply_final_signals(self.df)
 
@@ -280,7 +279,7 @@ class DonchianMultiTemporal5Tester:
                     closed_trades_m5.append(ot)
             open_trades_m5 = [x for x in open_trades_m5 if x.running == True]
 
-            if list_value_refs[INDEX_FINAL_SIGNAL][index] in [-1,1]:
+            if list_value_refs[INDEX_FINAL_SIGNAL][index] in [-2,2]:
                 open_trades_m5.append(Trade(list_value_refs, index, self.PROFIT_FACTOR, 
                                             self.LOSS_FACTOR, self.pip_value, self.trans_cost, self.neg_multiplier))  
         
