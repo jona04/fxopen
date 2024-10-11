@@ -26,15 +26,15 @@ if __name__ == "__main__":
     #run_ma_sim()
     #run_returned_ma_sim()
 
-    quotehistoryCollection.LoadQuotehistory("./data")
-    run_collection(quotehistoryCollection, api)
+    # quotehistoryCollection.LoadQuotehistory("./data")
+    # run_collection(quotehistoryCollection, api)
 
-    # dfr = parser.parse("2024-08-12T04:00:00Z")
-    # dto = parser.parse("2023-04-28T01:00:00Z")
+    dfr = parser.parse("2024-08-12T04:00:00Z")
+    dto = parser.parse("2023-04-28T01:00:00Z")
 
     # print(api.fetch_candles("BTCEUR", -10, "H1"))
-    # df_candles = api.get_candles_df(pair="BTCEUR", count=-10, granularity="H1", date_f=dfr)
-    # print(df_candles)
+    df_candles = api.get_candles_df(pair="XAUUSD", count=-10, granularity="M5", date_f=dfr)
+    print(df_candles)
 
 
     # print(api.last_complete_candle("BTCEUR", granularity="H1"))
@@ -61,3 +61,6 @@ if __name__ == "__main__":
     # print("Done")
 
 
+    # quotehistoryCollection.CreateDB(api.get_quotehistory())
+    # quotehistoryCollection.LoadQuotehistoryDB()
+    # print(quotehistoryCollection.quotehistory_dict)

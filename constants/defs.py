@@ -25,3 +25,5 @@ LABEL_MAP = {
 }
 
 THROTTLE_TIME = 0.3
+
+MONGO_CONN = 'mongodb://localhost:27017/'
