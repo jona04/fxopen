@@ -1,5 +1,5 @@
 from api.fxopen_api import FxOpenApi
-from infrastructure.quotehistory_collection import quotehistoryCollection
+from infrastructure.quotehistory_collection import quotehistoryCollection as qc
 from infrastructure.collect_data import run_collection
 from simulation.ma_cross import run_ma_sim
 from simulation.ma_cross_tp import run_ma_tp_sim
@@ -29,12 +29,12 @@ if __name__ == "__main__":
     # quotehistoryCollection.LoadQuotehistory("./data")
     # run_collection(quotehistoryCollection, api)
 
-    dfr = parser.parse("2024-08-12T04:00:00Z")
-    dto = parser.parse("2023-04-28T01:00:00Z")
+    # dfr = parser.parse("2024-08-12T04:00:00Z")
+    # dto = parser.parse("2023-04-28T01:00:00Z")
 
-    # print(api.fetch_candles("BTCEUR", -10, "H1"))
-    df_candles = api.get_candles_df(pair="XAUUSD", count=-10, granularity="M5", date_f=dfr)
-    print(df_candles)
+    # # print(api.fetch_candles("BTCEUR", -10, "H1"))
+    # df_candles = api.get_candles_df(pair="XAUUSD", count=-10, granularity="M5", date_f=dfr)
+    # print(df_candles)
 
 
     # print(api.last_complete_candle("BTCEUR", granularity="H1"))
@@ -62,5 +62,5 @@ if __name__ == "__main__":
 
 
     # quotehistoryCollection.CreateDB(api.get_quotehistory())
-    # quotehistoryCollection.LoadQuotehistoryDB()
-    # print(quotehistoryCollection.quotehistory_dict)
+    # qc.LoadQuotehistoryDB()
+    # print(qc.quotehistory_dict.keys())

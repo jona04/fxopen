@@ -1,12 +1,25 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from infrastructure.quotehistory_collection import quotehistoryCollection
 from api.fxopen_api import FxOpenApi
+from api.web_options import get_options
 from dateutil import parser
 import http
 
 app = FastAPI()
 
+origins = [
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def get_response(data):
     if data is None:
@@ -32,11 +45,25 @@ def get_account():
     return get_response(api.get_account())
 
 
+@app.get("/api/options")
+def get_account():
+    return get_response(get_options())
+
+
 @app.get("/api/quotehistory")
 def get_quotehistory():
     api = FxOpenApi()
     return get_response(api.get_quotehistory())
 
+
+@app.get("/api/prices-candle/{pair}/{granularity}/{count}")
+def get_quotehistory(pair: str, granularity: str, count:int):
+    api = FxOpenApi()
+    df_candles = api.get_candles_df(
+        pair=pair, count=count*-1, granularity=granularity
+    )
+
+    return get_response(df_candles.to_dict("list"))
 
 @app.get("/api/prices-candle/{pair}/{granularity}/{date_f}")
 def get_quotehistory(pair: str, granularity: str, date_f: str):
