@@ -10,10 +10,8 @@ function PriceChart({
 
     useEffect(() => {
         if (indicatorData) {
-            console.log("indicator price chart");
             drawChart(indicatorData, selectedPair, selectedGranularity, 'chartDiv', indicatorData)
         } else {
-            console.log("aqui novamente");
             drawChart(priceData, selectedPair, selectedGranularity, 'chartDiv', null)
         }
     }, [priceData, indicatorData])

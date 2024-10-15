@@ -5,6 +5,7 @@ import http
 import pandas as pd
 import datetime as dt
 
+from strategies import donchian_trend
 from technicals.indicators import Donchian
 from infrastructure.quotehistory_collection import quotehistoryCollection
 from api.fxopen_api import FxOpenApi
@@ -29,7 +30,7 @@ app.add_middleware(
 
 def add_timestr(df):
     df['sTime'] = [dt.datetime.strftime(x, "s%y-%m-%d %H:%M") 
-                    for x in df.time]
+                    for x in df['time']]
     return df
         
 def get_response(data):
@@ -70,9 +71,9 @@ def get_quotehistory():
 @app.get("/api/prices-candle-db/{pair}/{granularity}/{count}")
 def get_prices_candle_db(pair: str, granularity: str, count:int):
     db = DataDB()
-    df = db.query_all_list(f'{pair}_{granularity}', count)
-    df = add_timestr(df)
-    return get_response(df)
+    data = db.query_all_list(f'{pair}_{granularity}', count)
+    data = add_timestr(data)
+    return get_response(data)
 
 @app.get("/api/prices-candle/{pair}/{granularity}/{count}")
 def get_prices_candle(pair: str, granularity: str, count:int):
@@ -107,9 +108,28 @@ def indicator_donchian(pair: str, granularity: str, count:int, window: int):
     db = DataDB()
     df = db.query_all(f'{pair}_{granularity}', count)
     df = pd.DataFrame(df)
+
     df = Donchian(df, window)
     df.dropna(inplace=True)
     df.reset_index(drop=True, inplace=True)
+    
     df = add_timestr(df)
     
     return get_response(df.to_dict("list"))
+
+
+@app.get("/api/single-backtest/{pair}/{granularity}/{window}/{prewindow}/{strategy}")
+def single_backtest(pair: str, granularity: str, window: int, prewindow: int, strategy: str):
+    db = DataDB()
+    df = db.query_all(f'{pair}_{granularity}', None)
+    df = pd.DataFrame(df)
+
+    result = {}
+
+    if strategy == 'donchian-trend':
+        df = Donchian(df, window)
+        df.dropna(inplace=True)
+        df.reset_index(drop=True, inplace=True)
+        result = donchian_trend.run_strategy()
+
+    return get_response(result)

@@ -33,7 +33,6 @@ class DataDB:
             cursor = self.db[collection].find(kargs, {'_id':0}).limit(limit)
 
             result = defaultdict(list)
-            # Preenchendo o dicionário de listas em lotes
             for item in cursor:
                 for key, value in item.items():
                     result[key].append(value)

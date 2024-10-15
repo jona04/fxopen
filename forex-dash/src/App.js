@@ -8,6 +8,7 @@ import {
 import Home from "./pages/Home"
 import Dashboard from "./pages/Dashboard"
 import Footer from './components/Footer';
+import Backtest from './pages/Backtest';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home />}/>
               <Route exact path="/dashboard" element={<Dashboard />}/>
+              <Route exact path="/backtest" element={<Backtest />}/>
             </Routes>
           </div>
           <Footer />

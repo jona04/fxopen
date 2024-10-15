@@ -49,11 +49,11 @@ function Dashboard() {
   const loadPricesCandle = async (count) => {
     switch (selectedIndicator) {
       case ('Donchian'):
-        console.log("load indicator");
+        console.log("Loading Indicator");
         loadIndicator();
         break;
       default:
-        console.log("apenas price",count);
+        console.log("Loading Price data");
         const data = await endPoints.prices_candle_db(selectedPair, selectedGranularity, count);
         setPriceData(data);
         break;

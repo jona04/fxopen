@@ -9,6 +9,7 @@ function NavigationBar() {
         <div id="navlinks">
             <NavBarLink path="/" text="Home" />
             <NavBarLink path="/dashboard" text="Dashboard" />
+            <NavBarLink path="/backtest" text="Backtest" />
         </div>
     </div>
   );
