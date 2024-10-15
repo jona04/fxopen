@@ -5,15 +5,18 @@ function PriceChart({
     priceData,
     selectedPair,
     selectedGranularity,
-    selectedCount
+    indicatorData
 }) {
 
     useEffect(() => {
-        if (priceData) {
-            console.log("Drwa Chart", selectedPair, selectedGranularity,selectedCount);
-            drawChart(priceData, selectedPair, selectedGranularity, 'chartDiv')
+        if (indicatorData) {
+            console.log("indicator price chart");
+            drawChart(indicatorData, selectedPair, selectedGranularity, 'chartDiv', indicatorData)
+        } else {
+            console.log("aqui novamente");
+            drawChart(priceData, selectedPair, selectedGranularity, 'chartDiv', null)
         }
-    }, [priceData])
+    }, [priceData, indicatorData])
 
     return (
         <div className='segment' id='price-chart-holder'>

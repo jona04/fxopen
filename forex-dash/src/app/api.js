@@ -11,7 +11,9 @@ const requests = {
 const endPoints = {
     account: () => requests.get("/account"),
     options: () => requests.get("/options"),
-    prices_candle: (p,g,c) => requests.get(`/prices-candle/${p}/${g}/${c}`)
+    prices_candle: (p,g,c) => requests.get(`/prices-candle/${p}/${g}/${c}`),
+    prices_candle_db: (p,g,c) => requests.get(`/prices-candle-db/${p}/${g}/${c}`),
+    donchian_indicator: (p,g,c,window) => requests.get(`/technicals/indicator/donchian/${p}/${g}/${c}/${window}`)
 }
 
 export default endPoints;

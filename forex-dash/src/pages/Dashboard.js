@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { COUNTS } from '../app/data'
+import { COUNTS, INDICATORS, WINDOWS } from '../app/data'
 import Select from '../components/Select'
 import TitleHead from '../components/TitleHead'
 import Button from '../components/Button'
@@ -11,7 +11,10 @@ function Dashboard() {
   const [ selectedPair, setSelectedPair ] = useState(null);
   const [ selectedGranularity, setSelectedGranularity ] = useState(null);
   const [ priceData, setPriceData ] = useState(null);
+  const [ indicatorData, setIndicatorData ] = useState(null);
   const [ selectedCount, setSelectedCount ] = useState(COUNTS[0].value);
+  const [ selectedWindow, setSelectedWindow ] = useState(WINDOWS[0].value);
+  const [ selectedIndicator, setSelectedIndicator ] = useState(INDICATORS[0].value);
   const [ options, setOptions ] = useState(null);
   const [ loading, setLoading ] = useState(true);
 
@@ -19,19 +22,46 @@ function Dashboard() {
     loadOptions();
   }, []);
 
+  const handleIndicatorChange = async (value) => {
+    if (value === ''){
+      setIndicatorData(null)
+    }
+    setSelectedIndicator(value);
+  }
+
+  const handleWindowChange = async (value) => {
+    if (value === ''){
+      setIndicatorData(null)
+    }
+    setSelectedWindow(value);
+  }
+
+  const loadIndicator = async () => {
+    const data = await endPoints.donchian_indicator(selectedPair, selectedGranularity, selectedCount, selectedWindow);
+    setIndicatorData(data);
+  }
+
   const handleCountChange = (count) => {
     setSelectedCount(count);
     loadPricesCandle(count);
   }
 
   const loadPricesCandle = async (count) => {
-    const data = await endPoints.prices_candle(selectedPair, selectedGranularity, count)
-    setPriceData(data)
+    switch (selectedIndicator) {
+      case ('Donchian'):
+        console.log("load indicator");
+        loadIndicator();
+        break;
+      default:
+        console.log("apenas price",count);
+        const data = await endPoints.prices_candle_db(selectedPair, selectedGranularity, count);
+        setPriceData(data);
+        break;
+    }
   }
 
   const loadOptions = async () => {
     const data = await endPoints.options();
-    console.log("data",data);
     setOptions(data);
     setSelectedGranularity(data.granularities[0].value);
     setSelectedPair(data.pairs[0].value);
@@ -39,6 +69,7 @@ function Dashboard() {
   }
 
   if (loading === true) return <h1>Loading...</h1>
+  
 
   return (
     <div>
@@ -65,18 +96,28 @@ function Dashboard() {
                 defaultValue={selectedCount}
                 onSelected={handleCountChange}
             />
-            {/* <input value={numberCandles} onChange={e => setNumberCandles(e.target.value)} type="number" /> */}
+            <Select 
+                name="Indicator"
+                title="Indicator"
+                options={ INDICATORS }
+                defaultValue={selectedIndicator}
+                onSelected={handleIndicatorChange}
+            />
+            <Select 
+                name="Window"
+                title="Window"
+                options={ WINDOWS }
+                defaultValue={selectedWindow}
+                onSelected={handleWindowChange}
+            />
             <Button text="Load" handleClick={() => loadPricesCandle(selectedCount)} />
         </div>
-        {/* <TitleHead title="Technicals" />
-        { pricesCandle &&  <Technicals data={pricesCandle} /> } */}
         <TitleHead title="Price Chart" />
-        { priceData && <PriceChart 
-          selectedCount={selectedCount}
+        { (priceData || indicatorData) && <PriceChart 
           selectedPair={selectedPair}
           selectedGranularity={selectedGranularity}
-          handleCountChange={handleCountChange}
           priceData={priceData}
+          indicatorData={indicatorData}
         />}
     </div>
   )

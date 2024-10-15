@@ -18,11 +18,18 @@ class QuotehistoryCollection:
             for k, v in data.items():
                 self.quotehistory_dict[k] = Quotehistory.FromApiObject(v)
 
-    def LoadQuotehistoryDB(self):
+    def LoadQuotehistoryDBAll(self):
         self.quotehistory_dict = {}
         data = DataDB().query_single(DataDB.QUOTEHISTORY_COLL)
         for k, v in data.items():
             self.quotehistory_dict[k] = Quotehistory.FromApiObject(v)
+
+    def LoadQuotehistoryDBFiltered(self):
+        self.quotehistory_dict = {}
+        data = DataDB().query_single(DataDB.QUOTEHISTORY_COLL)
+        for k, v in data.items():
+            if isinstance(k, str) and "." not in k and "_" not in k and "#" not in k:
+                self.quotehistory_dict[k] = Quotehistory.FromApiObject(v)
 
     def CreateFile(self, data, path):
         if data is None:

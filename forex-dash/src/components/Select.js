@@ -2,7 +2,7 @@ import React from 'react'
 
 function Select({ options, title, name, defaultValue, onSelected }) {
 
-    const handleCahnge = (e) => {
+    const handleChange = (e) => {
         onSelected(e.target.value);
     }
 
@@ -14,7 +14,7 @@ function Select({ options, title, name, defaultValue, onSelected }) {
                 value={defaultValue}
                 name={name}
                 id={name}
-                onChange={(e) => handleCahnge(e)}>
+                onChange={(e) => handleChange(e)}>
                     {
                         options.map(item => {
                             return <option

@@ -53,10 +53,27 @@ def MACD(df: pd.DataFrame, n_slow=26, n_fast=12, n_signal=9):
 
     return df
 
+def Donchian(df: pd.DataFrame, window=50):
+    df['donchian_high'] = df['mid_c'].rolling(window=window).max()
+    df['donchian_low'] = df['mid_c'].rolling(window=window).min()
+    df['donchian_mid'] = (df['donchian_high'] + df['donchian_low']) / 2
+    df['donchian_75'] = (df['donchian_high'] + df['donchian_mid']) / 2
+    df['donchian_87'] = (df['donchian_high'] + df['donchian_75']) / 2
+    df['donchian_62'] = (df['donchian_75'] + df['donchian_mid']) / 2
+    df['donchian_25'] = (df['donchian_mid'] + df['donchian_low']) / 2
+    df['donchian_37'] = (df['donchian_mid'] + df['donchian_25']) / 2
+    df['donchian_12'] = (df['donchian_25'] + df['donchian_low']) / 2
 
+    return df
 
+def EMA(df: pd.DataFrame, window:50):
+    df[f'EMA_{window}'] = df.mid_c.ewm(span=window, min_periods=window).mean()
 
+def EMAShort(df: pd.DataFrame, window:50):
+    df[f'EMA_short'] = df.mid_c.ewm(span=window, min_periods=window).mean()
 
+def EMALong(df: pd.DataFrame, window:50):
+    df[f'EMA_long'] = df.mid_c.ewm(span=window, min_periods=window).mean()
 
 
 

@@ -1,4 +1,5 @@
 from pymongo import MongoClient, errors
+from collections import defaultdict
 
 from constants.defs import MONGO_CONN
 
@@ -27,10 +28,26 @@ class DataDB:
             print("add many error", error)
 
 
-    def query_all(self, collection, **kargs):
+    def query_all_list(self, collection, limit=100, **kargs):
+        try:
+            cursor = self.db[collection].find(kargs, {'_id':0}).limit(limit)
+
+            result = defaultdict(list)
+            # Preenchendo o dicionário de listas em lotes
+            for item in cursor:
+                for key, value in item.items():
+                    result[key].append(value)
+                    
+            return result
+        except errors.InvalidOperation as error:
+            print("query_all error", error)
+    
+    
+
+    def query_all(self, collection, limit=100, **kargs):
         try:
             data = []
-            r = self.db[collection].find(kargs, {'_id':0})
+            r = self.db[collection].find(kargs, {'_id':0}).limit(limit)
             for item in r:
                 data.append(item)
             return data

@@ -1,6 +1,13 @@
 import Plotly from 'plotly.js-dist';
 
-export function drawChart(chartData, p, g, divName) {
+export function drawChart(chartData, p, g, divName, indicadorData) {
+    if (indicadorData !== null) {
+        chartData = indicadorData
+        
+    } else {
+        console.log("e aqui denovo");
+    }
+    console.log("chartData",chartData);
     let trace = {
         x: chartData.time,
         close: chartData.mid_c,
@@ -15,6 +22,28 @@ export function drawChart(chartData, p, g, divName) {
     }
 
     let data = [trace]
+
+    if (indicadorData !== null) {
+        let trace_indicator1 = {
+            x: chartData.time,
+            y: chartData.donchian_high,
+            type: 'scatter'
+        }
+        let trace_indicator2 = {
+            x: chartData.time,
+            y: chartData.donchian_mid,
+            type: 'scatter'
+        }
+        let trace_indicator3 = {
+            x: chartData.time,
+            y: chartData.donchian_low,
+            type: 'scatter'
+        }
+        data.push(trace_indicator1);
+        data.push(trace_indicator2);
+        data.push(trace_indicator3);
+    }
+    console.log("data trace", data);
 
     let layout = {
         title: `Data for ${p} ${g}`,
@@ -33,6 +62,4 @@ export function drawChart(chartData, p, g, divName) {
 
     Plotly.newPlot(divName, data, layout, { responsive: true });
     Plotly.Plots.resize(document.getElementById(divName));
-
-
 }

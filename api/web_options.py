@@ -1,13 +1,13 @@
 import constants.defs as defs
 from infrastructure.quotehistory_collection import quotehistoryCollection as qc
-from api.fxopen_api import FxOpenApi
+
 
 def make_option(k):
     return dict(key=k, label=k, value=k)
 
 
 def get_options():
-    qc.LoadQuotehistoryDB()
+    qc.LoadQuotehistoryDBFiltered()
     
     ps = [p for p in qc.quotehistory_dict.keys()]
     ps.sort()
