@@ -5,7 +5,7 @@ import http
 import pandas as pd
 import datetime as dt
 
-from strategies import donchian_trend
+from simulation.donchian_trend import DonchianTrend
 from technicals.indicators import Donchian
 from infrastructure.quotehistory_collection import quotehistoryCollection
 from api.fxopen_api import FxOpenApi
@@ -118,8 +118,8 @@ def indicator_donchian(pair: str, granularity: str, count:int, window: int):
     return get_response(df.to_dict("list"))
 
 
-@app.get("/api/single-backtest/{pair}/{granularity}/{window}/{prewindow}/{strategy}")
-def single_backtest(pair: str, granularity: str, window: int, prewindow: int, strategy: str):
+@app.get("/api/single-backtest/{pair}/{granularity}/{window}/{prewindow}/{ema_window}/{strategy}")
+def single_backtest(pair: str, granularity: str, window: int, ema_window:int, prewindow: int, strategy: str):
     db = DataDB()
     df = db.query_all(f'{pair}_{granularity}', None)
     df = pd.DataFrame(df)
@@ -127,9 +127,38 @@ def single_backtest(pair: str, granularity: str, window: int, prewindow: int, st
     result = {}
 
     if strategy == 'donchian-trend':
+
+        # def run_pair(pair,pip_value,granularity='M5',use_spread=True,
+        #      stop_loss = 1000, take_profit = 200, 
+        #      fixed_tp_sl=True,trans_cost=8,
+        #      neg_multiplier=1.5, rev=True,
+        #     spread_limit=50,ema_1 = 10,donchian_window = 10000, donchian_window_prev = 100):
+
         df = Donchian(df, window)
+        df[f'EMA_short'] = df.mid_c.ewm(span=ema_window, min_periods=ema_window).mean()
+        df['SPREAD'] = (df[f'ask_c'] - df[f'bid_c']) / pip_value
+        df['donchian_size'] = (df['donchian_high'] - df['donchian_low'])/pip_value
+        df['TP'] = 0
+        df['SL'] = 0
+        
         df.dropna(inplace=True)
         df.reset_index(drop=True, inplace=True)
-        result = donchian_trend.run_strategy()
+
+        gt = DonchianTrend(
+            df,
+            pip_value,
+            # use_spread=use_spread,
+            # LOSS_FACTOR = stop_loss,
+            # PROFIT_FACTOR = take_profit,
+            # fixed_tp_sl=fixed_tp_sl,
+            # trans_cost=trans_cost,
+            # neg_multiplier=neg_multiplier,
+            # rev=rev,
+            # spread_limit=spread_limit,
+            donchian_window_prev = prewindow
+        )
+        
+        gt.run_test()
+
 
     return get_response(result)
